@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: "Outfit", serif;
+}
+
+:root {
+  --figtree-font: "Figtree", serif;
+  --inter-font: "Inter", serif;
+  --primaryColor: #6C36FE;
+  --hover: #4825a7;
+  --black: #473d65;
+  --white: #ffffff;
+  --pink: #f9f5ff;
+  --border-color: var(--color-pink-300);
+
+  --gray-1: #181d27;
+  --gray-2: #414651;
+  --gray-3: #535862;
+  --gray-4: #D5D7DA;
+  --dark: #000000;
+}
+
+/* backgrounds */
+.bg-root-color {
+  background-color: var(--primaryColor);
+}
+.bg-pink {
+  background-color: var(--pink);
+}
+
+/*colors */
+.text-root-color {
+  color: var(--primaryColor);
+}
+.text-color {
+  color: var(--black);
+}
+.gray-1 {
+  color: var(--gray-1);
+}
+.gray-2 {
+  color: var(--gray-2);
+}
+.gray-3 {
+  color: var(--gray-3);
+}
+.dark {
+  color: var(--dark);
+}
+
+/* hover */
+.hover-root-color:hover {
+  color: var(--primaryColor);
+}
+.hover-effect:hover {
+  background-color: var(--primaryColor);
+  color: var(--white);
+}
+
+.bg-hover:hover {
+  background-color: var(--hover);
+  color: var(--white);
+}
+
+/* font */
+.font-inter {
+  font-family: var(--inter-font);
+}
+.font-figtree {
+  font-family: var(--figtree-font);
+}
+
+/* border */
+.border-color{
+ border-color: var(--gray-4)
+}
+
+
+.relative,
+.absolute,
+.fixed {
+  z-index: 0;
+}
+
+/* Global styles for the toast */
+.Toastify__progress-bar {
+  background-color: #4d2eff !important;
+}
+.Toastify__progress-bar--success {
+  background-color: #4d2eff !important;
+}
+.Toastify__progress-bar--info {
+  background-color: #309ed9 !important;
+}
+.Toastify__progress-bar--error {
+  background-color: #e3332d !important;
+}
+.Toastify__progress-bar--warning {
+  background-color: #edbd0e !important;
+}
+
+.Toastify__close-button {
+  color: #4d2eff !important;
+}
+.Toastify__close-button--default {
+  color: #4d2eff !important;
+}
+.Toastify__close-button > svg {
+  color: #4d2eff !important;
+}
+.Toastify__close-button:hover {
+  color: #4d2eff !important;
+}
+.Toastify__close-button:focus {
+  color: #4d2eff !important;
+}
