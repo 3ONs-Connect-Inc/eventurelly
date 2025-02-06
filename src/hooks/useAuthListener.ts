@@ -34,7 +34,7 @@ const useAuthListener = () => {
             const defaultUserData: User = {
               id: currentUser.uid,
               firstName: currentUser.displayName || '',
-              lastName:  '',
+              lastName: '',
               emailUsername: '',
               emailDomain: '',
               companyName: '',
@@ -48,6 +48,7 @@ const useAuthListener = () => {
               role: "User",
               timestamp: new Date(),
               emailVerified: currentUser.emailVerified || false,
+              terms: true
             };
 
             // Merge firstName and lastName, and companyContact and phoneNumber for default data

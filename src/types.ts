@@ -1,4 +1,5 @@
 
+
 // Base interface for common properties
 export interface BaseUser {
   id: string;
@@ -14,6 +15,7 @@ export interface BaseUser {
     role: "Admin" | "CorporateAdmin" | "Manager" | "Editor"|  "User";
     timestamp: any;
     emailVerified: boolean,
+    terms: boolean,
 }
 
 // Interface for the User role (if different from the base, extend and add properties)
@@ -29,8 +31,10 @@ export interface CorporateAdmin extends BaseUser {
   companyAddress: string;
 }
 
-
-
 // Type for form errors
 export type FormErrors = Partial<Record<keyof User | keyof CorporateAdmin, string>>;
 
+export interface Country {
+  code: string;
+  name: string;
+}

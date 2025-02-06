@@ -6,7 +6,7 @@ import Error from "../pages/Error";
 import GetStarted from "../pages/GetStarted";
 import Navbar from "../components/Navbar";
 import SignIn from "../components/auth/SignIn";
-import SignUp from "../components/auth/SignUp";
+import CreateAccount from "../pages/auth/CreateAccount";
 
 
 const UserRoutes = () => {
@@ -23,8 +23,8 @@ const UserRoutes = () => {
         {/* <Route path="/" element={<Home />} />
         <Route path="/get-started" element={<GetStarted />} /> */}
          <Route path="/*" element={<GetStarted />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />  
+        <Route path="/sign-up" element={<CreateAccount />} />
         <Route path="error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
