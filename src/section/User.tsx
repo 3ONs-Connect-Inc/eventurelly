@@ -1,31 +1,86 @@
 
 import { Route, Routes, useLocation } from "react-router-dom";
-//import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import Error from "../pages/Error";
-import GetStarted from "../pages/GetStarted";
-import Navbar from "../components/Navbar";
-import SignIn from "../components/auth/SignIn";
-import CreateAccount from "../pages/auth/CreateAccount";
+import Navbar from "../components/navbar/Navbar";
+import { lazy} from "react";
+import usePasswordReset from "../hooks/usePasswordReset";
+import SearchPage from "../pages/SearchPage";
 
 
-const UserRoutes = () => {
+const Home  = lazy(() => import("../pages/Home"));
+const CreateAccount  = lazy(() => import("../pages/auth/CreateAccount"));
+const SignInAccount  = lazy(() => import("../pages/auth/SignInAccount"));
+const TwoFactorAuth  = lazy(() => import("../pages/auth/TwoFactorAuth"));
+const VerifyEmail = lazy(() => import("../pages/auth/VerifyEmail"));
+const PasswordReset  = lazy(() => import("../pages/auth/PasswordReset"));
+const PasswordSuccess  = lazy(() => import("../pages/auth/PasswordSuccess"));
+
+
+const UserRoutes= () => { 
   const location = useLocation();
   const hideNavbarRoutes = ["/sign-in", 
     "/sign-up"
   ];
+
   const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+  const {
+    newPassword,
+    setNewPassword,
+    confirmPassword,
+    setConfirmPassword,
+    errors,
+    setErrors,
+    message,
+    setMessage,
+    loading,
+    setLoading,
+    searchParams,
+    handlePasswordReset,
+} = usePasswordReset();
+
+const handleNewPasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handlePasswordReset();
+};
 
   return (
     <>
-      {shouldShowNavbar && <Navbar />}
+          {shouldShowNavbar && <Navbar />}
       <Routes>
-        {/* <Route path="/" element={<Home />} />
-        <Route path="/get-started" element={<GetStarted />} /> */}
-         <Route path="/*" element={<GetStarted />} />
-        <Route path="/sign-in" element={<SignIn />} />  
+         <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignInAccount />} />  
         <Route path="/sign-up" element={<CreateAccount />} />
-        <Route path="error" element={<Error />} />
+        <Route path="/2fa-auth" element={<TwoFactorAuth />} />
+        <Route path="/verify-email" element={<VerifyEmail 
+               handleNewPasswordSubmit={handleNewPasswordSubmit}
+          setNewPassword={setNewPassword}
+          newPassword={newPassword}
+          confirmPassword={confirmPassword}
+          setConfirmPassword={setConfirmPassword}
+          errors={errors}
+          setErrors={setErrors}
+          message={message}
+          setMessage={setMessage}  
+          loading={loading}
+          setLoading={setLoading}
+          searchParams={searchParams}
+        />} />
+        <Route path="/forgot-password" element={<PasswordReset
+          handleNewPasswordSubmit={handleNewPasswordSubmit}
+          setNewPassword={setNewPassword}
+          newPassword={newPassword}
+          confirmPassword={confirmPassword}
+          setConfirmPassword={setConfirmPassword} 
+          errors={errors}
+          setErrors={setErrors}  
+          loading={loading}
+          setLoading={setLoading}
+          message={message}
+          setMessage={setMessage}
+          searchParams={searchParams}
+         />} />
+        <Route path="/password-success" element={<PasswordSuccess />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

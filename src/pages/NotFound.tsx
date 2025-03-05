@@ -1,21 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useIconColor } from "../hooks/useIconColor";
+import Button from "../components/ui/Button";
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
-
+  const { textColor,  bgColor } = useIconColor();
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-100 text-gray-800 text-center">
-      <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
-      <p className="text-lg mb-8">
+    <div className={`${bgColor} ${textColor} flex flex-col justify-center items-center h-screen w-full  text-center`}>
+      <h1 className="text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold mb-4">404 - Page Not Found</h1>
+      <p className="font-normal text-base  md:text-xl max-sm:text-tiny mb-8">
         The page you are looking for does not exist.
       </p>
-      <button
-        className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600"
+      <Button
+      label=" Go to Home"
+        className="px-6 py-3 bg-primary bg-hover cursor-pointer max-sm:text-tiny text-white"
         onClick={() => navigate("/")}
-      >
-        Go to Home
-      </button>
+      />
     </div>
   );
 };

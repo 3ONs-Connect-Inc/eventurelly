@@ -2,6 +2,7 @@ import React, { useState, useRef, ChangeEvent, useEffect } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { Country } from '../../types';
+import { useIconColor } from '../../hooks/useIconColor';
 
 
 interface PhoneInputProps {
@@ -26,7 +27,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef<HTMLDivElement>(null);
-
+   const { textColor} = useIconColor();
   useClickOutside([inputRef], () => setShowSuggestions(false));
 
   // Update filteredCountries when countries is fetched
@@ -91,8 +92,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
   return (
     <div className="mb-4" ref={inputRef}>
-      <label className="dark:text-[var(--light)] block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-      <div className="flex items-center dark:text-[var(--light)] rounded-lg overflow-hidden">
+      <label className={`${textColor} block text-sm font-medium  mb-1`}>Phone Number</label>
+      <div className="flex items-center rounded-lg overflow-hidden">
         {/* Country Code Input */}
         <div className="relative w-1/4 ">
           <input
@@ -101,7 +102,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
             onChange={handleCountryCodeChange}
             onFocus={() => setShowSuggestions(true)}
             placeholder="Code"
-            className={`px-3 py-2 text-base font-normal w-full rounded-l-lg border-2 ${
+            className={`dark:opacity-55 px-3 py-2 text-base ${textColor} font-normal w-full rounded-l-lg border-2 ${
               errors.companyContact ? "border-red-500" : "border-gray-300"
             } focus:border-[#6C36FE]  focus:outline-none border-2 border-solid `}
           />
@@ -130,7 +131,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   
     placeholder="Phone Number"
     maxLength={10}
-    className={`w-full px-3 py-2 text-base font-normal rounded-r-lg dark:text-[var(--light)] border-2 ${
+    className={`dark:opacity-55 w-full px-3 py-2 text-base font-normal rounded-r-lg ${textColor} border-2 ${
       errors.phoneNumber ? "border-red-500" : "border-gray-300"
     } focus:border-[#6C36FE]  focus:outline-none border-2 border-solid `}
   />
@@ -147,7 +148,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
       {/* Country Suggestions */}
       {showSuggestions && filteredCountries.length > 0 && (
-        <ul className="border dark:text-[var(--light)] border-gray-300 rounded mt-1 max-h-40 overflow-y-auto">
+        <ul className={`border ${textColor} border-gray-300 
+          rounded mt-1 max-h-40 overflow-y-auto`}>
           {filteredCountries.map((country, index) => (
             <li
               key={index}

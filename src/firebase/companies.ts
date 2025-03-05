@@ -52,10 +52,6 @@ export const checkCompanyAndDomainExists = async (
   emailDomain: string
 ): Promise<{ companyExists: boolean; domainExists: boolean }> => {
   try {
-    console.log("Checking company and domain for:", {
-      companyName,
-      emailDomain,
-    });
 
     // Check if company name exists
     const companyQuery = query(
@@ -64,12 +60,6 @@ export const checkCompanyAndDomainExists = async (
     );
     const companySnapshot = await getDocs(companyQuery);
     const companyExists = !companySnapshot.empty;
-    console.log(
-      "Company Exists:",
-      companyExists,
-      "Documents Found:",
-      companySnapshot.size
-    );
 
     // Check if domain exists
     const domainQuery = query(
@@ -78,12 +68,7 @@ export const checkCompanyAndDomainExists = async (
     );
     const domainSnapshot = await getDocs(domainQuery);
     const domainExists = !domainSnapshot.empty;
-    console.log(
-      "Domain Exists:",
-      domainExists,
-      "Documents Found:",
-      domainSnapshot.size
-    );
+
 
     return { companyExists, domainExists };
   } catch (error) {

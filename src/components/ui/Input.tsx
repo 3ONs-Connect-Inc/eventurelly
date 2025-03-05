@@ -1,6 +1,8 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef,  useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { useIconColor } from "../../hooks/useIconColor";
+
 
 interface InputProps {
   label: string;
@@ -12,8 +14,8 @@ interface InputProps {
   maxLength?: number;
   placeholder: string;
   errors: any;
-  setErrors: any;
-  onBlur?:  React.FocusEventHandler<HTMLInputElement>; 
+  setErrors?: any;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -34,6 +36,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
+  const { textColor} = useIconColor();
 
     const togglePasswordVisibility = () => {
       setShowPassword((prev) => !prev);
@@ -43,11 +46,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className={`mb-4 relative ${className}`}>
         <label
           htmlFor={name}
-          className="block text-sm font-medium  text-gray-600 dark:text-[var(--light)] mb-1"
+          className={`block text-sm font-medium ${textColor} mb-1`}
         >
           {label}
         </label>
-        <div className="relative">
+        <div className="relative ">
           <input
             id={name}
             name={name}
@@ -55,7 +58,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             onChange={(e) => {
               onChange(e);
-              if (errors[name]) {
+              if (errors?.[name]) {
                 setErrors((prevErrors: any) => {
                   const newErrors = { ...prevErrors };
                   delete newErrors[name];
@@ -65,12 +68,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }}
             maxLength={maxLength}
             placeholder={placeholder}
-            onBlur={onBlur}
+            onBlur={onBlur} 
             ref={ref}
-            className={`w-full px-3 py-2 border text-base font-normal text-gray-500 dark:text-[var(--light)] rounded-lg 
-              ${errors[name] ? "error-border pr-10" : "border-gray-300"}
-               focus:border-[#6C36FE]  focus:outline-none border-2 border-solid 
-               `}
+            className={` dark:opacity-55 w-full px-3 py-2 border text-base  font-normal  ${textColor} rounded-lg 
+              ${errors?.[name] ? "border-border-red pr-10" : "border-gray-300"}
+              focus:border-[#6C36FE] focus:outline-none border-2 border-solid  bg-transparent 
+            `}
           />
 
           {/* Password Toggle Icon */}
@@ -78,24 +81,24 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute inset-y-0 right-8 flex items-center px-2 text-gray-900"
+              className={`absolute inset-y-0 right-8 flex items-center px-2 ${textColor}`}
             >
               {showPassword ? (
-                <BsEyeSlash className="h-5 w-5" />
+                <BsEyeSlash className="h-5 w-5 " />
               ) : (
-                <BsEye className="h-5 w-5" />
+                <BsEye className="h-5 w-5 " />
               )}
             </button>
           )}
 
           {/* Error Icon */}
-          {errors[name] && (
-            <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-red-500 h-5 w-5 my-auto" />
+          {errors?.[name] && (
+            <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-red-500 h-5 w-5 my-auto " />
           )}
         </div>
 
         {/* Error Message */}
-        {errors[name] && (
+        {errors?.[name] && (
           <p className="text-red-500 text-sm mt-1">{errors[name]}</p>
         )}
       </div>

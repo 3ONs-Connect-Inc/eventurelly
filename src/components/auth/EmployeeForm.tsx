@@ -11,15 +11,15 @@ import Checkbox from "../ui/Checkbox";
 import { Country } from "../../types";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
+import { useIconColor } from "../../hooks/useIconColor";
 
-const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
-  countries,
-}) => {
+const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
-   const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+    const { textColor } = useIconColor();
   const {
     formData,
-    errors,
+    errors,  
     loading,
     domains,
     handleChange,
@@ -38,8 +38,9 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
       emailDomain: "",
       password: "",
       confirmPassword: "",
-      ageConfirmed: false,
+      ageConfirmed: false,  
       captcha: "",
+      terms: false,
       role: "User",
     },
     recaptchaRef,
@@ -48,17 +49,21 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
 
   return (
     <>
-        <div className="text-left">
-            <h2 className="font-bold text-2xl  dark:text-[var(--light)]">
-              Sign Up
-            </h2>
-            <div className="mt-2 font-normal text-lg  mb-7 dark:text-[var(--light)]">
-              Already have an account?{" "}
-              <Link to="/sign-in" className="text-root-color font-bold">
-                Sign In
-              </Link>
-            </div>
-          </div>
+      <div className="text-left">
+        <h2 className={`font-bold text-2xl ${textColor}`}>
+          Sign Up
+        </h2>
+        <div className={`mt-2 font-normal text-lg  mb-7 ${textColor}`}>
+          Already have an account?{" "}
+          <Link to="/sign-in" className="text-primary font-bold">
+            Sign In
+          </Link>
+        </div>
+      </div>
+
+
+
+
       <form onSubmit={handleSubmit}>
         <Input
           label="First Name"
@@ -67,13 +72,11 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
           value={formData.firstName}
           onChange={handleChange}
           placeholder="John"
-          
           errors={{
             firstName: errors.firstName,
           }}
           setErrors={setErrors}
         />
-       
 
         <Input
           label="Last Name"
@@ -82,29 +85,24 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
           value={formData.lastName}
           onChange={handleChange}
           placeholder="Doe"
-          
           errors={{
             lastName: errors.lastName,
           }}
           setErrors={setErrors}
         />
-      
 
         <CompanyDropdown
           label="Company Name"
           name="companyName"
           value={formData.companyName}
           onChange={handleChange}
-          
           errors={{
-            companyName : errors.companyName,
+            companyName: errors.companyName,
           }}
           setErrors={setErrors}
         />
-      
 
-       
-<PhoneInput
+        <PhoneInput
           companyContact={formData.companyContact}
           phoneNumber={formData.phoneNumber}
           countries={countries}
@@ -132,21 +130,14 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
             if (!domain) {
               return;
             }
-            handleChange(e);
+            handleChange(e);  
           }}
           errors={{
-            emailUsername : errors.emailUsername,
+            emailUsername: errors.emailUsername,
             emailDomain: errors.emailDomain,
           }}
           setErrors={setErrors}
-        />  
-
-        {errors.emailUsername && (
-          <p className="text-red-500 text-sm">{errors.emailUsername}</p>
-        )}
-        {errors.emailDomain && (
-          <p className="text-red-500 text-sm">{errors.emailDomain}</p>
-        )}
+        />
 
         <Input
           label="Password"
@@ -155,13 +146,11 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
           value={formData.password}
           onChange={handleChange}
           placeholder="N4&vQ2!p"
-          
           errors={{
             password: errors.password,
           }}
           setErrors={setErrors}
         />
-      
 
         <Input
           label="Confirm Password"
@@ -170,15 +159,13 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
           value={formData.confirmPassword}
           onChange={handleChange}
           placeholder="N4&vQ2!p"
-          
           errors={{
             confirmPassword: errors.confirmPassword,
           }}
           setErrors={setErrors}
         />
-      
 
-      <div className="mb-4  flex flex-col justify-center items-center">
+        <div className="mb-4  flex flex-col justify-center items-center">
           <div
             className="captcha-container mt-4 mb-4"
             style={{
@@ -207,16 +194,16 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
 
         <Checkbox
           name="terms"
-          checked={formData.terms}
+          checked={!!formData.terms}
           onChange={handleChange}
           label={
             <>
               I agree to{" "}
-              <Link to="#" className="text-root-color font-bold">
+              <Link to="#" className="text-primary font-bold">
                 Policy
               </Link>{" "}
               and{" "}
-              <Link to="#" className="text-root-color font-bold">
+              <Link to="#" className="text-primary font-bold">
                 Terms and Conditions
               </Link>
             </>
@@ -229,7 +216,7 @@ const EmployeeForm: React.FC<{ countries: Country[]  }> = ({
             disabled={loading}
             label={loading ? "Loading..." : "Create Account"}
             type="submit"
-            className="w-full bg-root-color text-white  mt-4"
+            className="w-full bg-primary text-white rounded-lg bg-hover mt-4 transition"
           />
         </div>
       </form>

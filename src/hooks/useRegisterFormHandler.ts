@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -8,13 +8,13 @@ import { CorporateAdmin } from "../types";
 import {
   validateAddress,
   validateCompanyAndDomain,
-  validateForm,
+  validateForm,  
 } from "../utils/validations/corporateValidation";
 import { hashPassword } from "../utils/functions";
 
 export const useRegisterFormHandler = (
   defaultFormData: any,
-  recaptchaRef: any,
+  recaptchaRef: any,  
   captchaToken: string | null
 ) => {
   const [formData, setFormData] = useState(defaultFormData);
@@ -26,18 +26,18 @@ export const useRegisterFormHandler = (
   const [showMap, setShowMap] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (formData.companyAddress) {
-      (async () => {
-        const isValid = await validateAddress(formData.companyAddress);
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          companyAddress: isValid ? undefined : "Please enter a valid address.",
-        }));
-        setShowMap(isValid);
-      })();
-    }
-  }, [formData.companyAddress]);
+  // useEffect(() => {
+  //   if (formData.companyAddress) {
+  //     (async () => {
+  //       const isValid = await validateAddress(formData.companyAddress);
+  //       setErrors((prevErrors) => ({
+  //         ...prevErrors,
+  //         companyAddress: isValid ? undefined : "Please enter a valid address.",
+  //       }));
+  //       setShowMap(isValid);
+  //     })();
+  //   }
+  // }, [formData.companyAddress]);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -60,6 +60,23 @@ export const useRegisterFormHandler = (
       });
     }
   };
+
+  const handleBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.name === "companyAddress") {
+      const trimmedAddress = e.target.value.trim(); // Use latest value directly
+  
+      const isValid = await validateAddress(trimmedAddress);
+  
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        companyAddress: isValid ? undefined : "Please enter a valid address.",
+      }));
+  
+      setShowMap(isValid);
+    }
+  };
+  
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,28 +105,15 @@ export const useRegisterFormHandler = (
     }
 
     if (!captchaToken) {
-      toast.error("Captcha validation failed. Please try again.");
+      toast.error("Please complete the reCAPTCHA.");
       return;
     }
-   
-    try {
-      // Send the captcha token to your backend for verification
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/verify-recaptcha`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ captchaToken }),
-    });
 
-    const data = await response.json();
-
-    if (!data.success) {
-      toast.error("Captcha verification failed. Please try again.");
-      return;
-    }
     setLoading(true);
-      // Encrypt the password 
+    try {
+     
+
+      // Encrypt the password
       const hashedPassword = await hashPassword(formData.password);
 
       // Create the user in Firebase Authentication
@@ -156,7 +160,7 @@ export const useRegisterFormHandler = (
           timestamp: serverTimestamp(),
         };
 
-        await setDoc(domainRef, domainData, { merge: true }); // Use merge for safe updates
+        await setDoc(domainRef, domainData, { merge: true }); 
       }
 
       toast.success("Registration successful");
@@ -183,5 +187,6 @@ export const useRegisterFormHandler = (
     handleSubmit,
     setFormData,
     setErrors,
+    handleBlur
   };
 };

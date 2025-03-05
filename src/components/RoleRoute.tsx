@@ -37,7 +37,7 @@ const RoleRoute: React.FC<{ children: React.ReactNode; allowedRole: string }> = 
     }
   }, [user, allowedRole]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>Error: {error.message}</div>;
 
   if (!user) {

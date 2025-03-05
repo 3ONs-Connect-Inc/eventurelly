@@ -6,7 +6,7 @@ const validCountryCodes = new Set(
 );
 
 export const userValidation = (
-  formData: User,
+  formData: User,  
   domains: string[]
 ): Partial<Record<keyof User, string>> => {
   const errors: FormErrors = {};
@@ -14,10 +14,9 @@ export const userValidation = (
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/;
   const phoneRegex = /^\d{10}$/;
- // const countryCodeRegex = /^\\d$/;
+  // const countryCodeRegex = /^\\d$/;
   const nameRegex = /^[A-Za-z'-."]+$/;
   const emailUsernameRegex = /^[^@]+$/;
-
 
   // Validate firstName
   if (!formData.firstName.trim()) {
@@ -63,9 +62,13 @@ export const userValidation = (
     errors.emailDomain =
       "The email address you entered is not associated with the selected company. Please use your company-issued email address.";
   }
-
+  
   if (!formData.ageConfirmed)
     errors.ageConfirmed = "You must confirm your age.";
+  if (!formData.terms)
+    errors.terms = "You must agree with our terms and condition.";
+
+
 
   if (!formData.password.trim()) {
     errors.password = "Password is required.";

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { hashPassword } from "../utils/functions";
 
 export const useEmployeeFormHandler = (
-  defaultFormData: any,
+  defaultFormData: any,  
   recaptchaRef: any,
   captchaToken: string | null
 ) => {
@@ -21,6 +21,29 @@ export const useEmployeeFormHandler = (
   const [loading, setLoading] = useState(false);
   const [domains, setDomains] = useState<string[]>([]);
 
+
+  useEffect(() => {
+    if (domains.length > 0) {
+      setFormData((prev: any) => {
+        const updatedFormData = {
+          ...prev,
+          emailDomain: domains[0],
+        };
+  
+        // Remove error if a valid domain is set
+        setErrors((prevErrors) => {
+          const updatedErrors = { ...prevErrors };
+          delete updatedErrors.emailDomain;
+          return updatedErrors;
+        });
+  
+        return updatedFormData;
+      });
+    }
+  }, [domains]);
+  
+
+
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -29,11 +52,9 @@ export const useEmployeeFormHandler = (
       type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
 
     let filteredValue = value;
-    // Filter out non-alphabetic characters for firstName and lastName
-   // Filter for firstName and lastName to allow alphabetic characters, apostrophes, periods, and hyphens
-   if (name === "firstName" || name === "lastName") {
-    filteredValue = value.replace(/[^A-Za-z'-."]/g, "");
-  }
+    if (name === "firstName" || name === "lastName") {
+      filteredValue = value.replace(/[^A-Za-z'-."]/g, "");
+    }
 
     // Filter out '@' for emailUsername
     if (name === "emailUsername") {
@@ -54,16 +75,18 @@ export const useEmployeeFormHandler = (
       [name]: type === "checkbox" ? checked : filteredValue,
     }));
 
-  // Remove error dynamically
-  if (errors[name as keyof User]) {
-    const updatedErrors = { ...errors };
-    delete updatedErrors[name as keyof User];
-    setErrors(updatedErrors);
-  }
+    // Remove error dynamically
+    if (errors[name as keyof User]) {
+      setErrors((prevErrors) => {
+        const updatedErrors = { ...prevErrors };
+        delete updatedErrors[name as keyof User];
+        return updatedErrors;
+      });
+    }
+    
 
     if (name === "companyName") {
       const companyDomains = await fetchCompanyDomains(value);
-      console.log("Fetched domains:", companyDomains);
       setDomains(companyDomains);
     }
   };
@@ -80,11 +103,13 @@ export const useEmployeeFormHandler = (
     }
 
     if (!captchaToken) {
-      toast.error("Please complete the captcha.");
+      toast.error("Please complete the reCAPTCHA.");
       return;
     }
     setLoading(true);
     try {
+    
+     
       const fullEmail = `${formData.emailUsername}${formData.emailDomain}`;
       if (
         !formData.emailUsername ||
@@ -97,15 +122,14 @@ export const useEmployeeFormHandler = (
 
       const userId = uuidv4();
       // Encrypt the password
-  const hashedPassword = await hashPassword(formData.password);
-
+      const hashedPassword = await hashPassword(formData.password);
 
       // Create the user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         fullEmail,
         formData.password
-      );
+      );  
 
       if (formData.role === "User") {
         const contactInfo = `${formData.companyContact} - ${formData.phoneNumber}`;
@@ -132,7 +156,7 @@ export const useEmployeeFormHandler = (
 
       toast.success("Registration successful");
       recaptchaRef.current?.reset();
-      navigate("/2fa-user-authentication");
+      navigate("/sign-in");
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("The email address is already in use by another account.");

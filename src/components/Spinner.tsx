@@ -4,7 +4,7 @@ const Spinner = () => {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)]">
       <svg
-        className="animate-spin h-20 w-20 text-root-color"
+        className="animate-spin h-20 w-20 text-primary"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

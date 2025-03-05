@@ -12,6 +12,7 @@ import Checkbox from "../ui/Checkbox";
 import { Country } from "../../types";
 import { ThemeContext } from "../../context/ThemeContext";
 import { validateCompanyAndDomain } from "../../utils/validations/corporateValidation";
+import { useIconColor } from "../../hooks/useIconColor";
 
 const center = {
   lat: 7.2905715,
@@ -21,6 +22,8 @@ const center = {
 const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
   const { theme } = useContext(ThemeContext);
+    const { textColor} = useIconColor();
+   
   const {
     formData,
     errors,
@@ -30,6 +33,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
     setFormData,
     setErrors,
     showMap,
+    handleBlur
   } = useRegisterFormHandler(
     {
       id: "",
@@ -85,15 +89,16 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
     }));
   };
 
+
   return (
     <div>
       <div className="text-left">
-        <h2 className="font-bold text-2xl  dark:text-[var(--light)]">
+        <h2 className={`font-bold text-2xl  ${textColor}`}>
           Sign Up
         </h2>
-        <div className="mt-2 font-normal text-lg  mb-7 dark:text-[var(--light)]">
+        <div className={`mt-2 font-normal text-lg  mb-7 ${textColor}`}>
           Already have an account?{" "}
-          <Link to="/sign-in" className="text-root-color font-bold">
+          <Link to="/sign-in" className="text-primary font-bold">
             Sign In
           </Link>
         </div>
@@ -121,6 +126,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           name="companyAddress"
           value={formData.companyAddress}
           onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="Enter your Address"
           errors={{
             companyAddress: errors.companyAddress,
@@ -227,16 +233,16 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
 
         <Checkbox
           name="terms"
-          checked={formData.terms}
+          checked={!!formData.terms}
           onChange={handleChange}
           label={
             <>
               I agree to{" "}
-              <Link to="#" className="text-root-color font-bold">
+              <Link to="#" className="text-primary font-bold">
                 Policy
               </Link>{" "}
               and{" "}
-              <Link to="#" className="text-root-color font-bold">
+              <Link to="#" className="text-primary font-bold">
                 Terms and Conditions
               </Link>
             </>
@@ -249,7 +255,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
             type="submit"
             disabled={loading}
             label={loading ? "Loading..." : "Create Account"}
-            className="w-full bg-root-color text-white  mt-4"
+            className="w-full bg-primary text-white rounded-lg bg-hover mt-4 transition"
           />
         </div>
       </form>

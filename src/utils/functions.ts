@@ -1,3 +1,4 @@
+
 export const hashPassword = async (password: string): Promise<string> => {
     const encoder = new TextEncoder();
     const data = encoder.encode(password);
@@ -7,6 +8,11 @@ export const hashPassword = async (password: string): Promise<string> => {
   };
 
 
+ 
+
+  export const generateVerificationCode = (): string => {
+    return Math.floor(1000 + Math.random() * 9000).toString();
+  };
 
 
 

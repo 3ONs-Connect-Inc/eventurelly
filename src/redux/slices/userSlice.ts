@@ -10,10 +10,10 @@ interface UserState {
 const initialState: UserState = {
   activeUser: null,
   isLoggedIn: false,
-};
+};  
 
-const userSlice = createSlice({
-  name: 'user',
+const userSlice = createSlice({  
+  name: 'user',  
   initialState,
   reducers: {
     setActiveUser: (state, action: PayloadAction<User>) => {

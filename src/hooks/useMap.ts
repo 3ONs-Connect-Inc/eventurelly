@@ -13,7 +13,7 @@ export const useMap = (initialCenter: { lat: number; lng: number }, setFormData:
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "",
     libraries,
-  });
+  });  
 
   useEffect(() => {
     if (addressInputRef.current && isLoaded) {
