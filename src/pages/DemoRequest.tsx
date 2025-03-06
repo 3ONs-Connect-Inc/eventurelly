@@ -1,9 +1,8 @@
-import Footer from "../components/Footer";
-import Seo from "../components/Seo";
-import { useIconColor } from "../hooks/useIconColor";
+import Seo from '../components/Seo';
+import Footer from '../components/Footer';
+import { useIconColor } from '../hooks/useIconColor';
 
-
-const TeamBuilding = () => {
+const DemoRequest = () => {
     const { bgColor } = useIconColor();
     return (
       <div
@@ -17,11 +16,11 @@ const TeamBuilding = () => {
         />
   
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow ">
-        <div>TeamBuilding</div>
+        <div>Demo Request</div>
         </div>
         <Footer />
       </div>
     );
   };
 
-export default TeamBuilding
+export default DemoRequest

@@ -11,7 +11,7 @@ const SignInAccount: React.FC = () => {
         title="Sign in Account"
         description="Sign in Account page."
         name="Eventurelly."
-        type="article"
+        type="website"
       />
       {/* Logo - Visible on small screens only */}
       <div className="md:hidden mx-4 w-40 h-auto mt-4 mb-10">

@@ -27,7 +27,7 @@ const CreateAccount: React.FC = () => {
         title="Create Account"
         description="Create account page."
         name="Eventurelly."
-        type="article"
+        type="website"
       />
       {/* Logo - Visible on small screens only */}
       <div className="mx-4 w-40 mt-4 h-auto md:hidden">

@@ -14,10 +14,10 @@ const SearchPage = () => {
         title="Search"
         description="Search page."
         name="Eventurelly."
-        type="article"
+        type="website"
       />
 
-      <div className="px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow ">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow ">
         <SearchBar />
         <SearchContents />
       </div>

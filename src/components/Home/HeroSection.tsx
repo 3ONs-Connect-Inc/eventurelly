@@ -34,7 +34,9 @@ export const HeroSection: React.FC = () => {
         <LazyImage
           src="/images/ppl/blob.png"
           alt="image"
-          className="w-full max-w-full sm:max-w-full"
+         className="w-full max-w-full sm:max-w-full"
+          blob={true} 
+          delay={3000}
         />
       </div>
     </div>

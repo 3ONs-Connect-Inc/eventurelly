@@ -50,6 +50,7 @@ const Card: React.FC<CardProps> = ({
           src={image}
           alt={title}
           className="object-cover w-full max-w-full sm:max-w-full"
+          delay={3000} 
         />
       </div>
       <div className="self-start flex gap-2 mt-2 mb-4 flex-wrap ">

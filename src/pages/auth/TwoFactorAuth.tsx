@@ -111,7 +111,7 @@ const TwoFactorAuth: React.FC = () => {
             title="Two Factor Authentication"
             description="Two Factor Authentication page."
             name="Eventurelly."
-            type="article"
+            type="website"
           />
       <div
         className={`p-6 rounded-lg shadow-lg text-center w-full max-w-md ${bgColor} ${textColor}`}

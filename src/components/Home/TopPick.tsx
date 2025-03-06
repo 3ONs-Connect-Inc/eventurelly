@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useIconColor } from "../../hooks/useIconColor";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -5,6 +6,11 @@ import { cardData } from "./../../../data";
 
 const TopPick: React.FC = () => {
   const { textColor, pColor, bgColor } = useIconColor();
+  const navigate = useNavigate();
+
+  const handleLearnMore = (slug: string) => {
+    navigate(`/event-details/${slug}`);
+  };
 
   return (
     <div className={`w-full py-4  max-xs:px-0 ${bgColor}`}>
@@ -56,6 +62,7 @@ const TopPick: React.FC = () => {
               buttonColor
               buttonTextColor
               imageClassName="w-full h-full"
+              onClick={() => handleLearnMore(card.slug)} 
             />
           ))}
         </div>

@@ -20,8 +20,6 @@ export const filterOptions = {
   "Format": ["In-person", "Virtual", "Hybrid"],
 };
 
-
-
 export const cardData = [
   {
     image: "/images/ppl/card-img.png",
@@ -30,6 +28,7 @@ export const cardData = [
       "Effective training programs designed to enhance team dynamics. Available as in-person sessions or virtual workshops.",
     buttonText: "Learn More",
     tags: ["Outdoor", "Workshops"],
+    slug: "professional-development", 
   },
   {
     image: "/images/ppl/card-img.png",
@@ -38,6 +37,7 @@ export const cardData = [
       "Exciting retreats designed to build teamwork and resilience in an adventurous setting.",
     buttonText: "Learn More",
     tags: ["Training", "Adventure"],
+    slug: "Adventure-Retreat", 
   },
   {
     image: "/images/ppl/card-img.png",
@@ -46,6 +46,7 @@ export const cardData = [
       "Fun and engaging challenges designed to strengthen team collaboration in an outdoor environment.",
     buttonText: "Learn More",
     tags: ["Teamwork", "Challenge"],
+    slug: "Outdoor-Team-Challenge", 
   },
   {
     image: "/images/ppl/card-img.png",
@@ -54,6 +55,7 @@ export const cardData = [
       "Effective training programs designed to enhance team dynamics. Available as in-person sessions or virtual workshops.",
     buttonText: "Learn More",
     tags: ["Training", "Workshops"],
+    slug: "professional-development", 
   },
   {
     image: "/images/ppl/card-img.png",
@@ -62,6 +64,7 @@ export const cardData = [
       "Exciting retreats designed to build teamwork and resilience in an adventurous setting.",
     buttonText: "Learn More",
     tags: ["Outdoor", "Adventure"],
+    slug: "Adventure-Retreat", 
   },
   {
     image: "/images/ppl/card-img.png",
@@ -70,8 +73,11 @@ export const cardData = [
       "Fun and engaging challenges designed to strengthen team collaboration in an outdoor environment.",
     buttonText: "Learn More",
     tags: ["Teamwork", "Challenge"],
+    slug: "Outdoor-Team-Challenge", 
   },
 ];
+
+
 
 export const tagColorMap: Record<string, string> = {
   Training: "bg-green-100 text-green-700",
@@ -87,39 +93,64 @@ export const tagColorMap: Record<string, string> = {
 
 export const footerLinks = [ 
   {
-    title: "Product",
+    title: "Events",
     links: [
-      { name: "Overview", url: "#" },
-      { name: "Features", url: "#" },
-      { name: "Solutions", url: "#" },
+      { name: "In Person", url: "#" },
+      { name: "Virtual/Remote", url: "#" },
+      { name: "Hybrid", url: "#" },
       { name: "Tutorials", url: "#" },
-      { name: "Pricing", url: "#" },
-      { name: "Releases", url: "#" },
+    ],
+  },
+  {
+    title: "Locations",
+    links: [
+      { name: "Virtual/Remote", url: "#" },
+      { name: "Canada", url: "#" },
+      { name: "United States", url: "#" },
+      { name: "Global", url: "#" },
     ],
   },
   {
     title: "Company",
     links: [
-      { name: "About Us", url: "#" },
+      { name: "About us", url: "#" },
       { name: "Careers", url: "#" },
-      { name: "Press", url: "#" },
       { name: "News", url: "#" },
-      { name: "Media kit", url: "#" },
-      { name: "Contact", url: "#" },
     ],
   },
   {
-    title: "Resources",
+    title: "Contact Us",
     links: [
-      { name: "Blog", url: "#" },
-      { name: "Newsletter", url: "#" },
-      { name: "Events", url: "#" },
-      { name: "Help centre", url: "#" },
-      { name: "Tutorials", url: "#" },
-      { name: "Support", url: "#" },
+      { name: "+647-532-7885", url: "#" },
+      { name: "info@eventurelly.com", url: "#" },
     ],
   },
 ];
 
 
+export const infoItems = [
+  {
+    icon: "/images/icon/user-check.png",
+    title: "EVENT FORMAT",
+    description: "In person",
+  },
+  {
+    icon: "/images/icon/map.png",
+    title: "Location",
+    description: "Toronto, ON",
+  },
+  { icon: "/images/icon/users.png", 
+    title: "Team Size",
+     description: "4-5" 
+    },
+  { icon: "/images/icon/clock.png", 
+    title: "Duration",
+     description: "2 hours"
+     },
+  {
+    icon: "/images/icon/activity.png",
+    title: "ACTIVITY",
+    description: "Moderate",
+  },
+];
 

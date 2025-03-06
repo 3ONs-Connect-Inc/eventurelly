@@ -103,7 +103,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({
         title="Password Reset"
         description="Password Reset page."
         name="Eventurelly."
-        type="article"
+        type="website"
       />
       {!isResetMode ? (
         <div

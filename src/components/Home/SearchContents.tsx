@@ -20,7 +20,7 @@ const SearchContents = () => {
 
     return (
       <div className="flex items-center   py-4 px-6 max-xs:px-0">
-        <div className={`w-full max-w-7xl   flex flex-col items-center py-4 px-6 mx-auto ${textColor}`}>
+        <div className={`w-full  flex flex-col items-center py-4 px-6 mx-auto ${textColor}`}>
         <div className="w-full mt-0 flex flex-row max-md:flex-col justify-between items-center mb-8">
   {/* Left Section - Tags */}
   <div className="flex gap-2">
@@ -65,25 +65,25 @@ const SearchContents = () => {
 
   
           {/* Cards Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full justify-items-center">
-            {cardData.map((card, index) => (
-              <Card
-                key={index}
-                image={card.image}
-                title={card.title}
-                description={card.description}
-                buttonText={card.buttonText}
-                tags={card.tags}
-                className="self-start text-left border"
-                buttonAlignment="center"
-                textAlignment="left"
-                buttonFullWidth
-                buttonColor
-                buttonTextColor
-                imageClassName="w-full h-full"
-              />
-            ))}
-          </div>
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  justify-items-center">
+          {cardData.map((card, index) => (
+            <Card
+              key={index}
+              image={card.image}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              tags={card.tags}
+              className="self-start text-left border  "
+              buttonAlignment="center"
+              textAlignment="left"
+              buttonFullWidth
+              buttonColor
+              buttonTextColor
+              imageClassName="w-full h-full"
+            />
+          ))}
+        </div>
         </div>
       </div>
     );

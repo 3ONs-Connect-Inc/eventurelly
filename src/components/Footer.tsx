@@ -39,14 +39,14 @@ const Footer = () => {
           <div className="w-full flex flex-wrap md:flex-nowrap items-center md:items-start gap-6">
             {/* Logo Section */}
             <div className="w-full md:w-1/4 flex justify-start md:justify-start">
-              <Logo  />
+              <Logo />
             </div>
             {/* Links Section */}
-            <div className="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center sm:text-left">
+            <div className="w-full md:w-3/4 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center sm:text-left">
               {footerLinks.map((section) => (
                 <div key={section.title}>
                   <h1
-                    className={`${pColor} semi-bold font-normal text-tiny mb-2`}
+                    className={`${textColor} font-bold  text-base max-xs:text-tiny mb-2`}
                   >
                     {section.title}
                   </h1>
@@ -56,10 +56,10 @@ const Footer = () => {
                      href={link.url}
                       className={`${textColor} hover:text-primary cursor-pointer font-normal block text-base max-sm:text-tiny`}
                     >
-                      {link.name === "Solutions" ? (
+                      {link.name === "Hybrid" || link.name ===  "United States"? (
                         <>
                           {link.name}{" "}
-                          <span className="text-green-700 bg-green-200 px-2 py-1 font-medium rounded-lg text-tiny">
+                          <span className="text-green-700 bg-green-200 px-2 py-1 font-medium rounded-lg text-tiny ">
                             New
                           </span>
                         </>
@@ -77,7 +77,7 @@ const Footer = () => {
         <div className="border-t border-border-gray my-6  mx-auto"></div>
 
         {/* Bottom Section */}
-        <div className=" mx-auto flex flex-col md:flex-row justify-between text-center md:text-left ">
+        <div className=" mx-auto  flex flex-col md:flex-row justify-between text-center md:text-left ">
           <p className={`${pColor} font-normal  text-base max-sm:text-tiny max-xs:hidden`}>
             Boost Team Bonding & Employee Engagement Today!
           </p>
