@@ -7,7 +7,7 @@ const PasswordSuccess = () => {
   const { textColor, bgColor, bgColor2 } = useIconColor();
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ${bgColor2}`}
+      className={`fixed inset-0 flex items-center justify-center  bg-opacity-50 ${bgColor2}`}
     >
          <Seo
             title="Password Success"
@@ -24,8 +24,8 @@ const PasswordSuccess = () => {
           alt="check" />
         </div>
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold">Password Changed</h2>
-          <p>You can log in with your new password</p>
+          <h2 className="text-lg font-semibold">Password Changed</h2>
+          <p className="text-sm font-normal">You can log in with your new password</p>
         </div>
 
         <Link to="/sign-in" className="flex w-full ">

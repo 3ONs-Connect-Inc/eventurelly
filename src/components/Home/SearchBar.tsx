@@ -4,6 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { filterOptions } from "../../../data";
 import useClickOutside from "../../hooks/useClickOutside";
+import { Link } from "react-router-dom";
 
 
 export const SearchBar: React.FC = () => {
@@ -45,23 +46,23 @@ console.log(selectedFilters)
 
  
   return (
-    <div className="flex items-center gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full  relative">
+    <div className="flex items-center gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full">
       <input
         type="text"
         placeholder="Search by keywords"
         className="text-xs sm:text-lg w-full text-gray-500 font-medium flex-1 border-r-2 border-gray-300 pr-2 outline-none"
       />
-      <div className="max-md:hidden flex items-center gap-4 text-sm lg:text-base relative">
+      <div className="max-md:hidden flex items-center gap-4 text-sm lg:text-base  z-[9999]">
         {Object.entries(filterOptions).map(([key, options], index) => (
           <div
             key={index}
             ref={refs[key as keyof typeof refs]}
-            className="relative border-gray-300 text-gray-500 font-medium flex items-center gap-1 border-r-2 pr-2 cursor-pointer"
+            className="relative border-gray-300 text-gray-500 font-medium flex items-center gap-1 border-r-2 pr-2 cursor-pointer "
           >
             <span onClick={() => toggleDropdown(key as keyof typeof refs)}>{key}</span>
             <IoIosArrowDown className="text-gray-900 cursor-pointer" onClick={() => toggleDropdown(key as keyof typeof refs)} />
             {dropdownOpen[key] && (
-              <div className="absolute left-0 top-full mt-1 bg-white shadow-md w-full  rounded-lg border border-gray-300 z-30 overflow-hidden ">
+              <div className="absolute left-0 top-full mt-1 bg-white shadow-md w-full  rounded-lg border border-gray-300  ">
                 {options.map((option, idx) => (
                   <div
                     key={idx}
@@ -79,9 +80,9 @@ console.log(selectedFilters)
           </div>
         ))}
       </div>
-      <div className="bg-primary text-white p-1 sm:p-2 rounded-full border-l bg-hover cursor-pointer">
+      <Link to="/search" className="bg-primary text-white p-1 sm:p-2 rounded-full border-l bg-hover cursor-pointer">
         <IoSearchOutline />
-      </div>
+      </Link>
     </div>
   );
 };

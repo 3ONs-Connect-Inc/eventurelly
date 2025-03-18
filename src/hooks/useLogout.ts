@@ -7,7 +7,7 @@ const useLogout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
+  const handleLogout = async () => {  
     try {
       await logoutUser();
       dispatch(removeActiveUser());

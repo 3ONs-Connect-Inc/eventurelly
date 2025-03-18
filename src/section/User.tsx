@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/Navbar";
 import { lazy} from "react";
 import usePasswordReset from "../hooks/usePasswordReset";
 
+
 const Home  = lazy(() => import("../pages/Home"));
 const CreateAccount  = lazy(() => import("../pages/auth/CreateAccount"));
 const SignInAccount  = lazy(() => import("../pages/auth/SignInAccount"));
@@ -13,10 +14,10 @@ const VerifyEmail = lazy(() => import("../pages/auth/VerifyEmail"));
 const PasswordReset  = lazy(() => import("../pages/auth/PasswordReset"));
 const PasswordSuccess  = lazy(() => import("../pages/auth/PasswordSuccess"));
 const SearchPage = lazy(() => import("../pages/SearchPage"));
-const TeamBuilding = lazy(() => import("../pages/TeamBuilding"));
+const TeamBuildingPage = lazy(() => import("../pages/TeamBuildingPage"));
 const EventDetailPage = lazy(() => import("../pages/EventDetailPage"));
-const DemoRequest = lazy(() => import('./../pages/DemoRequest'));
-
+const DemoRequest = lazy(() => import('../pages/DemoRequestPage'));
+const BookEventPage = lazy(() => import('../pages/BookEventPage'));
 
 const UserRoutes= () => { 
   const location = useLocation();
@@ -83,9 +84,10 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
          />} />
         <Route path="/password-success" element={<PasswordSuccess />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/team-building-events" element={<TeamBuilding />} />
+        <Route path="/team-building-events" element={<TeamBuildingPage />} />
         <Route path="/event-details/:slug" element={<EventDetailPage />} />
         <Route path="/demo-request" element={<DemoRequest />} />
+        <Route path="/book-event" element={<BookEventPage />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -11,6 +11,7 @@ import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
 import NavLinks from "./NavLinks";
 
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -20,9 +21,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`sticky top-0 dark:shadow-gray-800 left-0 w-full ${bgColor} shadow-md p-4 flex justify-between items-center  z-[999]`}
+      className={`sticky  top-0 dark:shadow-gray-800 left-0 w-full  ${bgColor} shadow-md p-4   z-[999]`}
     >
-      <Logo />
+       <div className="max-w-7xl mx-auto flex justify-between items-center">
+       <Logo />
       <div className="max-md:block hidden">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
@@ -57,6 +59,7 @@ const Navbar: React.FC = () => {
         toggleTheme={toggleTheme}
         theme={theme}
       />
+    </div>
     </nav>
   );
 };

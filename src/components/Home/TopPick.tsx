@@ -11,9 +11,13 @@ const TopPick: React.FC = () => {
   const handleLearnMore = (slug: string) => {
     navigate(`/event-details/${slug}`);
   };
+  const handleViewMore = () => {
+    navigate(`/team-building-events`);
+  };
+
 
   return (
-    <div className={`w-full py-4  max-xs:px-0 ${bgColor}`}>
+    <div className={`w-full py-4  max-xs:px-0 ${bgColor}`} id="topPickSection">
       <div
         className={` z-[1] flex flex-col items-center py-4 mx-auto ${textColor} `}
       >
@@ -34,7 +38,7 @@ const TopPick: React.FC = () => {
          text-white px-5 py-2 rounded-lg shadow-md text-base max-md:text-tiny font-semibold 
          bg-hover transition mt-14"
           >
-            <span>View More</span>
+            <span  onClick={handleViewMore} >View More</span>
             <img
               src="/images/icon/arrow-right.png"
               loading="lazy"
@@ -54,7 +58,6 @@ const TopPick: React.FC = () => {
               title={card.title}
               description={card.description}
               buttonText={card.buttonText}
-              tags={card.tags}
               className="self-start text-left border  "
               buttonAlignment="center"
               textAlignment="left"

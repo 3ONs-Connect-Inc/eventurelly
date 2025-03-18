@@ -5,7 +5,7 @@ import { useIconColor } from "../../hooks/useIconColor";
 
 
 interface InputProps {
-  label: string;
+  label?: string;
   type: string;
   name: string;
   value: string;
@@ -16,6 +16,7 @@ interface InputProps {
   errors: any;
   setErrors?: any;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  readOnly?: boolean; 
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -32,6 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       errors,
       setErrors,
       onBlur,
+      readOnly,
     },
     ref
   ) => {
@@ -44,12 +46,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={`mb-4 relative ${className}`}>
-        <label
-          htmlFor={name}
-          className={`block text-sm font-medium ${textColor} mb-1`}
-        >
-          {label}
-        </label>
+      {label && (
+  <label
+    htmlFor={name}
+    className={`block text-sm font-medium ${textColor} mb-1`}
+  >
+    {label}
+  </label>
+)}
         <div className="relative ">
           <input
             id={name}
@@ -57,6 +61,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={type === "password" && !showPassword ? "password" : "text"}
             value={value}
             onChange={(e) => {
+              if (!readOnly) { 
               onChange(e);
               if (errors?.[name]) {
                 setErrors((prevErrors: any) => {
@@ -65,14 +70,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                   return newErrors;
                 });
               }
-            }}
+            }}}
             maxLength={maxLength}
             placeholder={placeholder}
             onBlur={onBlur} 
             ref={ref}
+            readOnly={readOnly} 
             className={` dark:opacity-55 w-full px-3 py-2 border text-base  font-normal  ${textColor} rounded-lg 
               ${errors?.[name] ? "border-border-red pr-10" : "border-gray-300"}
-              focus:border-[#6C36FE] focus:outline-none border-2 border-solid  bg-transparent 
+              focus:border-[#6C36FE] focus:outline-none border-2 border-solid  
+               ${readOnly ? "bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed" : ""}
             `}
           />
 

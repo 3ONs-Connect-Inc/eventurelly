@@ -8,7 +8,7 @@ const SearchPage = () => {
   const { bgColor } = useIconColor();
   return (
     <div
-      className={`${bgColor}  overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
+      className={`${bgColor} relative overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
     >
       <Seo
         title="Search"

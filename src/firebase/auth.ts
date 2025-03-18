@@ -18,7 +18,7 @@ export const registerUser = async (email: string, password: string) => {
   }
 };
 
-
+  
 
 export const loginUser = (email: string, password: string) => 
   signInWithEmailAndPassword(auth, email, password).then(res => res.user);

@@ -1,0 +1,194 @@
+import { useEventBooking } from "../../hooks/useEventBooking";
+import Input from "../ui/Input";
+import Checkbox from "../ui/Checkbox";
+import SuccessModal from "../ui/modal/SuccessModal";
+import { services, servicesTags } from "../../../data";
+import { useIconColor } from "../../hooks/useIconColor";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FiArrowUpRight } from "react-icons/fi";
+
+const BookingForm: React.FC = () => {
+  const { textColor, pColor, bgColor2 } = useIconColor();
+  const {
+    formData,
+    errors,
+    isSuccess,
+    isLoading,
+    handleDateChange,
+    handleChange,
+    handleCheckboxChange,
+    handleSubmit,
+    setIsSuccess,
+  } = useEventBooking();
+
+  return (
+    <div className={`flex flex-col items-center max-w-7xl mx-auto py-10 px-6`}>
+      <div
+        className={`${bgColor2} ${textColor} w-full  rounded-lg shadow-md max-xs:p-6  max-[320px]:p-2  border-border-gray  mx-auto py-10 px-6  flex flex-col  items-center `}
+      >
+        <div className="text-center mb-6 max-xs:mt-10">
+          <h2 className="mt-4 max-sm:-mt-2 text-3xl max-md:text-lg  font-bold">
+            Let’s Get Started – Book This Event
+          </h2>
+          <p
+            className={`${pColor} mt-1 font-normal text-base  md:text-sm max-sm:text-xs `}
+          >
+            Fill out the form below, and we’ll be in touch soon to schedule your
+            personalized event!
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              label="Event Name"
+              type="text"
+              name="eventName"
+              value={formData.eventName}
+              onChange={handleChange}
+              errors={errors}
+              placeholder="Enter event name"
+            />
+            <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:mt-0 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
+              Diversity and Inclusion Workshop
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Event Description
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
+              This event promotes awareness and actionable strategies to build a
+              more inclusive work environment
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Event Format
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
+              In Person
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Location
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+              Toronto, ON, CA
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Duration
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+              2 hours
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Team Size
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+              4-5
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Services Included
+            </label>
+            <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
+              {servicesTags.map((service) => (
+                <span
+                  key={service}
+                  className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
+                dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Services Not Included
+            </label>
+            <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
+              {servicesTags.slice(0, 2).map((service) => (
+                <span
+                  key={service}
+                  className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
+                dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full  border-border-gray h-11 px-3 py-2 text-base font-normal rounded-lg focus:border-[#6C36FE] focus:outline-none border-2 border-solid">
+            <DatePicker
+              selected={formData.eventDate}
+              onChange={handleDateChange}
+              dateFormat="MM/dd/yyyy"
+              minDate={new Date()} //  Prevents selecting past dates
+              placeholderText="MM/DD/YYYY"
+              className="w-full"
+            />
+            {errors.eventDate && (
+              <p className="text-red-500 mt-4 ">{errors.eventDate}</p>
+            )}
+          </div>
+
+          <div className="py-6">
+            <h2 className="text-lg font-semibold mb-2">Optional Services</h2>
+            <ul className="grid grid-cols-1 max-md:grid-cols-2 max-xs:grid-cols-1 gap-2">
+              {services.map((service, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <Checkbox
+                    name={service}
+                    checked={formData.optionalServices.includes(service)}
+                    onChange={() => handleCheckboxChange(service)}
+                    label={service}
+                  />
+                </li>
+              ))}
+            </ul>
+            {errors.optionalServices && (
+              <p className="text-red-500">{errors.optionalServices}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full font-semibold py-2 rounded-lg bg-primary bg-hover text-white flex items-center justify-center"
+          >
+            {isLoading ? "Submitting..." : "Book This Event"}
+            <FiArrowUpRight className="ml-2 font-bold" />
+          </button>
+        </form>
+      </div>
+
+      {isSuccess && (
+        <SuccessModal
+          header="Thank you! Your event booking request has been received."
+          message="Our team will get in touch soon to finalize the details. We’re excited to help you create an unforgettable team-building experience!"
+          onClose={() => {
+            setIsSuccess(false);
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+export default BookingForm;

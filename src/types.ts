@@ -40,3 +40,28 @@ export interface Country {
 }
 
 
+
+export interface BookingData {
+  eventName: string;
+  eventDate: Date | null;
+  optionalServices: string[];
+  eventDescription: string;
+  eventDetail: string;
+  eventFormat: string;
+  location: string;
+  duration: string;
+  teamSize: string;
+  servicesIncluded: string[];
+  servicesNotIncluded: string[];
+}
+
+
+
+
+
+
+
+
+
+
+

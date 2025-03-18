@@ -30,7 +30,7 @@ const MobileMenu = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className={`absolute top-14 left-0 w-full
+            className={`absolute top-14 left-0  w-full overflow-y-auto h-[350px] max-h-screen 
               ${bgColor} shadow-md text-black-light 
               flex-col items-center gap-4 py-6 max-md:flex hidden z-40 text-sm`}
           >

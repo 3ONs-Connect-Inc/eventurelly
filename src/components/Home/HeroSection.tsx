@@ -1,44 +1,88 @@
-import { useIconColor } from "../../hooks/useIconColor";
-import LazyImage from "../LazyImage";
+import "swiper/swiper-bundle.css";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { carousel } from "../../../data";
+import HeroImage from "../ui/hero/HeroImage";
+import HeroContent from "../ui/hero/HeroContent";
+import HeroContainer from "../ui/hero/HeroContainer";
+import { useAppSelector } from "../../hooks/redux";
 
-export const HeroSection: React.FC = () => {
-  const { textColor, pColor } = useIconColor();
+export const HeroSection = () => {
+  const { isLoggedIn } = useAppSelector((state) => state.user);
 
   return (
-    <div className="flex flex-row max-md:flex-col-reverse md:w-full items-center justify-between mt-10 w-full max-w-7xl mx-auto mb-10 gap-10">
-      <div className="text-center md:text-left space-y-3 w-1/2 max-md:w-full  md:justify-center">
-        <h2
-          className={`${textColor}  max-sm:-mt-2 text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold`}
-        >
-          Strengthen Bonds, Elevate Teams
-        </h2>
-        <p
-          className={`${pColor} font-normal text-base  md:text-xl max-sm:text-tiny`}
-        >
-          Unlock unforgettable experiences that bring your team closer than
-          ever. Strengthen connections, boost morale, and foster collaboration
-          with our expert-led team bonding events.
-        </p>
-        <div className="flex max-sm:justify-center">
-          <button className="bg-primary bg-hover cursor-pointer max-sm:text-tiny text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg flex items-center space-x-4 mt-8  max-sm:mt-2 mb-4">
-            <span>Get started</span>
-            <img
-              src="/images/icon/arrow-up.png"
-              alt="icon"
-              className="w-2.5 h-2.5"
-            />
-          </button>
-        </div>
-      </div>
-      <div className="w-1/2 max-md:w-full flex justify-center">
-        <LazyImage
-          src="/images/ppl/blob.png"
-          alt="image"
-         className="w-full max-w-full sm:max-w-full"
-          blob={true} 
-          delay={3000}
-        />
-      </div>
-    </div>
+    <HeroContainer className="relative  px-6 max-md:p-0  mb-4 max-sm:mb-2 gap-10 ">
+      <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
+        spaceBetween={50}
+        slidesPerView={1}
+        loop={true}
+        grabCursor={true}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        autoplay={{
+          delay: 7000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+          renderBullet: (_, className) => {
+            return `<span class="${className} swiper-pagination-bullet"></span>`;
+          },
+        }}
+        onSwiper={(swiper) => {
+          if (!swiper || !swiper.autoplay) return;
+          swiper.el.addEventListener("mouseenter", () =>
+            swiper.autoplay?.stop()
+          );
+          swiper.el.addEventListener("mouseleave", () =>
+            swiper.autoplay?.start()
+          );
+        }}
+        className="w-full"
+      >
+        {carousel.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="flex flex-row max-md:flex-col-reverse items-center mt-4  justify-between w-full mb-8 max-md:mb-2">
+              {isLoggedIn ? (
+                <HeroContent
+                  title={item.title}
+                  description={item.desc}
+                  alignCenter={false}
+                  buttonProps={{
+                    label: "Get Started",
+                    to: "#topPickSection",
+                    className:
+                      "bg-primary whitespace-nowrap text-white bg-hover",
+                    image: "/images/icon/arrow-up.png",
+                  }}
+                />
+              ) : (
+                <HeroContent
+                  title={item.title}
+                  description={item.desc}
+                  alignCenter={false}
+                  buttonProps={{
+                    label: "Get Started",
+                    to: "#teamBondingSection",
+                    className:
+                      "bg-primary whitespace-nowrap text-white bg-hover",
+                    image: "/images/icon/arrow-up.png",
+                  }}
+                />
+              )}
+
+              <HeroImage src={item.img} alt={item.title} rounded />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Navigation Buttons */}
+      <button className="swiper-button-prev"></button>
+      <button className="swiper-button-next"></button>
+    </HeroContainer>
   );
 };

@@ -1,50 +1,37 @@
-import { useState, useEffect } from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { useState, useEffect, useRef } from "react";
 
-interface LazyImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-  delay?: number;
-  blob?: boolean; // Show blob shape only during loading
-}
-
-const LazyImage: React.FC<LazyImageProps> = ({
-  src,
-  alt,
-  className = "",
-  delay = 2000,
-  blob = false,
-}) => {
-  const [loaded, setLoaded] = useState(false);
-  const [showImage, setShowImage] = useState(false);
+const LazyImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
-    if (loaded) {
-      const timer = setTimeout(() => setShowImage(true), delay);
-      return () => clearTimeout(timer);
-    }
-  }, [loaded, delay]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-  const blobClass = "w-[569px] h-[486px] rounded-tl-[243px] rounded-tr-[100px] rounded-br-[243px] rounded-bl-[100px] object-cover overflow-hidden";
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={`relative overflow-hidden ${className} `} >
-      {!showImage && (
-        <Skeleton
-          className="w-full h-full"
-          containerClassName={`absolute inset-0 w-full h-full ${blob ? blobClass : ""}`}
-        />
-      )}
+    <div className="h-full">
       <img
-        src={src}
+        ref={imgRef}
+        src={isVisible ? src : ""}
         alt={alt}
+        className={className}
         loading="lazy"
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-auto object-cover transition-opacity duration-500 ${
-          showImage ? "opacity-100 visible" : "opacity-0 invisible"
-        } ${className}`}
       />
     </div>
   );

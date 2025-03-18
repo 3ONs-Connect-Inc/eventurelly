@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
+import Profile from "./Profile";
 
 const AuthButtons = ({ handleLogout, isLoggedIn }: { handleLogout: () => void; isLoggedIn: boolean }) => (
     <>
       {isLoggedIn ? (
-        <Button
-          label="Log Out"
-          onClick={handleLogout}
-          className="bg-primary text-white font-semibold rounded-lg font-inter border border-border-gray bg-hover cursor-pointer"
-        />
+        <Profile handleLogout={handleLogout}/>
+        
       ) : (
         <div className="flex gap-4">
           <Link to="/sign-in">

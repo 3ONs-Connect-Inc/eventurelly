@@ -49,24 +49,25 @@ const Card: React.FC<CardProps> = ({
         <LazyImage
           src={image}
           alt={title}
-          className="object-cover w-full max-w-full sm:max-w-full"
-          delay={3000} 
+          className="object-cover w-full h-full max-w-full sm:max-w-full"
         />
       </div>
-      <div className="self-start flex gap-2 mt-2 mb-4 flex-wrap ">
-        {tags?.map((tag, idx) => (
-          <span
-            key={idx}
-            className={`text-[8px] px-2 py-1 rounded-full font-semibold
-              ${tagColorMap[tag] || "bg-gray-200 text-black"}`}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {tags && (
+        <div className="self-start flex gap-2 mt-2  flex-wrap ">
+          {tags?.map((tag, idx) => (
+            <span
+              key={idx}
+              className={`text-[8px] px-2 py-1 rounded-full font-semibold
+       ${tagColorMap[tag] || "bg-gray-200 text-black"}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       <h2
         className={`text-lg font-bold max-xs:text-base/5 ${textColor} mb-2 "
-       ${textAlignment === "left" ? "self-start" : "justify-center"}
+       ${textAlignment === "left" ? "self-start mt-2" : "justify-center"}
       `}
       >
         {title}

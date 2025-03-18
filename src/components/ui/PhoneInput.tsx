@@ -13,6 +13,8 @@ interface PhoneInputProps {
   onPhoneNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errors: any;
   setErrors: any;
+  onCompanyContactBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onPhoneNumberBlur?: React.FocusEventHandler<HTMLInputElement>;
 }
 
 const PhoneInput: React.FC<PhoneInputProps> = ({
@@ -22,6 +24,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   onCompanyContactChange,
   onPhoneNumberChange,
   errors,
+  onCompanyContactBlur,
+  onPhoneNumberBlur,
   setErrors,
 }) => {
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
@@ -90,6 +94,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     }
   };
 
+  
   return (
     <div className="mb-4" ref={inputRef}>
       <label className={`${textColor} block text-sm font-medium  mb-1`}>Phone Number</label>
@@ -99,6 +104,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
           <input
             type="text"
             value={companyContact}
+            onBlur={onCompanyContactBlur}
+         
             onChange={handleCountryCodeChange}
             onFocus={() => setShowSuggestions(true)}
             placeholder="Code"
@@ -118,6 +125,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     value={phoneNumber}
     pattern="\d*"
       onChange={handlePhoneNumberChange}
+      onBlur={onPhoneNumberBlur}
       onKeyDown={(e) => {
         if (
           !(

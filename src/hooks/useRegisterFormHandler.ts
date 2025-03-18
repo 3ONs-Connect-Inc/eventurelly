@@ -21,23 +21,10 @@ export const useRegisterFormHandler = (
   const [errors, setErrors] = useState<
     Partial<Record<keyof CorporateAdmin, string>>
   >({});
-  //const [errors, setErrors] = useState<Record<string, string>>({});
   const navigate = useNavigate();
   const [showMap, setShowMap] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (formData.companyAddress) {
-  //     (async () => {
-  //       const isValid = await validateAddress(formData.companyAddress);
-  //       setErrors((prevErrors) => ({
-  //         ...prevErrors,
-  //         companyAddress: isValid ? undefined : "Please enter a valid address.",
-  //       }));
-  //       setShowMap(isValid);
-  //     })();
-  //   }
-  // }, [formData.companyAddress]);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

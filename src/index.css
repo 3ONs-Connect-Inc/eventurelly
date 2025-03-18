@@ -3,8 +3,7 @@
 
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
-
-
+@source "../node_modules/flowbite-datepicker";
 
 body {
   font-family: "Figtree", serif;
@@ -15,10 +14,13 @@ body {
 @theme {
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
+  /* --breakpoint-2sm: 713px; */
   --breakpoint-md: 896px;
   --breakpoint-lg: 1024px;
+  /* --breakpoint-2lg: 1136px; */
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+  /* --breakpoint-3xl: 1936px; */
   --font-outfit: "Outfit", serif;
   --font-inter: "Inter", serif;
 
@@ -110,6 +112,120 @@ body {
 .captcha-container {
   transform: scale(1); 
 }
+
+
+.swiper-pagination-bullet {
+  opacity: 1;
+  border: #fff solid 1px;
+  background-color: #fff;
+  color: #fff;
+}
+.swiper-pagination-bullet {
+  position: relative;
+  display: inline-block;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 8px;
+  vertical-align: bottom;
+  transition: all 0.3s;
+  cursor: pointer;
+  bottom: 0;
+  font: 14px;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  height: 16px;
+  background: var(--color-primary)!important;
+  transition: all 0.3s;
+}
+/* Custom Navigation Buttons */
+
+.swiper-button-next {
+  right: 0px;
+  position: absolute;
+  z-index: 20;
+  opacity: 1 !important;
+  top: 50%;
+  width: 28px !important;
+  height: 45px !important;
+  line-height: 45px !important;
+  text-align: center;
+  background:  #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 8px 0 0 8px;
+}
+.swiper-button-prev {
+  left: 0px;
+  position: absolute;
+  z-index: 20;
+  opacity: 1 !important;
+  top: 50%;
+  width: 28px !important;
+  height: 45px !important;
+  line-height: 45px !important;
+  text-align: center;
+  background:  #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 0 8px 8px 0;
+}
+/* Left Button Position */
+.swiper-button-prev {
+  left: -20px !important;
+}
+
+/* Right Button Position */
+.swiper-button-next {
+  right: -20px !important;
+}
+
+/* Custom Arrow Icons */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px !important;
+  font-weight: bold;
+  color: black;
+}
+
+.react-datepicker__input-container input {
+  width: inherit;
+  height: 100%;
+}
+
+/* date picker */
+.react-datepicker-wrapper>.react-datepicker__input-container input {
+  all: unset !important;
+  width: 100% !important;
+}
+/* Change background color when selecting. */
+.react-datepicker__day--keyboard-selected:not(
+    .react-datepicker__day--range-start
+  ) {
+  border-radius: 50%; 
+  color: #fff;
+  background-color: var(--color-primary); 
+  z-index: -1 !important;
+}
+/* Change background color when hovering. */
+.react-datepicker__day:hover {
+  border-radius: 50% !important;
+  background-color: var(--hover) !important; 
+  color: #fff; 
+}
+
+
+
+
+@media (max-width: 896px) {
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-pagination-bullet
+  {
+    display: none !important;
+  }
+}
+
 
 @media (max-width: 340px) {
   .captcha-container {

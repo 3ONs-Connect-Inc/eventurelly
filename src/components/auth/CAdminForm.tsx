@@ -9,10 +9,10 @@ import { useRegisterFormHandler } from "../../hooks/useRegisterFormHandler";
 import { useMap } from "../../hooks/useMap";
 import MapComponent from "../ShowMap";
 import Checkbox from "../ui/Checkbox";
-import { Country } from "../../types";
 import { ThemeContext } from "../../context/ThemeContext";
 import { validateCompanyAndDomain } from "../../utils/validations/corporateValidation";
 import { useIconColor } from "../../hooks/useIconColor";
+import { Country } from "../../types";
 
 const center = {
   lat: 7.2905715,
@@ -23,7 +23,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
   const { theme } = useContext(ThemeContext);
     const { textColor} = useIconColor();
-   
+
   const {
     formData,
     errors,

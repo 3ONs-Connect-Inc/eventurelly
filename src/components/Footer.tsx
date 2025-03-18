@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import { footerLinks } from "../../data";
 import { useIconColor } from "../hooks/useIconColor";
 import Logo from "./navbar/Logo";
 import Button from "./ui/Button";
+import { useAppSelector } from "../hooks/redux";
+
 
 const Footer = () => {
   const { textColor, bgColor, pColor } = useIconColor();
+  const { isLoggedIn } = useAppSelector((state) => state.user);
 
   return (
     <footer
@@ -22,14 +26,29 @@ const Footer = () => {
           </p>
           {/* Buttons */}
           <div className="flex max-xs:flex-col flex-row justify-center gap-4">
+           {isLoggedIn ? (
+              <Link to="/demo-request" >
+              <Button
+                 label="Request a demo"
+                 className="bg-primary text-white px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
+               />
+              </Link>
+           ):(
+           <>
+            <Link to="/demo-request" >
             <Button
-              label="Request a demo"
-              className="bg-white text-gray px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
-            />
-            <Button
-              label="Get started"
-              className="bg-primary text-white px-4 py-2 text-base cursor-pointer bg-hover max-sm:text-tiny font-semibold"
-            />
+               label="Request a demo"
+               className="bg-white text-gray px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
+             />
+            </Link>
+              <a href="#teamBondingSection">
+              <Button
+               label="Get started"
+               className="bg-primary text-white px-4 py-2 text-base cursor-pointer bg-hover max-sm:text-tiny font-semibold"
+             />
+              </a>
+           </>
+           )}
           </div>
         </div>
 
