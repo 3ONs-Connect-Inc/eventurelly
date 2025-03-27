@@ -1,5 +1,5 @@
-import { useEmployeeFormHandler } from "../../hooks/useEmployeeFormHandler";
-import useRecaptcha from "../../hooks/useRecaptcha";
+import { useEmployeeFormHandler } from "../../hooks/auth/useEmployeeFormHandler";
+import useRecaptcha from "../../hooks/ui/useRecaptcha";
 import Input from "../ui/Input";
 import PhoneInput from "../ui/PhoneInput";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -11,7 +11,7 @@ import Checkbox from "../ui/Checkbox";
 import { Country } from "../../types";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();

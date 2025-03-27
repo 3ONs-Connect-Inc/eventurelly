@@ -1,7 +1,7 @@
 import SearchContents from "../components/Home/SearchContents";
 import { SearchBar } from "../components/Home/SearchBar";
 import Seo from "../components/Seo";
-import { useIconColor } from "../hooks/useIconColor";
+import { useIconColor } from "../hooks/ui/useIconColor";
 import Footer from "../components/Footer";
 
 const SearchPage = () => {
@@ -21,7 +21,7 @@ const SearchPage = () => {
         <SearchBar />
         <SearchContents />
       </div>
-      <Footer />
+      <Footer showButtons={true}/>
     </div>
   );
 };

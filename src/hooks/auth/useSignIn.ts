@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";  
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
-import { User } from "../types";
+import { auth, db } from "../../firebase/config";
+import { User } from "../../types";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { setActiveUser } from "../redux/slices/userSlice";
+import { setActiveUser } from "../../redux/slices/userSlice";
 
 interface FormState {
   email: string;
@@ -112,6 +112,11 @@ const useSignIn = () => {
       const firebaseUser = userCredential.user;
 
       if (!firebaseUser) throw new Error("Authentication failed");
+// Check if email is verified
+if (!firebaseUser.emailVerified) {
+  navigate("/2fa-auth"); 
+  return;
+} 
 
       const userRef = doc(db, "users", firebaseUser.uid);
       const userSnapshot = await getDoc(userRef);
@@ -121,9 +126,26 @@ const useSignIn = () => {
       }
 
       const userData = userSnapshot.data() as User;
-      dispatch(setActiveUser(userData));
 
-      navigate("/2fa-auth");
+      dispatch(setActiveUser(userData));
+// **Role-based Redirection**
+switch (userData.role) {  
+  case "Admin":
+    navigate("/admin");
+    break;
+  // case "CorporateAdmin":
+  //   navigate("/CorporateAdmin");
+  //   break;
+  // case "Manager":
+  //   navigate("/manager");
+  //   break;
+  // case "Editor":
+  //   navigate("/editor");
+  //   break;
+  default:
+    navigate("/"); // Default for "User" and unknown roles
+    break;
+}
     } catch (error) {
       console.error("Login error:", error);
       setGeneralError("Invalid email or password");

@@ -4,14 +4,14 @@ import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import PhoneInput from "../ui/PhoneInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import useRecaptcha from "../../hooks/useRecaptcha";
-import { useRegisterFormHandler } from "../../hooks/useRegisterFormHandler";
-import { useMap } from "../../hooks/useMap";
+import useRecaptcha from "../../hooks/ui/useRecaptcha";
+import { useRegisterFormHandler } from "../../hooks/auth/useRegisterFormHandler";
+import { useMap } from "../../hooks/ui/useMap";
 import MapComponent from "../ShowMap";
 import Checkbox from "../ui/Checkbox";
 import { ThemeContext } from "../../context/ThemeContext";
 import { validateCompanyAndDomain } from "../../utils/validations/corporateValidation";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import { Country } from "../../types";
 
 const center = {
@@ -38,6 +38,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
     {
       id: "",
       companyName: "",
+      normalizedCompanyName: "",
       companyAddress: "",
       companyContact: "+1",
       phoneNumber: "",
@@ -66,7 +67,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
 
   if (loadError) return;
   if (!isLoaded) return;
-
+  
   const handleCompanyBlur = async () => {
     if (!formData.companyName.trim()) return;
 

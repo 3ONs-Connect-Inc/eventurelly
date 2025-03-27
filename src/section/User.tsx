@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from '../pages/NotFound';
 import Navbar from "../components/navbar/Navbar";
 import { lazy} from "react";
-import usePasswordReset from "../hooks/usePasswordReset";
+import usePasswordReset from "../hooks/auth/usePasswordReset";
 
 
 const Home  = lazy(() => import("../pages/Home"));
@@ -15,7 +15,7 @@ const PasswordReset  = lazy(() => import("../pages/auth/PasswordReset"));
 const PasswordSuccess  = lazy(() => import("../pages/auth/PasswordSuccess"));
 const SearchPage = lazy(() => import("../pages/SearchPage"));
 const TeamBuildingPage = lazy(() => import("../pages/TeamBuildingPage"));
-const EventDetailPage = lazy(() => import("../pages/EventDetailPage"));
+const EventCategoryPage = lazy(() => import("../pages/EventCategoryPage"));
 const DemoRequest = lazy(() => import('../pages/DemoRequestPage'));
 const BookEventPage = lazy(() => import('../pages/BookEventPage'));
 
@@ -62,7 +62,7 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
           setConfirmPassword={setConfirmPassword}
           errors={errors}
           setErrors={setErrors}
-          message={message}
+          message={message}  
           setMessage={setMessage}  
           loading={loading}
           setLoading={setLoading}
@@ -85,10 +85,12 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
         <Route path="/password-success" element={<PasswordSuccess />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/team-building-events" element={<TeamBuildingPage />} />
-        <Route path="/event-details/:slug" element={<EventDetailPage />} />
         <Route path="/demo-request" element={<DemoRequest />} />
-        <Route path="/book-event" element={<BookEventPage />} />
-
+        <Route path="/book-event/:collectionName/:id/:slug" element={<BookEventPage />} />
+        <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage/>} />
+        <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage  />} />
+        <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage  />} />
+        <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage  />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

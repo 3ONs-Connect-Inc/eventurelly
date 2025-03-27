@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useIconColor } from "../hooks/useIconColor";
+import { useIconColor } from "../hooks/ui/useIconColor";
 import Button from "../components/ui/Button";
 
 const NotFound: React.FC = () => {

@@ -1,14 +1,15 @@
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import Input from "../ui/Input";
 import PhoneInput from "../ui/PhoneInput";
-import { useRequestForm } from "../../hooks/useRequestForm";
+import { useRequestForm } from "../../hooks/forms/useRequestForm";
 import SuccessModal from "../ui/modal/SuccessModal";
 import { IoPaperPlaneOutline } from "react-icons/io5";
-import useFetchCountries from "../../hooks/useFetchCountries";
+import { Country } from "../../types";
 
-const RequestForm: React.FC = () => {
+
+const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
   const { textColor, pColor, bgColor2 } = useIconColor();
-  const countries = useFetchCountries();
+
 
   const {
     formData,
@@ -19,6 +20,7 @@ const RequestForm: React.FC = () => {
     setErrors,
     isLoading,
     isSuccess,
+    checkFormComplete,
     setIsSuccess,
     handleSubmit,
   } = useRequestForm();
@@ -93,6 +95,7 @@ const RequestForm: React.FC = () => {
             errors={errors}
             placeholder="abc@company.com"
             setErrors={setErrors}
+            required
           />
 
           <PhoneInput
@@ -119,7 +122,7 @@ const RequestForm: React.FC = () => {
             <button
               type="submit"
               className="flex max-xs:px-4 items-center whitespace-nowrap gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={isLoading || !isFormValid}
+              disabled={isLoading || !checkFormComplete() || !isFormValid}
             >
               {isLoading ? "Submitting..." : "Submit"}
               <IoPaperPlaneOutline className="w-4 h-4 flex items-center font-bold" />

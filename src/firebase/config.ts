@@ -15,8 +15,11 @@ const config = {
 };
 
   const app: FirebaseApp = initializeApp(config);
-
+ 
 
 export const auth: Auth = getAuth(app);
+if (!auth.currentUser) {
+  console.error("User not authenticated");
+}
 export const db: Firestore = getFirestore(app);
 export const storage: FirebaseStorage = getStorage(app);

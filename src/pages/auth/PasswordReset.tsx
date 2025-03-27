@@ -4,7 +4,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import { auth, db } from "../../firebase/config";
 import NewPassword from "../../components/auth/NewPassword";
 import Seo from "../../components/Seo";

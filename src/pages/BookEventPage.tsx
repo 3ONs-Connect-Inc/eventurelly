@@ -1,12 +1,24 @@
+import { useParams } from "react-router-dom";
 import BackToTop from "../components/BackToTop";
 import BookingForm from "../components/book-event/BookingForm";
 import BookingHero from "../components/book-event/BookingHero";
 import Footer from "../components/Footer";
 import Seo from "../components/Seo";
-import { useIconColor } from "../hooks/useIconColor";
+import { useIconColor } from "../hooks/ui/useIconColor";
+import Spinner from "../components/Spinner";
+import { useFetchEventDetail } from "../hooks/events/useFetchDetailsEvent";
 
 const BookEventPage = () => {
   const { bgGradient, bgColor } = useIconColor();
+  const { collectionName, id, slug } = useParams();
+  const { loading, error, eventDetail } = useFetchEventDetail(
+    collectionName || "events",
+    id
+  );
+
+  if (loading) return <Spinner />;
+  if (error) return <p className="text-red-500">{error}</p>;
+  if (!eventDetail) return null;
 
   return (
     <div
@@ -21,21 +33,20 @@ const BookEventPage = () => {
 
       <div className="relative w-full flex flex-col items-center">
         <div
-          className={`${bgGradient} h-[700px] max-md:h-[560px] max-xs:h-[460px] flex flex-col w-full px-6 sm:px-8 lg:px-12 xl:px-16 relative pb-40`}
+          className={`${bgGradient} max-h-[900px] flex flex-col w-full px-6 sm:px-8 lg:px-12 xl:px-16 relative pb-40`}
         >
-          <BookingHero />
-        </div> 
+          <BookingHero eventDetail={eventDetail} />
+        </div>
 
-
-          <div className="-mt-25 w-full px-6 max-xs:px-0 sm:px-8 lg:px-12 xl:px-16 relative 
-          max-[1295px]:-mt-35 max-[1095px]:-mt-50 max-[896px]:-mt-35 max-[768px]:-mt-48 max-[640px]:-mt-60 max-[480px]:-mt-45 max-[296px]:-mt-40">
-          <BookingForm />
-          </div>
-    
+        <div
+          className="-mt-45 w-full  px-6 max-xs:px-0 sm:px-8 lg:px-12 xl:px-16 relative "
+        >
+          <BookingForm eventId={id} slug={slug} eventDetail={eventDetail} />
+        </div>
       </div>
 
       <BackToTop />
-      <Footer />
+      <Footer showButtons={true} />
     </div>
   );
 };

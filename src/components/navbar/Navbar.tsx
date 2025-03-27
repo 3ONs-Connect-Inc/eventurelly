@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useAppSelector } from "../../hooks/redux";
-import useLogout from "../../hooks/useLogout";
-import { useIconColor } from "../../hooks/useIconColor";
+import useLogout from "../../hooks/auth/useLogout";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import { ThemeContext } from "../../context/ThemeContext";
 import Logo from "./Logo";
 import { motion } from "framer-motion";

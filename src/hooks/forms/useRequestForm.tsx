@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase/config";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {  db } from "../../firebase/config";
 import { getCountries, getCountryCallingCode } from "libphonenumber-js";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/store";
+import { useAppSelector } from "../redux";
 
 interface FormData {
   firstName: string;
@@ -27,13 +30,16 @@ export const useRequestForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-
+  const navigate = useNavigate();
+  const activeUser = useAppSelector((state: RootState) => state.user.activeUser);
 
 const validCountryCodes = new Set(
   getCountries().map((country) => `+${getCountryCallingCode(country)}`)
 );
 
-
+const checkFormComplete = () => {
+  return Object.values(formData).every((value) => value.trim() !== "");
+};
 
 const validate = () => {
   const newErrors: Record<string, string> = {};
@@ -41,14 +47,19 @@ const validate = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10}$/;
 
-
-  if (touched.firstName && !nameRegex.test(formData.firstName.trim())) {
+  if (touched.firstName) {
+    if (!formData.firstName.trim()) {
+    newErrors.firstName = "First name is required.";
+  } else if (touched.firstName && !nameRegex.test(formData.firstName.trim())) {
     newErrors.firstName = "First name can only contain letters, apostrophes, periods, and hyphens.";
-  }
+  }}
 
-  if (touched.lastName && !nameRegex.test(formData.lastName.trim())) {
+  if (touched.lastName) {
+    if (!formData.lastName.trim()) {
+    newErrors.lastName = "Last name is required.";
+  } else if (touched.lastName && !nameRegex.test(formData.lastName.trim())) {
     newErrors.lastName = "Last name can only contain letters, apostrophes, periods, and hyphens.";
-  }
+  }}
 
   if (touched.email && !emailRegex.test(formData.email.trim())) {
     newErrors.email = "Please enter a valid email address.";
@@ -70,12 +81,10 @@ const validate = () => {
   setIsFormValid(Object.keys(newErrors).length === 0);
 };
 
-// Update validation dynamically after first blur
+
 useEffect(() => {
-  if (Object.keys(touched).length > 0) {
-    validate();
-  }
-}, [formData]);
+  setIsFormValid(Object.keys(errors).length === 0);
+}, [errors]);
 
 
 // Handle Blur (when user leaves the input)
@@ -87,12 +96,23 @@ const handleBlur = (field: string) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const userId = activeUser?.id; 
+
+    if (!userId) {
+      navigate("/sign-in");
+      return;
+    }
   
     setIsLoading(true);
     try {
-      await addDoc(collection(db, "eventRequests"), formData);
+      await addDoc(collection(db, "demoRequests"), {
+        ...formData,
+        userId,  
+        timestamp: serverTimestamp(), 
+      });
+  
       setIsSuccess(true);
-      setFormData({
+      setFormData({  
         firstName: "",
         lastName: "",
         organizationName: "",
@@ -116,6 +136,7 @@ const handleBlur = (field: string) => {
     validCountryCodes,
     isLoading,
     isFormValid,
+    checkFormComplete,
     isSuccess,
     setIsSuccess,
     handleSubmit,

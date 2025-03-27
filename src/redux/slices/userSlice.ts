@@ -7,7 +7,7 @@ interface UserState {
   isLoggedIn: boolean;
 }
 
-const initialState: UserState = {
+const initialState: UserState = {  
   activeUser: null,
   isLoggedIn: false,
 };  

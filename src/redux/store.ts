@@ -3,6 +3,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { persistReducer, persistStore } from 'redux-persist';
 import userReducer from './slices/userSlice';
 import { combineReducers } from 'redux';
+import eventBookingReducer from './slices/eventBookingSlice';
 
 const persistConfig = {
   key: 'root',
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: persistReducer(persistConfig, userReducer),
+  eventBooking: persistReducer(persistConfig, eventBookingReducer),
 });
 
 export const store = configureStore({

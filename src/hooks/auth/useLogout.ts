@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../firebase/auth";
-import { removeActiveUser } from "../redux/slices/userSlice";
+import { logoutUser } from "../../firebase/auth";
+import { removeActiveUser } from "../../redux/slices/userSlice";
 
 const useLogout = () => {
   const dispatch = useDispatch();

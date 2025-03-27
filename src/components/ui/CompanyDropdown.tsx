@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useCompanyDropdown } from "../../hooks/useCompanyDropdown";
-import useClickOutside from "../../hooks/useClickOutside";
+import { useCompanyDropdown } from "../../hooks/ui/useCompanyDropdown";
+import useClickOutside from "../../hooks/ui/useClickOutside";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 interface CompanyDropdownProps {
   label: string;

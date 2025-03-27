@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../firebase/config';
-import { useAppDispatch, useAppSelector } from './redux'; 
-import { setActiveUser, removeActiveUser } from '../redux/slices/userSlice';
-import { User } from '../types';
+import { auth, db } from '../../firebase/config';
+import { useAppDispatch, useAppSelector } from '../redux'; 
+import { setActiveUser, removeActiveUser } from '../../redux/slices/userSlice';
+import { User } from '../../types';
 import { doc, getDoc } from 'firebase/firestore';
 
 const useAuthListener = () => {
@@ -48,7 +48,8 @@ const useAuthListener = () => {
               role: "User",
               timestamp: new Date(),
               emailVerified: currentUser.emailVerified || false,
-              terms: true
+              terms: true,
+              normalizedCompanyName: ''
             };
 
             // Merge firstName and lastName, and companyContact and phoneNumber for default data

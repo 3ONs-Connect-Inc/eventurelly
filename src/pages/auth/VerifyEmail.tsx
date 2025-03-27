@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { applyActionCode} from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import PasswordReset from "./PasswordReset";
 import Seo from "../../components/Seo";
 

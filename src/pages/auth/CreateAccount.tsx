@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CAdminForm from "../../components/auth/CAdminForm";
-import EmployeeForm from "../../components/auth/EmployeeForm";
-import useFetchCountries from "../../hooks/useFetchCountries";
-import { Link, useLocation } from "react-router-dom";
+import useFetchCountries from "../../hooks/ui/useFetchCountries";
+import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import LazyImage from "../../components/LazyImage";
 
 const CreateAccount: React.FC = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const role = queryParams.get("role");
-  const [isCorporateAdmin, setIsCorporateAdmin] = useState(role !== "member");
   const countries = useFetchCountries();
 
-  const handleToggle = (selection: boolean) => {
-    setIsCorporateAdmin(selection);
-  };
-
-  useEffect(() => {
-    setIsCorporateAdmin(role !== "member");
-  }, [role]);
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen w-full">
@@ -81,37 +69,11 @@ const CreateAccount: React.FC = () => {
 
       {/* Right Section */}
       <div className="flex flex-col w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
-        {/* Toggle Button */}
-        <div className="flex bg-gray-200 rounded-lg p-1 mb-6 w-64 text-center max-[258px]:w-55">
-          <div
-            className={`w-1/2 py-2 rounded-lg  font-medium text-xs cursor-pointer transition-all duration-300 ${
-              isCorporateAdmin
-                ? "bg-white shadow-md text-gray-900"
-                : "text-gray-600 "
-            }`}
-            onClick={() => handleToggle(true)}
-          >
-            Corporate Admin
-          </div>
-          <div
-            className={`w-1/2 py-2 rounded-lg  font-medium text-xs cursor-pointer transition-all duration-300 ${
-              !isCorporateAdmin
-                ? "bg-white shadow-md text-gray-900"
-                : "text-gray-600"
-            }`}
-            onClick={() => handleToggle(false)}
-          >
-            Corporate Member
-          </div>
-        </div>
+     
 
         {/* Forms */}
         <div className="w-full max-w-md">
-          {isCorporateAdmin ? (
             <CAdminForm countries={countries} />
-          ) : (
-            <EmployeeForm countries={countries} />
-          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { tagColorMap } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import LazyImage from "../LazyImage";
 import Button from "./Button";
 
@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
   const { textColor, pColor, bgColor2 } = useIconColor();
   return (
     <div
-      className={`${bgColor2} border-border-gray  shadow-lg p-4 rounded-lg flex flex-col items-center text-center w-full max-w-xs h-full 
+      className={`${bgColor2}  border-border-gray  shadow-lg p-4 rounded-lg flex flex-col items-center text-center w-full max-w-xs h-full 
       ${className}
       dark:border-gray-800    transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg 
       `}

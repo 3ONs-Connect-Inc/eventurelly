@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { db } from "../firebase/config";
+import { db } from "../../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
-import { BookingData } from "../types";
+import { BookingData } from "../../types";
+import { useAppDispatch, useAppSelector } from "../redux";
+import { addBooking } from "../../redux/slices/eventBookingSlice";
+import { RootState } from "../../redux/store";
+import { useNavigate } from "react-router-dom";
+  
 
-
-
-export const useEventBooking = () => {
+export const useEventBooking = (eventId?: string, slug?: string) => {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState<BookingData>({
+    eventId: eventId || "", 
+    slug: slug || "", 
     eventName: "",
     eventDate: null,
     optionalServices: [],
@@ -27,6 +33,9 @@ export const useEventBooking = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false); 
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const activeUser = useAppSelector((state: RootState) => state.user.activeUser);
+
 
   const validateForm = (): boolean => {
     const newErrors: { [key: string]: string } = {};
@@ -57,7 +66,7 @@ export const useEventBooking = () => {
     if (isSubmitted && errors.eventDate) {
       setErrors((prevErrors) => {
         const newErrors = { ...prevErrors };
-        delete newErrors.eventDate; // ✅ Correct way to remove a specific key
+        delete newErrors.eventDate; 
         return newErrors;
       });
     }
@@ -104,13 +113,28 @@ export const useEventBooking = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true); 
+    setIsSubmitted(true);   
 
     if (!validateForm()) return;
+    const userId = activeUser?.id; 
+
+    if (!userId) {
+      navigate("/sign-in");
+      return;
+    }
+    dispatch(addBooking({ 
+      ...formData,
+      userId,  
+      slug: slug,
+      eventId: eventId,
+      eventDate: formData.eventDate ? formData.eventDate.toISOString() : null }));
     setIsLoading(true);
     try {
         await addDoc(collection(db, "bookings"), {
           ...formData,
+          userId,  
+          slug: slug,
+          eventId: eventId,
           eventDate: formData.eventDate ? formData.eventDate.toISOString() : null,
         });
       setIsSuccess(true);

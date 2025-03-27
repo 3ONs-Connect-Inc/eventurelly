@@ -7,6 +7,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./config";
 
+
 export const fetchUniqueCompanies = (
   callback: (companies: string[]) => void
 ) => {
@@ -52,11 +53,11 @@ export const checkCompanyAndDomainExists = async (
   emailDomain: string
 ): Promise<{ companyExists: boolean; domainExists: boolean }> => {
   try {
-
+    const normalizedCompanyName = companyName.toLowerCase();
     // Check if company name exists
     const companyQuery = query(
       collection(db, "users"),
-      where("companyName", "==", companyName)
+      where("normalizedCompanyName", "==", normalizedCompanyName)
     );
     const companySnapshot = await getDocs(companyQuery);
     const companyExists = !companySnapshot.empty;
@@ -76,3 +77,4 @@ export const checkCompanyAndDomainExists = async (
     return { companyExists: false, domainExists: false };
   }
 };
+  

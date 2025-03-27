@@ -1,15 +1,21 @@
-import { useEventBooking } from "../../hooks/useEventBooking";
+import { useEventBooking } from "../../hooks/forms/useEventBooking";
 import Input from "../ui/Input";
 import Checkbox from "../ui/Checkbox";
 import SuccessModal from "../ui/modal/SuccessModal";
-import { services, servicesTags } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiArrowUpRight } from "react-icons/fi";
 
-const BookingForm: React.FC = () => {
+interface BookingFormProps {
+  eventId?: string;
+slug?: string
+eventDetail: any
+}
+
+const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug }) => {
   const { textColor, pColor, bgColor2 } = useIconColor();
+  const optionalServices = eventDetail?.optionalServices ?? [];
   const {
     formData,
     errors,
@@ -20,7 +26,26 @@ const BookingForm: React.FC = () => {
     handleCheckboxChange,
     handleSubmit,
     setIsSuccess,
-  } = useEventBooking();
+  } = useEventBooking(eventId, slug);
+
+  const renderServices = (services: string[]) =>
+    services.length > 0 ? (
+      services.map((item)=> (
+        <span key={item}
+        className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
+        dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+        >
+          {item}
+        </span>
+      ))
+    ) : (
+      <span 
+        className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
+        dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+        >
+         No Services listed
+        </span>
+    )
 
   return (
     <div className={`flex flex-col items-center max-w-7xl mx-auto py-10 px-6`}>
@@ -51,7 +76,7 @@ const BookingForm: React.FC = () => {
               placeholder="Enter event name"
             />
             <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:mt-0 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
-              Diversity and Inclusion Workshop
+            {eventDetail.eventName}
             </span>
           </div>
 
@@ -60,9 +85,8 @@ const BookingForm: React.FC = () => {
               Event Description
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
-              This event promotes awareness and actionable strategies to build a
-              more inclusive work environment
-            </span>
+            {eventDetail.eventDescription}
+            </span>  
           </div>
 
           <div>
@@ -70,7 +94,7 @@ const BookingForm: React.FC = () => {
               Event Format
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
-              In Person
+              {eventDetail.eventFormat}
             </span>
           </div>
 
@@ -79,7 +103,7 @@ const BookingForm: React.FC = () => {
               Location
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
-              Toronto, ON, CA
+            {eventDetail.location}
             </span>
           </div>
 
@@ -88,7 +112,7 @@ const BookingForm: React.FC = () => {
               Duration
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
-              2 hours
+            {eventDetail.duration}
             </span>
           </div>
 
@@ -97,7 +121,7 @@ const BookingForm: React.FC = () => {
               Team Size
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
-              4-5
+            {eventDetail.teamSize}
             </span>
           </div>
 
@@ -106,15 +130,7 @@ const BookingForm: React.FC = () => {
               Services Included
             </label>
             <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
-              {servicesTags.map((service) => (
-                <span
-                  key={service}
-                  className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
-                dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
-                >
-                  {service}
-                </span>
-              ))}
+              {renderServices(eventDetail?.servicesIncluded || [])}
             </div>
           </div>
 
@@ -123,15 +139,7 @@ const BookingForm: React.FC = () => {
               Services Not Included
             </label>
             <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
-              {servicesTags.slice(0, 2).map((service) => (
-                <span
-                  key={service}
-                  className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
-                dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
-                >
-                  {service}
-                </span>
-              ))}
+            {renderServices(eventDetail?.servicesNotIncluded || [])} 
             </div>
           </div>
 
@@ -152,8 +160,9 @@ const BookingForm: React.FC = () => {
           <div className="py-6">
             <h2 className="text-lg font-semibold mb-2">Optional Services</h2>
             <ul className="grid grid-cols-1 max-md:grid-cols-2 max-xs:grid-cols-1 gap-2">
-              {services.map((service, index) => (
-                <li key={index} className="flex items-center gap-2">
+              {optionalServices.length > 0 ? (
+                optionalServices.map((service: string, index: number) => (
+                  <li key={index} className="flex items-center gap-2">
                   <Checkbox
                     name={service}
                     checked={formData.optionalServices.includes(service)}
@@ -161,7 +170,11 @@ const BookingForm: React.FC = () => {
                     label={service}
                   />
                 </li>
-              ))}
+                ))
+              ) : (
+                <p className="text-gray-500 text-base">No optional services listed.</p>
+              )}
+      
             </ul>
             {errors.optionalServices && (
               <p className="text-red-500">{errors.optionalServices}</p>

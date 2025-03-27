@@ -1,4 +1,4 @@
-import { lazy,  } from "react";
+import { lazy, Suspense,  } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import RootLayout from "../pages/admin/Layout";
@@ -11,7 +11,7 @@ const Admin = () => {
 
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          <Route index element={<HomePage />} />
+        <Route index element={<Suspense fallback={<p>Loading...</p>}><HomePage /></Suspense>} />
           {/* <Route path="settings" element={<Settings />} /> */}
           <Route path="*" element={<NotFound />} />
         </Route>

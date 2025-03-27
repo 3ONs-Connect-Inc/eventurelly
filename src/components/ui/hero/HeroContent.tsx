@@ -1,5 +1,5 @@
 import React from "react";
-import { useIconColor } from "../../../hooks/useIconColor";
+import { useIconColor } from "../../../hooks/ui/useIconColor";
 import Button from "../Button";
 
 interface ButtonProps {

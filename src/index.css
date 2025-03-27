@@ -14,7 +14,7 @@ body {
 @theme {
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
-  /* --breakpoint-2sm: 713px; */
+  --breakpoint-2sm: 768px; 
   --breakpoint-md: 896px;
   --breakpoint-lg: 1024px;
   /* --breakpoint-2lg: 1136px; */

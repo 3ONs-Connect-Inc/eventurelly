@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import Button from "./../../components/ui/Button";
 import Seo from "../../components/Seo";
 

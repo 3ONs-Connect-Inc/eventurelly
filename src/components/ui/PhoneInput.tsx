@@ -1,8 +1,8 @@
 import React, { useState, useRef, ChangeEvent, useEffect } from 'react'; 
-import useClickOutside from '../../hooks/useClickOutside';
+import useClickOutside from '../../hooks/ui/useClickOutside';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { Country } from '../../types';
-import { useIconColor } from '../../hooks/useIconColor';
+import { useIconColor } from '../../hooks/ui/useIconColor';
 
 
 interface PhoneInputProps {
@@ -156,7 +156,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
       {/* Country Suggestions */}
       {showSuggestions && filteredCountries.length > 0 && (
-        <ul className={`border ${textColor} border-gray-300 
+        <ul className={`border ${textColor} border-primary 
           rounded mt-1 max-h-40 overflow-y-auto`}>
           {filteredCountries.map((country, index) => (
             <li

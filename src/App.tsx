@@ -38,7 +38,7 @@ function App() {
         {/* USER ROUTES */}
         <Route path="/*" element={<UserRoutes />} />
 
-        {/* CORPORATE ADMIN ROUTES */}
+        {/* CORPORATE ADMIN ROUTES */}  
         <Route
           path="/cadmin/*"
           element={

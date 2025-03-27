@@ -23,5 +23,5 @@
     "noUncheckedSideEffectImports": true,
     "types": ["node"]
   },
-  "include": ["src", "src/components/Home/.tsx"]
+  "include": ["src", "src/components/Home/.tsx", "src/components/Home/Events/EventHeader.tsx"]
 }

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
       )}
 
       <BackToTop />
-      <Footer />
+      <Footer showButtons={true}/>
     </div>
   );
 };

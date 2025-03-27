@@ -1,16 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import Card from "../ui/Card";
 import { cardData } from "../../../data";
+import { useFetchEvents } from "../../hooks/events/useFetchEvents";
+import Spinner from "../Spinner";
 
 const TeamEvents: React.FC = () => {
   const { textColor,  bgColor } = useIconColor();
   const navigate = useNavigate();
+  const { events, loading, error } = useFetchEvents("events");
 
-  const handleLearnMore = (slug: string) => {
-    navigate(`/event-details/${slug}`);
+  const handleLearnMore = (id: string, slug: string) => {
+    const formattedSlug = slug.replace(/\s+/g, "-");
+    navigate(`/event-details/events/${id}/${formattedSlug}`);
   };
- 
+
+  if (loading) return <Spinner />;
+  if (error) return <p className="text-red-500">{error}</p>;
+  if (!events) return null;
 
   return (
     <div className={`w-full py-4 mt-10  max-xs:px-0 ${bgColor}`}>
@@ -19,24 +26,31 @@ const TeamEvents: React.FC = () => {
       >
      
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  justify-items-center">
-          {cardData.map((card, index) => (
-            <Card
-              key={index}
-              image={card.image}
-              title={card.title}
-              description={card.description}
-              buttonText={card.buttonText}
-              className="self-start text-left border  "
-              buttonAlignment="center"
-              textAlignment="left"
-              buttonFullWidth
-              buttonColor
-              buttonTextColor
-              imageClassName="w-full h-full"
-              tags={card.tags}
-              onClick={() => handleLearnMore(card.slug)} 
-            />
-          ))}
+        {events.map((card, index) => {
+            const fallbackImage =
+              cardData.find((fallback) => fallback.eventName === card.eventName)
+                ?.image ||
+              cardData[index % cardData.length]?.image || // Use index if title match fails
+              "/images/top-picks/img6.png";
+
+            return (
+              <Card
+                key={index}
+                image={card.image || fallbackImage}
+                title={card.eventName}
+                description={card.eventDescription}
+                buttonText={card.buttonText || "Learn More"}
+                className="self-start text-left border"
+                buttonAlignment="center"
+                textAlignment="left"
+                buttonFullWidth
+                buttonColor
+                buttonTextColor
+                imageClassName="w-full h-full"
+                onClick={() => handleLearnMore(card.id, card.eventName)}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

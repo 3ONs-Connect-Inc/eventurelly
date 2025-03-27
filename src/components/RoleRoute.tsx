@@ -5,11 +5,13 @@ import Spinner from "./Spinner";
 import { auth, db } from "../firebase/config";
 import { Navigate } from "react-router-dom";
 
+// Roles that have elevated access
+const ALLOWED_ROLES = ["Admin", "CorporateAdmin", "Manager", "Editor"];
 
 // Reusable permission-checking route component
-const RoleRoute: React.FC<{ children: React.ReactNode; allowedRole: string }> = ({
+const RoleRoute: React.FC<{ children: React.ReactNode; allowedRoles: string[] }> = ({
   children,
-  allowedRole,
+  allowedRoles,
 }) => {
   const [user, loading, error] = useAuthState(auth);
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
@@ -20,7 +22,7 @@ const RoleRoute: React.FC<{ children: React.ReactNode; allowedRole: string }> = 
         if (user) {
           const userDoc = await getDoc(doc(db, "users", user.uid));
           const role = userDoc.data()?.role;
-          if (userDoc.exists() && role === allowedRole) {
+          if (userDoc.exists() && allowedRoles.includes(role)) {
             setHasAccess(true);
           } else {
             setHasAccess(false);
@@ -35,7 +37,7 @@ const RoleRoute: React.FC<{ children: React.ReactNode; allowedRole: string }> = 
     if (user) {
       checkUserRole();
     }
-  }, [user, allowedRole]);
+  }, [user, allowedRoles]);
 
   if (loading) return <Spinner />;
   if (error) return <div>Error: {error.message}</div>;
@@ -58,15 +60,15 @@ const RoleRoute: React.FC<{ children: React.ReactNode; allowedRole: string }> = 
 
 // AdminRoute Component
 export const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <RoleRoute allowedRole="Admin">{children}</RoleRoute>;
+  return <RoleRoute allowedRoles={["Admin"]}>{children}</RoleRoute>;
 };
 
-// CAdminRoute Component
+// Corporate Admin Route
 export const CAdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <RoleRoute allowedRole="CorporateAdmin">{children}</RoleRoute>;
+  return <RoleRoute allowedRoles={["CorporateAdmin"]}>{children}</RoleRoute>;
 };
 
-// UserRoute Component (For users with the "User" role)
-export const UserRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <RoleRoute allowedRole="User">{children}</RoleRoute>;
+// ProtectedRoute for Admin, CorporateAdmin, Manager, Editor
+export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <RoleRoute allowedRoles={ALLOWED_ROLES}>{children}</RoleRoute>;
 };

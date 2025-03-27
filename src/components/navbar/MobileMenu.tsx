@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import AuthButtons from "./AuthButtons";
 import ThemeToggle from "./ThemeToggle";
 import { navLinks } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import { NavLink } from "react-router-dom";
 
 

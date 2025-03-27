@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { footerLinks } from "../../data";
-import { useIconColor } from "../hooks/useIconColor";
+import { useIconColor } from "../hooks/ui/useIconColor";
 import Logo from "./navbar/Logo";
 import Button from "./ui/Button";
 import { useAppSelector } from "../hooks/redux";
 
 
-const Footer = () => {
+const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
   const { textColor, bgColor, pColor } = useIconColor();
   const { isLoggedIn } = useAppSelector((state) => state.user);
 
@@ -16,6 +16,7 @@ const Footer = () => {
     >
       <div className="w-full max-w-7xl py-10 px-6 ">
         {/* Top Section */}
+        {showButtons && (
         <div className="bg-bg-footer mx-auto py-10 px-6   text-center flex flex-col items-center justify-center rounded-lg">
           <h2 className="text-white text-big max-md:text-mid font-bold mb-4">
             Let’s build stronger, happier teams together!
@@ -25,6 +26,7 @@ const Footer = () => {
             experiences that strengthen connections and improve retention.
           </p>
           {/* Buttons */}
+        
           <div className="flex max-xs:flex-col flex-row justify-center gap-4">
            {isLoggedIn ? (
               <Link to="/demo-request" >
@@ -51,7 +53,8 @@ const Footer = () => {
            )}
           </div>
         </div>
-
+   )}
+   
         {/* Footer Content */}
         <div className={`${textColor}  mx-auto mt-10 flex flex-col gap-8`}>
           {/* Logo and Links Section */}

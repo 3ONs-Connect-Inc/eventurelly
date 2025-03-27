@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCountries, getCountryCallingCode } from "libphonenumber-js";
-import { Country } from "../types";
+import { Country } from "../../types";
 
 const useFetchCountries = () => {
   const [countries, setCountries] = useState<Country[]>([]);

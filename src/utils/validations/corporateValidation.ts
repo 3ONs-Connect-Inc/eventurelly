@@ -1,3 +1,4 @@
+
 import { checkCompanyAndDomainExists } from "../../firebase/companies";
 import { CorporateAdmin, FormErrors } from "../../types";
 import { getCountries, getCountryCallingCode } from "libphonenumber-js";
@@ -89,6 +90,8 @@ export const validateAddress = async (address: string): Promise<boolean> => {
   }
 };
 
+
+  
 export const validateCompanyAndDomain = async (
   formData: CorporateAdmin
 ): Promise<FormErrors> => {
@@ -99,7 +102,7 @@ export const validateCompanyAndDomain = async (
 
   const { companyExists, domainExists } = await checkCompanyAndDomainExists(
     formData.companyName,
-    emailDomain
+    emailDomain  
   );
 
   if (companyExists) {
@@ -111,3 +114,4 @@ export const validateCompanyAndDomain = async (
   }
   return errors;
 };
+

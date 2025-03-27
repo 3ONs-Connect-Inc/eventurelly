@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import Card from "../ui/Card";
 import { cardData } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import { CgSortAz } from "react-icons/cg";
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from "../../hooks/ui/useClickOutside";
 import { useNavigate } from "react-router-dom";
 
 const SearchContents = () => {
@@ -95,8 +95,8 @@ const SearchContents = () => {
             <Card
               key={index}
               image={card.image}
-              title={card.title}
-              description={card.description}
+              title={card.eventName}
+              description={card.eventDescription}
               buttonText={card.buttonText}
               className="self-start text-left border  "
               buttonAlignment="center"

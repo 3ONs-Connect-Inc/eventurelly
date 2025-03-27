@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import Checkbox from "../ui/Checkbox";
 import Input from "../ui/Input";
-import useSignIn from "../../hooks/useSignIn";
-import { useIconColor } from "../../hooks/useIconColor";
+import useSignIn from "../../hooks/auth/useSignIn";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 const SignIn = () => {
     const { textColor} = useIconColor();

@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { filterOptions } from "../../../data";
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from "../../hooks/ui/useClickOutside";
 import { Link } from "react-router-dom";
 
 
@@ -46,7 +46,7 @@ console.log(selectedFilters)
 
  
   return (
-    <div className="flex items-center gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full">
+    <div className="relative flex items-center gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full">
       <input
         type="text"
         placeholder="Search by keywords"

@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Seo from "../components/Seo";
 import TeamEvents from "../components/team-building/TeamEvents";
 import TeamHero from "../components/team-building/TeamHero";
-import { useIconColor } from "../hooks/useIconColor";
+import { useIconColor } from "../hooks/ui/useIconColor";
 
 const TeamBuildingPage = () => {
   const { bgGradient, bgColor } = useIconColor();
@@ -27,7 +27,7 @@ const TeamBuildingPage = () => {
         <TeamEvents />
       </div>
       <BackToTop />
-      <Footer />
+      <Footer showButtons={true}/>
     </div>
   );
 };

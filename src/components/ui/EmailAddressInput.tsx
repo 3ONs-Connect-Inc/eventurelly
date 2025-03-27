@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 interface EmailAddressInputProps {
   emailUsername: string;

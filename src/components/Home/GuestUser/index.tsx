@@ -1,14 +1,14 @@
 import React from "react";
-import { useIconColor } from "../../../hooks/useIconColor";
+import { useIconColor } from "../../../hooks/ui/useIconColor";
 import { SearchBar } from "../SearchBar";
 import { HeroSection } from "../HeroSection";
-import TopPick from "../TopPick";
 import TeamBonding from "../TeamBonding";
+import { TopPick } from "../Events";
 
-interface LoggedInUserProps {
+interface GuestUserProps {
   handleNavigation: (title: string) => void;
 }
-const LoggedInUser: React.FC<LoggedInUserProps> = ({ handleNavigation }) => {
+const GuestUser: React.FC<GuestUserProps> = ({ handleNavigation }) => {
   const { bgGradient, bgColor } = useIconColor();
 
   return (
@@ -26,7 +26,8 @@ const LoggedInUser: React.FC<LoggedInUserProps> = ({ handleNavigation }) => {
         className={`w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ${bgColor}`}
       >
         <div className="max-w-7xl mx-auto">
-          <TopPick />
+            <TopPick />
+
           <div id="teamBondingSection">
             <TeamBonding handleNavigation={handleNavigation} />
           </div>
@@ -36,4 +37,4 @@ const LoggedInUser: React.FC<LoggedInUserProps> = ({ handleNavigation }) => {
   );
 };
 
-export default LoggedInUser;
+export default GuestUser;

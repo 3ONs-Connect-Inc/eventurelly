@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { navLinks } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 
 

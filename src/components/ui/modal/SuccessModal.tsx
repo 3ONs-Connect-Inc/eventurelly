@@ -1,4 +1,4 @@
-import { useIconColor } from "../../../hooks/useIconColor";
+import { useIconColor } from "../../../hooks/ui/useIconColor";
 
 const SuccessModal = ({
   message,

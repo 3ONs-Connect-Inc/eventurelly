@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchUniqueCompanies } from "../firebase/companies";
+import { fetchUniqueCompanies } from "../../firebase/companies";
 
 
 export const useCompanyDropdown = () => {

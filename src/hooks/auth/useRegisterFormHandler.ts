@@ -3,14 +3,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase/config";
-import { CorporateAdmin } from "../types";
-import {
+import { auth, db } from "../../firebase/config";
+import { CorporateAdmin } from "../../types";
+import {  
   validateAddress,
   validateCompanyAndDomain,
   validateForm,  
-} from "../utils/validations/corporateValidation";
-import { hashPassword } from "../utils/functions";
+} from "../../utils/validations/corporateValidation";
+import { hashPassword } from "../../utils/functions";
 
 export const useRegisterFormHandler = (
   defaultFormData: any,
@@ -67,18 +67,29 @@ export const useRegisterFormHandler = (
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    const cleanedFormData = {
+      ...formData,
+     // companyName: formData.companyName.replace(/\s/g, ""),
+      companyName: formData.companyName.trim().replace(/\s+/g, " "), 
+  normalizedCompanyName: formData.companyName.trim().toLowerCase().replace(/\s+/g, " "), 
+  companyAddress: formData.companyAddress.trim(),
+  companyContact: formData.companyContact.trim(),
+  phoneNumber: formData.phoneNumber.trim(),
+  email: formData.email.trim(),
+  password: formData.password.trim(),
+  confirmPassword: formData.confirmPassword.trim(),
+    };
     // Validate form fields
-    const formErrors = validateForm(formData);
+    const formErrors = validateForm(cleanedFormData);
     // console.log("Validation errors:", formErrors);
-    const trimmedAddress = formData.companyAddress.trim();
+    const trimmedAddress = cleanedFormData.companyAddress.trim();
     const isAddressValid = await validateAddress(trimmedAddress);
 
     if (!isAddressValid) {
       formErrors.companyAddress = "Please enter a valid address.";
     }
     // If any errors exist, prevent submission
-    const asyncErrors = await validateCompanyAndDomain(formData);
+    const asyncErrors = await validateCompanyAndDomain(cleanedFormData);
     const allErrors = { ...formErrors, ...asyncErrors };
 
     if (Object.keys(allErrors).length > 0) {
@@ -101,38 +112,39 @@ export const useRegisterFormHandler = (
      
 
       // Encrypt the password
-      const hashedPassword = await hashPassword(formData.password);
+      const hashedPassword = await hashPassword(cleanedFormData.password);
 
       // Create the user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        formData.email,
-        formData.password
+        cleanedFormData.email,
+        cleanedFormData.password
       );
 
-      if (formData.role === "CorporateAdmin") {
-        const contactInfo = `${formData.companyContact} - ${formData.phoneNumber}`;
+      if (cleanedFormData.role === "CorporateAdmin") {
+        const contactInfo = `${cleanedFormData.companyContact} - ${cleanedFormData.phoneNumber}`;
         const adminData: CorporateAdmin = {
           id: userCredential.user.uid,
-          companyName: formData.companyName,
-          companyAddress: formData.companyAddress,
-          companyContact: formData.companyContact,
-          phoneNumber: formData.phoneNumber,
+          companyName: cleanedFormData.companyName,
+          normalizedCompanyName: cleanedFormData.companyName.toLowerCase(),
+          companyAddress: cleanedFormData.companyAddress,
+          companyContact: cleanedFormData.companyContact,
+          phoneNumber: cleanedFormData.phoneNumber,
           contactInfo: contactInfo,
-          email: formData.email,
+          email: cleanedFormData.email,
           password: hashedPassword,
           confirmPassword: hashedPassword,
-          ageConfirmed: formData.ageConfirmed,
-          role: formData.role,
+          ageConfirmed: cleanedFormData.ageConfirmed,
+          role: cleanedFormData.role,
           timestamp: serverTimestamp(),
           emailVerified: false,
-          terms: formData.terms,
+          terms: cleanedFormData.terms,
         };
         const adminRef = doc(db, "users", userCredential.user.uid);
         await setDoc(adminRef, adminData);
         // Extract domain from email
-        const emailDomain = `@${formData.email.split("@")[1]}`;
-        // const emailDomain = formData.email.split("@")[1];
+        const emailDomain = `@${cleanedFormData.email.split("@")[1]}`;
+        // const emailDomain = cleanedFormData.email.split("@")[1];
         // Check if domain already exists
         const domainRef = doc(
           collection(db, "domains"),
@@ -140,8 +152,9 @@ export const useRegisterFormHandler = (
         );
         const domainData = {
           id: userCredential.user.uid,
-          companyName: formData.companyName,
-          email: formData.email,
+          companyName: cleanedFormData.companyName,
+          normalizedCompanyName: cleanedFormData.companyName,
+          email: cleanedFormData.email,
           domains: [emailDomain], // Store domains as an array
           createdBy: userCredential.user.uid,
           timestamp: serverTimestamp(),
@@ -152,7 +165,7 @@ export const useRegisterFormHandler = (
 
       toast.success("Registration successful");
       recaptchaRef.current?.reset();
-      navigate("/sign-in");
+      navigate("/2fa-auth");
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("The email address is already in use by another account.");

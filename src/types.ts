@@ -4,8 +4,9 @@
 export interface BaseUser {
   id: string;
     companyName: string;
+    normalizedCompanyName: string;
     companyContact: string;  
-    phoneNumber: string;
+    phoneNumber: string;  
     email: string;
     password: string;
     confirmPassword: string;
@@ -39,9 +40,26 @@ export interface Country {
   name: string;
 }
 
-
+export interface Event {
+  id: string;
+  image?: string;
+  eventName: string;
+  eventDescription: string;
+  buttonText?: string;
+  slug: string;
+  eventFormat?: string;
+  location?: string;
+  duration?: string;
+  teamSize?: string;
+  servicesIncluded?: string[];
+  servicesNotIncluded?: string[];
+  optionalServices?: string[];
+}
 
 export interface BookingData {
+  userId?: string;
+  slug?: string;
+  eventId?: string;
   eventName: string;
   eventDate: Date | null;
   optionalServices: string[];

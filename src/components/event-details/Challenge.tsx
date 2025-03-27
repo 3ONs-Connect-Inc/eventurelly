@@ -1,12 +1,17 @@
 import { agendas } from "../../../data";
-import { useIconColor } from "../../hooks/useIconColor";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 import Button from "../ui/Button";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import Services from "./Services";
 import { useState } from "react";
 
+interface ChallengeProps {
+  handleBooking: () => void ;
+  eventDetail: any
+}
 
-const Challenge:React.FC<{handleBooking: ()=> void}> = ({handleBooking}) => {
+
+const Challenge:React.FC<ChallengeProps> = ({handleBooking, eventDetail}) => {
   const { pColor } = useIconColor();
   const [openIndices, setOpenIndices] = useState<Set<number>>(
     new Set(agendas.map((_, index) => index)) // Initially open all
@@ -28,43 +33,41 @@ const Challenge:React.FC<{handleBooking: ()=> void}> = ({handleBooking}) => {
     <div id="event-description" className="w-full mx-auto  flex flex-col  md:flex-row justify-between gap-25 max-xl:gap-10 py-10 max-xs:py-4 px-6 max-xs:px-0">
       {/* Left Section */}
       <div className="flex flex-col mt-10 space-y-6 w-full lg:w-2/3">
-        {/* Header Section */}
         <div className="flex flex-col ">
           <span
             className={`${pColor} border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max`}
           >
-            Diversity & Inclusion
+           {eventDetail.eventName}
           </span>
           <h2 className="text-5xl font-bold max-md:text-bigger max-sm:text-big max-xs:text-mid mt-4">
-            What is the Diversity & Inclusion Workshop?
+            What is the {eventDetail.eventDetail}?
           </h2>
           <p
             className={`${pColor} font-medium text-lg max-sm:text-base max-xs:text-tiny mt-8 max-sm:mt-4`}
           >
-            This event promotes awareness and actionable strategies to build a
-            more inclusive work environment.
+           {eventDetail.eventDescription}
           </p>
         </div>
 
-        {/* Event Agenda */}
+  
         <div className="flex flex-col mt-10">
           <span
             className={`${pColor} border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max`}
           >
-            Diversity & Inclusion
+            {eventDetail.eventName}
           </span>
           <h2 className="text-5xl font-bold max-md:text-bigger max-sm:text-big max-xs:text-mid mt-4">
             Event Agenda
           </h2>
         </div>
 
-        {/* Agenda Items */}
+   
         {agendas.map((item, index) => {
           const isOpen = openIndices.has(index);
           return (
             <div key={index} className="flex flex-col space-y-2 pb-4">
               <div className="flex flex-row justify-between items-center flex-wrap">
-                {/* Group title and icon together */}
+      
                 <div className="flex flex-row items-center gap-2 ">
                   <h2
                     className="flex flex-wrap text-2xl max-md:text-xl max-sm:text-lg max-xs:text-base font-semibold min-w-0 "
@@ -98,10 +101,10 @@ const Challenge:React.FC<{handleBooking: ()=> void}> = ({handleBooking}) => {
           );
         })}
 
-        <Services />
+        <Services   eventDetail={eventDetail} />
       </div>
 
-      {/* Right Sidebar Section */}
+
       <div className="w-1/3 max-w-md max-md:w-full h-auto mt-10 max-md:mt-4 bg-pink-100 border border-pink-300 p-6 max-[320px]:p-1 rounded-lg shadow-lg flex flex-col space-y-4 self-start">
         <img src="/images/icon/kite.png" alt="" className="w-12 h-12" />
         <h2 className="text-dark-gray text-2xl max-sm:text-lg max-xs:text-base font-bold">

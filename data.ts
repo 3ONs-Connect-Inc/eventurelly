@@ -1,3 +1,5 @@
+
+
 export interface NavLink {
   label: string;
   href: string;
@@ -12,75 +14,7 @@ export const navLinks: NavLink[] = [
   { label: "Request a demo", href: "/demo-request" },
 ];
 
-export const filterOptions = {
-  "Event Category": ["Adventure", "Learning", "Wellness", "Fun"],
-  "Group Size": ["1-10", "11-50", "51-200", "201-500", "500+ employees"],
-  "Expected Outcome": [
-    "Collaboration",
-    "Creativity",
-    "Communication",
-    "Leadership",
-    "Engagement",
-  ],
-  Format: ["In-person", "Virtual", "Hybrid"],
-};
 
-export const cardData = [
-  {
-    image: "/images/top-picks/img1.png",
-    title: "Leadership Development Workshop",
-    description:
-      "Foster growth and collaboration with hands-on leadership exercises designed to enhance decision-making, teamwork, and strategic thinking.",
-    buttonText: "Learn More",
-    tags: ["Virtual"],
-    slug: "Leadership-Development-Workshop",
-  },
-  {
-    image: "/images/top-picks/img2.png",
-    title: "Diversity & Inclusion Workshop",
-    description:
-      "Encourage open discussions, explore real-world scenarios, and develop actionable strategies to build a diverse and welcoming work environment.",
-    buttonText: "Learn More",
-    tags: ["In-Person"],
-    slug: "Diversity-&-Inclusion-Workshop",
-  },
-  {
-    image: "/images/top-picks/img3.png",
-    title: "Corporate Wellness Day",
-    description:
-      "A day dedicated to health and wellness! Engage in yoga, stress management workshops, and interactive fitness activities to promote a healthy work culture.",
-    buttonText: "Learn More",
-    tags: ["Virtual"],
-    slug: "Corporate-Wellness-Day",
-  },
-  {
-    image: "/images/top-picks/img4.png",
-    title: "Chess Tournament",
-    description:
-      "Test your problem-solving skills in a high-energy chess tournament that encourages strategic thinking, teamwork, and friendly competition.",
-    buttonText: "Learn More",
-    tags: ["Hybrid"],
-    slug: "Chess-Tournament",
-  },
-  {
-    image: "/images/top-picks/img5.png",
-    title: "Soccer Event",
-    description:
-      "Unleash your competitive spirit in an exciting soccer match where collaboration and strategy lead to victory. Perfect for team bonding and fitness!",
-    buttonText: "Learn More",
-    tags: ["In-Person"],
-    slug: "Soccer-Event",
-  },
-  {
-    image: "/images/top-picks/img6.png",
-    title: "Corporate Casual Lunch",
-    description:
-      "Take a break from work and enjoy a relaxed team lunch designed to encourage informal networking, collaboration, and camaraderie in a stressfree setting.",
-    buttonText: "Learn More",
-    tags: ["Hybrid"],
-    slug: "Corporate-Casual-Lunch",
-  },
-];
 export const tagColorMap: Record<string, string> = {
   Hybrid: "bg-green-100 text-green-700",
   "In-Person": "bg-blue-100 text-blue-700",
@@ -124,25 +58,7 @@ export const footerLinks = [
   },
 ];
 
-export const infoItems = [
-  {
-    icon: "/images/icon/user-check.png",
-    title: "EVENT FORMAT",
-    description: "In person",
-  },
-  {
-    icon: "/images/icon/map.png",
-    title: "Location",
-    description: "Toronto, ON",
-  },
-  { icon: "/images/icon/users.png", title: "Team Size", description: "4-5" },
-  { icon: "/images/icon/clock.png", title: "Duration", description: "2 hours" },
-  {
-    icon: "/images/icon/activity.png",
-    title: "ACTIVITY",
-    description: "Moderate",
-  },
-];
+
 
 export const agendas = [
   {
@@ -203,11 +119,94 @@ export const carousel = [
   export const servicesTags =['Diversity training materials',
     'Interactive sessions', 
     'Certification of Participation']
+   
+     
 
+    export const filterOptions = {
+      "Event Category": ["Adventure", "Learning", "Wellness", "Fun"],
+      "Group Size": ["1-10", "11-50", "51-200", "201-500", "500+ employees"],
+      "Expected Outcome": [
+        "Collaboration",
+        "Creativity",
+        "Communication",
+        "Leadership",
+        "Engagement",
+      ],
+      Format: ["In-person", "Virtual", "Hybrid"],
+      locations: ['Vancouver, BC, CA', 'Toronto, ON, CA',
+         'New York, NY, US', 'London, ENG, GB', 
+         'Sydney, NSW, AU', 'Paris, ÎLE-DE-FR, FR',
+       'Tokyo, 13, JP', 'Berlin, BE, DE','Los Angeles, CA, US',
+        'São Paulo, SP, BR', 'Mumbai, MH, IN']
+    };
+    
 
-
-
-
-
-
-
+    export const cardData = [
+      {
+        id: "sjxcy7snskns8h",
+        image: "/images/top-picks/img1.png",
+        eventName: "Leadership Development Workshop",
+        eventDescription:
+          "Foster growth and collaboration with hands-on leadership exercises designed to enhance decision-making, teamwork, and strategic thinking.",
+        buttonText: "Learn More",
+        tags: ["Virtual"],
+        slug: "Leadership-Development-Workshop",
+      },
+      {
+        id: "tg6vkansiq8w8hucndcv",
+        image: "/images/top-picks/img2.png",
+        eventName: "Diversity & Inclusion Workshop",
+        eventDescription:
+          "Encourage open discussions, explore real-world scenarios, and develop actionable strategies to build a diverse and welcoming work environment.",
+        buttonText: "Learn More",
+        tags: ["In-Person"],
+        slug: "Diversity-&-Inclusion-Workshop",
+      },
+      {
+        id: "ajk90jincnu7agu",
+        image: "/images/top-picks/img3.png",
+        eventName: "Corporate Wellness Day",
+        eventDescription:
+          "A day dedicated to health and wellness! Engage in yoga, stress management workshops, and interactive fitness activities to promote a healthy work culture.",
+        buttonText: "Learn More",
+        tags: ["Virtual"],
+        slug: "Corporate-Wellness-Day",
+      },
+      {
+        id: "uasc78wsye98hfwoi",
+        image: "/images/top-picks/img4.png",
+        eventName: "Chess Tournament",
+        eventDescription:
+          "Test your problem-solving skills in a high-energy chess tournament that encourages strategic thinking, teamwork, and friendly competition.",
+        buttonText: "Learn More",
+        tags: ["Hybrid"],
+        slug: "Chess-Tournament",
+      },
+      {
+        id: "87tcubjinc98wn",
+        image: "/images/top-picks/img5.png",
+        eventName: "Soccer Event",
+        eventDescription:
+          "Unleash your competitive spirit in an exciting soccer match where collaboration and strategy lead to victory. Perfect for team bonding and fitness!",
+        buttonText: "Learn More",
+        tags: ["In-Person"],
+        slug: "Soccer-Event",
+      },
+      {
+        id: "hbsacyu56src7yshcnb",
+        image: "/images/top-picks/img6.png",
+        eventName: "Corporate Casual Lunch",
+        eventDescription:
+          "Take a break from work and enjoy a relaxed team lunch designed to encourage informal networking, collaboration, and camaraderie in a stress-free setting.",
+        buttonText: "Learn More",
+        tags: ["Hybrid"],
+        slug: "Corporate-Casual-Lunch",
+      },
+    ];
+    
+    export const data = [
+      { name: "Jan", sales: 4000 },
+      { name: "Feb", sales: 3000 },
+      { name: "Mar", sales: 5000 },
+      { name: "Apr", sales: 4000 },
+    ];

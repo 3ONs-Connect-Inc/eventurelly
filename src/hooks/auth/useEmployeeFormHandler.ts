@@ -3,12 +3,12 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase/config";
-import { User } from "../types";
-import { userValidation } from "../utils/validations/userValidation";
-import { fetchCompanyDomains } from "../firebase/companies";
+import { auth, db } from "../../firebase/config";
+import { User } from "../../types";
+import { userValidation } from "../../utils/validations/userValidation";
+import { fetchCompanyDomains } from "../../firebase/companies";
 import { v4 as uuidv4 } from "uuid";
-import { hashPassword } from "../utils/functions";
+import { hashPassword } from "../../utils/functions";
 
 export const useEmployeeFormHandler = (
   defaultFormData: any,  
@@ -136,6 +136,7 @@ export const useEmployeeFormHandler = (
         const userData: User = {
           id: userId,
           companyName: formData.companyName,
+            normalizedCompanyName: formData.companyName,
           firstName: formData.firstName,
           lastName: formData.lastName,
           companyContact: formData.companyContact,
@@ -149,6 +150,7 @@ export const useEmployeeFormHandler = (
           timestamp: serverTimestamp(),
           emailVerified: false,
           terms: formData.terms,
+        
         };
         const userRef = doc(db, "users", userCredential.user.uid);
         await setDoc(userRef, userData);
