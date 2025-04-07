@@ -6,7 +6,7 @@ const Profile = ({ handleLogout }: { handleLogout: () => void }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
      const { activeUser } = useAppSelector((state) => state.user);
     const {bgColor, textColor, pColor}= useIconColor();
-
+  
     return (
       <div className="lg:relative ">
         <div className="cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>

@@ -1,7 +1,7 @@
 
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { Event, User } from "../../../types";
-import { auth, db } from "../../config";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { Event, User } from "../../types";
+import { auth, db } from "../config";
 
 // Function to check if a user is an admin
 export const isAdmin = async (userId: string): Promise<boolean> => {
@@ -38,6 +38,18 @@ export const addEvent = async (event: Event): Promise<boolean> => {
     return true;
   } catch (error) {
     console.error("Error adding event:", error);
+    return false;
+  }
+};
+
+
+export const updateEvent = async (eventId: string, eventData: Omit<Event, "id">) => {
+  try {
+    const eventRef = doc(db, "events", eventId);
+    await updateDoc(eventRef, eventData);
+    return true;
+  } catch (error) {
+    console.error("Error updating event:", error);
     return false;
   }
 };

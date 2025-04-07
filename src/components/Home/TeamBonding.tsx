@@ -21,6 +21,7 @@ const TeamBonding: React.FC<{ handleNavigation: (title: string) => void }> = ({
             title="Corporate Admin"
             description="Manage your company's event operations effortlessly."
             buttonText="Next"
+           scale
             imageClassName="rounded-full w-24 h-24"
             textAlignment="center"
             onClick={() => handleNavigation("Corporate Admin")}

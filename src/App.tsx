@@ -11,10 +11,12 @@ import {
   IconSuccess,
   IconWarning,
 } from "./components/Notification";
+import useAuthListener from "./hooks/auth/useAuthListener";
 
 
 function App() {
-
+  useAuthListener();
+  
   return (
     <>
       <ToastContainer

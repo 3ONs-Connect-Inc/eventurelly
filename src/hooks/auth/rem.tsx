@@ -22,7 +22,7 @@ const useSignIn = () => {
     password: "",
     rememberMe: false,
   });
-
+  const [savedCredentials, setSavedCredentials] = useState<{ email: string; password: string } | null>(null);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   );
@@ -34,11 +34,13 @@ const useSignIn = () => {
     password?: boolean;
   }>({});
 
- // Load saved email on mount
- useEffect(() => {
-  const savedEmail = localStorage.getItem("rememberedEmail");
-  if (savedEmail) {
-    setFormData((prev) => ({ ...prev, email: savedEmail, rememberMe: true }));
+ // Load saved credentials when component mounts
+useEffect(() => {
+  // Check if credentials exist in localStorage
+  const savedCredentials = localStorage.getItem("rememberedUser");
+  if (savedCredentials) {
+    const { email, password } = JSON.parse(savedCredentials);
+    setSavedCredentials({ email, password }); // Store in state but don't auto-populate
   }
 }, []);
 
@@ -91,6 +93,11 @@ const useSignIn = () => {
     const { name, value } = e.target;
     setTouched((prevTouched) => ({ ...prevTouched, [name]: true }));
     validateField(name as keyof Omit<FormState, "rememberMe">, value);
+  
+    // If the user finishes entering their email, check for saved credentials
+    if (name === "email" && savedCredentials?.email === value) {
+      setFormData((prev) => ({ ...prev, password: savedCredentials.password }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -141,10 +148,11 @@ if (!firebaseUser.emailVerified) {
       dispatch(setActiveUser(userData));
  // Store credentials if "Remember Me" is checked
  if (formData.rememberMe) {
-  localStorage.setItem("rememberedEmail", formData.email);
+  localStorage.setItem("rememberedUser", JSON.stringify({ email: formData.email, password: formData.password }));
 } else {
-  localStorage.removeItem("rememberedEmail");
+  localStorage.removeItem("rememberedUser");
 }
+
 // **Role-based Redirection**
 switch (userData.role) {
   case "Admin":

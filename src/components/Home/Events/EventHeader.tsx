@@ -36,11 +36,11 @@ const EventHeader: React.FC<EventHeaderProps> = ({
             </h2>
           </div>
           {hasNavigationButtons && (
-            <div className="gap-2 flex mt-14 self-start">
+            <div className="gap-2 flex mt-16 self-start ">
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
                 className="items-center gap-2 cursor-pointer max-sm:hidden bg-gray-100
-                      text-black p-2  text-center rounded-full shadow-md text-base max-md:text-tiny font-semibold 
+                      text-black p-2   text-center rounded-full shadow-md text-base max-md:text-tiny font-semibold 
                       bg-hover transition whitespace-nowrap "
               >
                 <FaAngleLeft />

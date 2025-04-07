@@ -24,7 +24,7 @@ export const useRegisterFormHandler = (
   const navigate = useNavigate();
   const [showMap, setShowMap] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -56,7 +56,8 @@ export const useRegisterFormHandler = (
   
       setErrors((prevErrors) => ({
         ...prevErrors,
-        companyAddress: isValid ? undefined : "Please enter a valid address.",
+        //companyAddress: isValid ? undefined : "Please enter a valid address.",
+        companyAddress: formSubmitted && !isValid ? "Please enter a valid address." : undefined,
       }));
   
       setShowMap(isValid);
@@ -67,6 +68,7 @@ export const useRegisterFormHandler = (
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormSubmitted(true); 
     const cleanedFormData = {
       ...formData,
      // companyName: formData.companyName.replace(/\s/g, ""),

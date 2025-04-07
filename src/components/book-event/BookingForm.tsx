@@ -6,6 +6,7 @@ import { useIconColor } from "../../hooks/ui/useIconColor";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 interface BookingFormProps {
   eventId?: string;
@@ -13,7 +14,8 @@ slug?: string
 eventDetail: any
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug }) => {
+const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }) => {
+  const navigate = useNavigate();
   const { textColor, pColor, bgColor2 } = useIconColor();
   const optionalServices = eventDetail?.optionalServices ?? [];
   const {
@@ -26,7 +28,12 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
     handleCheckboxChange,
     handleSubmit,
     setIsSuccess,
-  } = useEventBooking(eventId, slug);
+  } = useEventBooking(eventId, slug, eventDetail);
+
+  // const eventTitle = 
+  // collectionName === "bookings"
+  //   ? eventDetail?.eventNamePrefix ?? eventDetail?.eventName  
+  //   : eventDetail?.eventName;
 
   const renderServices = (services: string[]) =>
     services.length > 0 ? (
@@ -48,35 +55,34 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
     )
 
   return (
-    <div className={`flex flex-col items-center max-w-7xl mx-auto py-10 px-6`}>
+    <div className={`flex flex-col items-center max-w-3xl mx-auto py-10 px-6`}>
       <div
         className={`${bgColor2} ${textColor} w-full  rounded-lg shadow-md max-xs:p-6  max-[320px]:p-2  border-border-gray  mx-auto py-10 px-6  flex flex-col  items-center `}
       >
         <div className="text-center mb-6 max-xs:mt-10">
           <h2 className="mt-4 max-sm:-mt-2 text-3xl max-md:text-lg  font-bold">
-            Let’s Get Started – Book This Event
+          {eventDetail.isBooked ? "Edit Your Booking" : "Let’s Get Started – Book This Event"}
           </h2>
           <p
             className={`${pColor} mt-1 font-normal text-base  md:text-sm max-sm:text-xs `}
           >
-            Fill out the form below, and we’ll be in touch soon to schedule your
-            personalized event!
+            {eventDetail.isBooked ? "Update your event details below." : "Fill out the form below, and we’ll be in touch soon to schedule your personalized event!"}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
-              label="Event Name"
+              label="Event Name"  
               type="text"
-              name="eventName"
-              value={formData.eventName}
+              name="eventNamePrefix"
+              value={formData.eventNamePrefix}
               onChange={handleChange}
               errors={errors}
-              placeholder="Enter event name"
+              placeholder="Prefix (optional) "
             />
             <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:mt-0 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
-            {eventDetail.eventName}
+            { eventDetail.eventName}
             </span>
           </div>
 
@@ -96,7 +102,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
               {eventDetail.eventFormat}
             </span>
-          </div>
+          </div>  
 
           <div>
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
@@ -113,6 +119,24 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
             {eventDetail.duration}
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+              Event Category
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            {eventDetail.eventCategory}
+            </span>
+          </div>
+
+          <div>
+            <label className={`block text-sm font-medium ${textColor} mb-1`}>
+             expected Outcome
+            </label>
+            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            {eventDetail.expectedOutcome}
             </span>
           </div>
 
@@ -145,23 +169,26 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
 
           <div className="w-full  border-border-gray h-11 px-3 py-2 text-base font-normal rounded-lg focus:border-[#6C36FE] focus:outline-none border-2 border-solid">
             <DatePicker
-              selected={formData.eventDate}
+              selected={formData.eventDate}  
               onChange={handleDateChange}
               dateFormat="MM/dd/yyyy"
               minDate={new Date()} //  Prevents selecting past dates
               placeholderText="MM/DD/YYYY"
-              className="w-full"
+              className="w-full "
             />
             {errors.eventDate && (
               <p className="text-red-500 mt-4 ">{errors.eventDate}</p>
             )}
           </div>
-
+       
+          {optionalServices?.length > 0 ? (
+         // {optionalServices && optionalServices.length > 0 && (
           <div className="py-6">
-            <h2 className="text-lg font-semibold mb-2">Optional Services</h2>
+               {optionalServices.length > 0 && (
+      <h2 className="text-lg font-semibold mb-2">Optional Services</h2>
+    )}
             <ul className="grid grid-cols-1 max-md:grid-cols-2 max-xs:grid-cols-1 gap-2">
-              {optionalServices.length > 0 ? (
-                optionalServices.map((service: string, index: number) => (
+            {optionalServices.map((service: string, index: number) => (
                   <li key={index} className="flex items-center gap-2">
                   <Checkbox
                     name={service}
@@ -170,22 +197,17 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
                     label={service}
                   />
                 </li>
-                ))
-              ) : (
-                <p className="text-gray-500 text-base">No optional services listed.</p>
-              )}
-      
+              ))}
             </ul>
-            {errors.optionalServices && (
-              <p className="text-red-500">{errors.optionalServices}</p>
-            )}
           </div>
-
+  ) : (
+    <div className="py-2"></div>
+  )}
           <button
             type="submit"
             className="w-full font-semibold py-2 rounded-lg bg-primary bg-hover text-white flex items-center justify-center"
           >
-            {isLoading ? "Submitting..." : "Book This Event"}
+              {isLoading ? "Submitting..." : eventDetail.isBooked ? "Update Booking" : "Book This Event"}
             <FiArrowUpRight className="ml-2 font-bold" />
           </button>
         </form>
@@ -193,10 +215,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ eventDetail, eventId, slug })
 
       {isSuccess && (
         <SuccessModal
-          header="Thank you! Your event booking request has been received."
+        header={eventDetail.isBooked ? "Your booking has been updated." : "Thank you! Your event booking request has been received."}
           message="Our team will get in touch soon to finalize the details. We’re excited to help you create an unforgettable team-building experience!"
           onClose={() => {
             setIsSuccess(false);
+            navigate(`/edit-event/bookings/${formData.bookingId}/${slug}`);
           }}
         />
       )}

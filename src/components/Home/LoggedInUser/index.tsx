@@ -21,7 +21,7 @@ const LoggedInUser: React.FC = () => {
         <div className="w-full max-w-7xl mx-auto ">
           <SearchBar />
           <HeroSection />
-        </div>
+        </div>  
       </div>
 
       <div

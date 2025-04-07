@@ -15,21 +15,19 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
     <Swiper
       spaceBetween={20}
       slidesPerView={1}
-      centeredSlides={true}
-      initialSlide={1}
       loop={true}
       breakpoints={{
-        220: { slidesPerView: 1, centeredSlides: true },
-        360: { slidesPerView: 1.5, centeredSlides: true },
-        480: { slidesPerView: 2 },
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 },
+        220: { slidesPerView: 1},
+        360: { slidesPerView: 1.5 },
+        480: { slidesPerView: 2},
+       // 640: { slidesPerView: 2 },
+        768: { slidesPerView: 3},
       }}
+     
       navigation={false}
       modules={[Navigation]}
       onSwiper={(swiper) => (swiperRef.current = swiper)}
-      className="w-full flex max-xs:items-center justify-items-center"
+      className="w-full h-full max-xs:-mt-15 flex max-xs:items-center justify-items-center"
     >
       {events.map((card, index) => {
       const fallbackImage =
@@ -38,14 +36,16 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
         "/images/top-picks/img6.png";
 
       return (
-        <SwiperSlide key={index} className="flex  justify-center">
+        <SwiperSlide key={index} className="flex w-full  h-full justify-center">
         <Card
           key={index}
           image={card.image || fallbackImage}
-          title={card.eventName}
+          title={`${card.eventNamePrefix} ${card.eventName}`}
+          date={card.eventDate}
+          location={card.location}
           description={card.eventDescription}
           buttonText={card.buttonText || "Learn More"}
-          className="self-start text-left border"
+          className="card-container self-start text-left border"
           buttonAlignment="center"
           textAlignment="left"
           buttonFullWidth
@@ -56,7 +56,7 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
         />
       </SwiperSlide>
         
-      );
+      );  
     })}
     </Swiper>
   );

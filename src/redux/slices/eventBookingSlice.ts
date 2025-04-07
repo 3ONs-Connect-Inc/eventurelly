@@ -1,18 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface BookingData {
+  eventNamePrefix: string;
   userId?: string;
   eventId?: string;
   slug?: string;
   eventName: string;
   eventDate: string | null;
   optionalServices: string[];
-  eventDetail: string;
   eventDescription: string;
   eventFormat: string;
   location: string;
   duration: string;
   teamSize: string;
+  eventCategory?: string,
+  searchKeywords?: string[],
+  expectedOutcome?: string,
   servicesIncluded: string[];
   servicesNotIncluded: string[];
 }

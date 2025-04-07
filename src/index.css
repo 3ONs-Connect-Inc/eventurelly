@@ -113,6 +113,9 @@ body {
   transform: scale(1); 
 }
 
+.card-container {
+  margin-bottom: 20px !important;
+}
 
 .swiper-pagination-bullet {
   opacity: 1;

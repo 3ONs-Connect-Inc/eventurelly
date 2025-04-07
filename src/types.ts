@@ -41,9 +41,12 @@ export interface Country {
 }
 
 export interface Event {
+  isBooked?: boolean;
   id: string;
   image?: string;
   eventName: string;
+  eventNameLower?: string;
+  bookingId?: string;
   eventDescription: string;
   buttonText?: string;
   slug: string;
@@ -51,12 +54,17 @@ export interface Event {
   location?: string;
   duration?: string;
   teamSize?: string;
+  eventCategory?: string,
+  searchKeywords?: string[],
+  expectedOutcome?: string,
   servicesIncluded?: string[];
   servicesNotIncluded?: string[];
   optionalServices?: string[];
 }
 
 export interface BookingData {
+  bookingId?: string;
+  eventNamePrefix: string;
   userId?: string;
   slug?: string;
   eventId?: string;
@@ -64,9 +72,11 @@ export interface BookingData {
   eventDate: Date | null;
   optionalServices: string[];
   eventDescription: string;
-  eventDetail: string;
   eventFormat: string;
   location: string;
+  eventCategory?: string,
+  searchKeywords?: string[],
+  expectedOutcome?: string,
   duration: string;
   teamSize: string;
   servicesIncluded: string[];
