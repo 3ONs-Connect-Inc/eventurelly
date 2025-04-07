@@ -4,7 +4,6 @@ import { db } from "../../firebase/config";
 import { useAppSelector } from "../redux";
 
 
-
 export const useFetchEvents = (collectionName: string) => {
   const [events, setEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -12,25 +11,27 @@ export const useFetchEvents = (collectionName: string) => {
   const activeUser = useAppSelector((state) => state.user.activeUser);
 
   useEffect(() => {
-    if (!collectionName || !activeUser) return;
+    let unsubscribe: (() => void) | undefined;
 
     const fetchCompanyEvents = async () => {
-      setLoading(true);
-      setError(null);
-
       try {
+        setLoading(true);
+        setError(null);
+
         const today = new Date().toISOString();
 
-        // Step 1: Get the active user's company name
-        const currentCompany = activeUser.companyName;
+        const currentCompany = activeUser?.companyName;
+        if (!currentCompany) {
+          setEvents([]);
+          setLoading(false);
+          return;
+        }
 
-        // Step 2: Get all users with the same company name
         const usersRef = collection(db, "users");
         const usersQuery = query(usersRef, where("companyName", "==", currentCompany));
         const userSnapshots = await getDocs(usersQuery);
         const companyUserIds = userSnapshots.docs.map((doc) => doc.id);
 
-        // Step 3: Get bookings by these user IDs
         const bookingsRef = collection(db, collectionName);
         const bookingsQuery = query(
           bookingsRef,
@@ -39,7 +40,7 @@ export const useFetchEvents = (collectionName: string) => {
           orderBy("eventDate", "asc")
         );
 
-        const unsubscribe = onSnapshot(
+        unsubscribe = onSnapshot(
           bookingsQuery,
           (querySnapshot) => {
             const bookingsData = querySnapshot.docs.map((doc) => ({
@@ -55,21 +56,19 @@ export const useFetchEvents = (collectionName: string) => {
             setLoading(false);
           }
         );
-
-        return () => unsubscribe();
       } catch (err) {
-        console.error("Error fetching events:", err);
-        setError("Error loading events.");
+        console.error("Error fetching bookings:", err);
+        setError("Error loading bookings.");
         setLoading(false);
       }
     };
 
-    if (collectionName === "bookings") {
-      fetchCompanyEvents();
-    } else {
-      // Default fetch for other collection types like 'events'
+    const fetchGeneralEvents = () => {
+      setLoading(true);
+      setError(null);
+
       const q = query(collection(db, collectionName));
-      const unsubscribe = onSnapshot(
+      unsubscribe = onSnapshot(
         q,
         (querySnapshot) => {
           const eventsData = querySnapshot.docs.map((doc) => ({
@@ -85,9 +84,24 @@ export const useFetchEvents = (collectionName: string) => {
           setLoading(false);
         }
       );
+    };
 
-      return () => unsubscribe();
+    if (collectionName === "bookings") {
+      if (activeUser) {
+        fetchCompanyEvents();
+      } else {
+        // Prevent fetching bookings if not authenticated
+        setEvents([]);
+        setLoading(false);
+        setError("Login required to view bookings.");
+      }
+    } else {
+      fetchGeneralEvents();
     }
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, [collectionName, activeUser]);
 
   return { events, loading, error, setLoading };
