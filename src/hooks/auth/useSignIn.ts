@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";  
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
 import { User } from "../../types";
-import { browserLocalPersistence, browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  browserLocalPersistence,
+  browserSessionPersistence,
+  setPersistence,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { setActiveUser } from "../../redux/slices/userSlice";
 
 interface FormState {
@@ -34,13 +39,13 @@ const useSignIn = () => {
     password?: boolean;
   }>({});
 
- // Load saved email on mount
- useEffect(() => {
-  const savedEmail = localStorage.getItem("rememberedEmail");
-  if (savedEmail) {
-    setFormData((prev) => ({ ...prev, email: savedEmail, rememberMe: true }));
-  }
-}, []);
+  // Load saved email on mount
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("rememberedEmail");
+    if (savedEmail) {
+      setFormData((prev) => ({ ...prev, email: savedEmail, rememberMe: true }));
+    }
+  }, []);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
@@ -56,8 +61,7 @@ const useSignIn = () => {
       if (!value.trim() && formSubmitted) {
         error = "Email is required.";
       } else if (!emailRegex.test(value) && formSubmitted) {
-        error =
-          "Invalid Credentials.";
+        error = "Invalid Credentials.";
       }
     }
 
@@ -65,8 +69,7 @@ const useSignIn = () => {
       if (!value.trim() && formSubmitted) {
         error = "Password is required.";
       } else if (!passwordRegex.test(value) && formSubmitted) {
-        error =
-          "Invalid Credentials.";
+        error = "Invalid Credentials.";
       }
     }
 
@@ -81,10 +84,10 @@ const useSignIn = () => {
       ...prevFormData,
       [name]: newValue,
     }));
-      // Clear general error when user types
-  if (generalError) {
-    setGeneralError(null);
-  }
+    // Clear general error when user types
+    if (generalError) {
+      setGeneralError(null);
+    }
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -96,7 +99,7 @@ const useSignIn = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setFormSubmitted(true); 
+    setFormSubmitted(true);
     setErrors({});
     setGeneralError(null);
 
@@ -112,7 +115,9 @@ const useSignIn = () => {
       setLoading(false);
       return;
     }
-    const persistenceType = formData.rememberMe ? browserLocalPersistence : browserSessionPersistence;
+    const persistenceType = formData.rememberMe
+      ? browserLocalPersistence
+      : browserSessionPersistence;
     await setPersistence(auth, persistenceType);
 
     try {
@@ -124,11 +129,11 @@ const useSignIn = () => {
       const firebaseUser = userCredential.user;
 
       if (!firebaseUser) throw new Error("Authentication failed");
-// Check if email is verified
-if (!firebaseUser.emailVerified) {
-  navigate("/2fa-auth"); 
-  return;
-} 
+      // Check if email is verified
+      if (!firebaseUser.emailVerified) {
+        navigate("/2fa-auth");
+        return;
+      }
 
       const userRef = doc(db, "users", firebaseUser.uid);
       const userSnapshot = await getDoc(userRef);
@@ -136,37 +141,37 @@ if (!firebaseUser.emailVerified) {
       if (!userSnapshot.exists()) {
         throw new Error("User data not found in Firestore");
       }
-  
+
       const userData = userSnapshot.data() as User;
       dispatch(setActiveUser(userData));
- // Store credentials if "Remember Me" is checked
- if (formData.rememberMe) {
-  localStorage.setItem("rememberedEmail", formData.email);
-} else {
-  localStorage.removeItem("rememberedEmail");
-}
-// **Role-based Redirection**
-switch (userData.role) {
-  case "Admin":
-    navigate("/admin");
-    break;
-  default:
-    navigate("/");
-    break;
-}
-  // case "CorporateAdmin":
-  //   navigate("/CorporateAdmin");
-  //   break;
-  // case "Manager":
-  //   navigate("/manager");
-  //   break;
-  // case "Editor":
-  //   navigate("/editor");
-  //   break;
-//   default:
-//     navigate("/"); // Default for "User" and unknown roles
-//     break;
-// }
+      // Store credentials if "Remember Me" is checked
+      if (formData.rememberMe) {
+        localStorage.setItem("rememberedEmail", formData.email);
+      } else {
+        localStorage.removeItem("rememberedEmail");
+      }
+      // **Role-based Redirection**
+      switch (userData.role) {
+        case "Admin":
+          navigate("/admin");
+          break;
+        default:
+          navigate("/");
+          break;
+      }
+      // case "CorporateAdmin":
+      //   navigate("/CorporateAdmin");
+      //   break;
+      // case "Manager":
+      //   navigate("/manager");
+      //   break;
+      // case "Editor":
+      //   navigate("/editor");
+      //   break;
+      //   default:
+      //     navigate("/"); // Default for "User" and unknown roles
+      //     break;
+      // }
     } catch (error) {
       console.error("Login error:", error);
       setGeneralError("Invalid email or password");

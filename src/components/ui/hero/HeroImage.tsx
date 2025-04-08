@@ -19,7 +19,7 @@ const HeroImage: React.FC<HeroImageProps> = ({ src, alt, rounded = false }) => {
           className={` 
             ${rounded 
             ? "w-full h-auto object-cover aspect-[569/486]  rounded-[50%] rounded-bl-[5%] rounded-tr-[5%] shadow-lg"
-            : "w-full h-full max-h-[400px]  object-cover rounded-lg shadow-md "}`}
+            : "w-full h-full max-h-[400px]   rounded-lg shadow-md "}`}
            
         />
       </div>

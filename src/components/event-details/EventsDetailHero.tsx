@@ -14,10 +14,10 @@ interface EventDetailHeroProps {
 
 const EventDetailHero: React.FC<EventDetailHeroProps> = ({ eventDetail, handleBooking }) => {
 const fallbackImage =
-       cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image2 ||
-       cardData[cardData.length]?.image2 ||
+       cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image ||
+       cardData[cardData.length]?.image ||
        "/images/top-picks/img6.png";
-
+  
   const eventDetails = [
     { label: "Format", value: eventDetail?.eventFormat, icon: "/images/icon/user-check.png" },
     { label: "Location", value: eventDetail?.location, icon: "/images/icon/map.png" },

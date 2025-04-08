@@ -54,7 +54,7 @@ export const footerLinks = [
   {
     title: "Contact Us",
     links: [
-      { name: "+647-532-7885", url: "#" },
+      { name: "+1 905-933-8653", url: "#" },
       { name: "info@eventurelly.com", url: "#" },
     ],
   },
@@ -161,7 +161,6 @@ export const carousel = [
       {
         id: "sjxcy7snskns8h",
         image: "/images/top-picks/img1.png",
-        image2: "/images/top-picks/d1.png",
         eventName: "Leadership Development Workshop",
         eventDescription:
           "Foster growth and collaboration with hands-on leadership exercises designed to enhance decision-making, teamwork, and strategic thinking.",
@@ -172,7 +171,6 @@ export const carousel = [
       {
         id: "tg6vkansiq8w8hucndcv",
         image: "/images/top-picks/img2.png",
-        image2: "/images/top-picks/d2.png",
         eventName: "Diversity & Inclusion Workshop",
         eventDescription:
           "Encourage open discussions, explore real-world scenarios, and develop actionable strategies to build a diverse and welcoming work environment.",
@@ -183,7 +181,6 @@ export const carousel = [
       {
         id: "ajk90jincnu7agu",
         image: "/images/top-picks/img3.png",
-        image2: "/images/top-picks/d3.png",
         eventName: "Corporate Wellness Day",
         eventDescription:
           "A day dedicated to health and wellness! Engage in yoga, stress management workshops, and interactive fitness activities to promote a healthy work culture.",
@@ -194,7 +191,6 @@ export const carousel = [
       {
         id: "uasc78wsye98hfwoi",
         image: "/images/top-picks/img4.png",
-        image2: "/images/top-picks/d4.png",
         eventName: "Chess Tournament",
         eventDescription:
           "Test your problem-solving skills in a high-energy chess tournament that encourages strategic thinking, teamwork, and friendly competition.",
@@ -205,7 +201,6 @@ export const carousel = [
       {
         id: "87tcubjinc98wn",
         image: "/images/top-picks/img5.png",
-        image2: "/images/top-picks/d5.png",
         eventName: "Soccer Event",
         eventDescription:
           "Unleash your competitive spirit in an exciting soccer match where collaboration and strategy lead to victory. Perfect for team bonding and fitness!",
@@ -216,7 +211,6 @@ export const carousel = [
       {
         id: "hbsacyu56src7yshcnb",
         image: "/images/top-picks/img6.png",
-        image2: "/images/top-picks/d6.png",
         eventName: "Corporate Casual Lunch",
         eventDescription:
           "Take a break from work and enjoy a relaxed team lunch designed to encourage informal networking, collaboration, and camaraderie in a stress-free setting.",
