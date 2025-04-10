@@ -1,4 +1,4 @@
-name: Generate a build and push to another branch
+ name: Build and Deploy to Deploy Branch
 
 on:
   push:
@@ -6,24 +6,33 @@ on:
       - mvp
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    name: Build and Push
+
     steps:
-      - name: git-checkout
+      - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Install all dependencies
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build # The build command of your project
+      - name: Build project
+        run: npm run build
 
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/3ONs-Connect-Inc/eventurelly.git
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+      - name: Deploy to deploy branch
+        run: |
+          rm -rf .git
+          cd dist
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git remote add origin git@github.com:3ONs-Connect-Inc/eventurelly.git
+          git checkout -b deploy
+          git add .
+          git commit -m "Deploy from GitHub Actions"
+          git push --force origin deploy
