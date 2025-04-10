@@ -55,7 +55,7 @@ const SignInAccount: React.FC = () => {
             alt="background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-0 right-0 w-3 h-full bg-gradient-to-l dark:from-gray-900 from-gray-300 via-transparent to-transparent" />
+         
         </div>
 
         {/* Text section for larger screens */}

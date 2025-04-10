@@ -5,9 +5,11 @@ import { auth, db } from "../../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { User } from "../../types";
 import { removeActiveUser, setActiveUser } from "../../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom"; // 🔁 Add this
 
 const useAuthListener = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate(); // 🔁 For redirect
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -18,6 +20,13 @@ const useAuthListener = () => {
 
           if (userSnapshot.exists()) {
             const userData = userSnapshot.data() as User;
+
+            // 🔁 Check emailVerified flag
+            if (!userData.emailVerified) {
+              navigate("/2fa-auth");
+              return;
+            }
+
             dispatch(setActiveUser(userData));
           } else {
             dispatch(removeActiveUser());
@@ -33,7 +42,7 @@ const useAuthListener = () => {
     });
 
     return () => unsubscribe();
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 };
 
 export default useAuthListener;

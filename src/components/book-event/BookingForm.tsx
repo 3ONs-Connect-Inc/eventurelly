@@ -55,7 +55,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
     )
 
   return (
-    <div className={`flex flex-col items-center max-w-3xl mx-auto py-10 px-6`}>
+    <div className={`flex flex-col items-center max-w-7xl mx-auto py-10 px-6`}>
       <div
         className={`${bgColor2} ${textColor} w-full  rounded-lg shadow-md max-xs:p-6  max-[320px]:p-2  border-border-gray  mx-auto py-10 px-6  flex flex-col  items-center `}
       >
@@ -81,12 +81,12 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
               errors={errors}
               placeholder="Prefix (optional) "
             />
-            <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:mt-0 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
+            <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:-mt-2 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
             { eventDetail.eventName}
             </span>
           </div>
 
-          <div>
+          <div className="-mt-2 max-md:mt-0">
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Event Description
             </label>

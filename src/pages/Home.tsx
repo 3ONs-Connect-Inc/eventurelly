@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   };
   
   return (
-    <div className="relative overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full">
+    <div className="relative   overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full">
       <Seo
         title="Home"
         description="Home page."

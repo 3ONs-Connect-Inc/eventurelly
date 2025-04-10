@@ -26,7 +26,7 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
   } = useRequestForm();
 
   return (
-    <div className="flex flex-col items-center max-w-3xl mx-auto py-10 px-4">
+    <div className="flex flex-col items-center max-w-7xl mx-auto py-10 px-4">
       <div
         className={`${bgColor2} ${textColor} w-full rounded-lg shadow-md border border-border-gray p-8`}
       >
@@ -40,8 +40,8 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-0">
             <Input
               label="First Name"
               name="firstName"
@@ -67,6 +67,7 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
               errors={errors}
               placeholder="Enter last name"
               setErrors={setErrors}
+              className="max-md:-mt-3"
             />
           </div>
 

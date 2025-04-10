@@ -100,7 +100,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
       <label className={`${textColor} block text-sm font-medium  mb-1`}>Phone Number</label>
       <div className="flex items-center rounded-lg overflow-hidden">
         {/* Country Code Input */}
-        <div className="relative w-1/4 ">
+        <div className="relative w-1/3 sm:w-1/4 min-w-[60px]">
           <input
             type="text"
             value={companyContact}

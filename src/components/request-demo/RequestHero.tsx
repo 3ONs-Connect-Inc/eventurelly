@@ -12,7 +12,7 @@ const RequestHero = () => {
           alignCenter={false}
         />
 
-        <HeroImage src="images/ppl/p5.png" alt="Hero Image" rounded />
+        <HeroImage src="images/ppl/p5.png"  alt="Hero Image" rounded />
       </div>
     </HeroContainer>
   );

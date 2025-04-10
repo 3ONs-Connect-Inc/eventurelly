@@ -46,9 +46,9 @@ const CreateAccount: React.FC = () => {
             alt="background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-0 right-0 w-3 h-full bg-gradient-to-l dark:from-gray-900 from-gray-300 via-transparent to-transparent" />
+          {/* <div className="absolute top-0 right-0 w-3 h-full bg-gradient-to-l dark:from-gray-900 from-gray-300 via-transparent to-transparent" />
+ */}
         </div>
-
         {/* Text section */}
         <div className="absolute bottom-10 left-10 text-white">
           <h2 className="text-4xl font-bold ">Create an Account</h2>

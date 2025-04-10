@@ -63,9 +63,9 @@ const LazyImage = ({
         <img
           src={isCompressing ? placeholder || src : compressedSrc}
           alt={alt}
-          className={`${className} ${
-            isCompressing ? "blur-none scale-105" : "blur-0 transition-all duration-300 ease-in-out"
-          }`}
+          className={`${className}
+           ${ isCompressing ? "blur-none scale-105" : "blur-0 transition-all duration-300 ease-in-out" }
+           `}
           loading="lazy"
         />
       )}
