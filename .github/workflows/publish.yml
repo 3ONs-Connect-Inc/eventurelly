@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Push
     env:
-      VITE_PORT=https://eventurelly.com: ${{secrets.VITE_PORT }}
-      VITE_BASE_URL=https://eventurelly.com: ${{secrets.VITE_BASE_URL }}
-      VITE_GOOGLE_RECAPTCHA_SITE_KEY=6LdYCsQqAAAAAA8rBBphvefp4NmSWk1jv0AGuTcD: ${{secrets.VITE_GOOGLE_RECAPTCHA_SITE_KEY}}
-      VITE_RECAPTCHA_SECRET_KEY=6LdYCsQqAAAAANtynZnL_Ma_pD8G_jKFfvnTp0fz: ${{secrets.VITE_RECAPTCHA_SECRET_KEY}}
-      VITE_FIREBASE_API_KEY=AIzaSyCvj-KI6KBcY8VMcLA23T5fmfc2YXnrclc: ${{secrets.VITE_FIREBASE_API_KEY}}
-      VITE_GOOGLE_MAPS_API_KEY=AIzaSyAZntmju8OYYqhVxezANdBjV0HUorB0Hkk: ${{secrets.VITE_GOOGLE_MAPS_API_KEY}}
-      VITE_GOOGLE_MAPS_ID=43a402c1a4d44afc: ${{secrets.VITE_GOOGLE_MAPS_ID }}
+      VITE_PORT: ${{secrets.VITE_PORT }}
+      VITE_BASE_URL: ${{secrets.VITE_BASE_URL }}
+      VITE_GOOGLE_RECAPTCHA_SITE_KEY: ${{secrets.VITE_GOOGLE_RECAPTCHA_SITE_KEY}}
+      VITE_RECAPTCHA_SECRET_KEY: ${{secrets.VITE_RECAPTCHA_SECRET_KEY}}
+      VITE_FIREBASE_API_KEY: ${{secrets.VITE_FIREBASE_API_KEY}}
+      VITE_GOOGLE_MAPS_API_KEY: ${{secrets.VITE_GOOGLE_MAPS_API_KEY}}
+      VITE_GOOGLE_MAPS_ID: ${{secrets.VITE_GOOGLE_MAPS_ID }}
     steps:
       - name: git-checkout
         uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build # The build command of the project
+        run: npm run build # The build command of your project
       - name: Debug build output
         run: ls -la && ls -la ./dist
       - name: Push
