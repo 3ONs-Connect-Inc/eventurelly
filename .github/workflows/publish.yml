@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: npm run build # The build command of the project
       - name: Debug build output
-        run: ls -la && ls -la ./build
+        run: ls -la && ls -la ./dist
       - name: Push
         uses: s0/git-publish-subdir-action@develop
         
