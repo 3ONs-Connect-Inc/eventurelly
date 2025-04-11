@@ -36,7 +36,7 @@ const fallbackImage =
           title={eventDetail.eventNamePrefix ? 
             `${eventDetail.eventNamePrefix} ${eventDetail.eventName}` 
             : eventDetail.eventName}
-          description={eventDetail?.eventDescription }
+          description={eventDetail?.eventTagline }
         />
 
 {eventDetail.isBooked ? (

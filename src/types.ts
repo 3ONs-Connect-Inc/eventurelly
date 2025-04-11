@@ -45,6 +45,7 @@ export interface Event {
   id: string;
   image?: string;
   eventName: string;
+  eventTagline: string;
   eventNameLower?: string;
   bookingId?: string;
   eventDescription: string;
@@ -57,6 +58,7 @@ export interface Event {
   eventCategory?: string,
   searchKeywords?: string[],
   expectedOutcome?: string,
+ agendas: { title: string; desc: string; time: string }[];
   servicesIncluded?: string[];
   servicesNotIncluded?: string[];
   optionalServices?: string[];

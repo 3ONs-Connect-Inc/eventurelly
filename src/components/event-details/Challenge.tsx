@@ -1,4 +1,4 @@
-import { agendas } from "../../../data";
+
 import { useIconColor } from "../../hooks/ui/useIconColor";
 import Button from "../ui/Button";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
@@ -6,6 +6,7 @@ import Services from "./Services";
 import { useState } from "react";
 import EventDate from "../ui/Date";
 import { GrLocation } from "react-icons/gr";
+
 
 interface ChallengeProps {
   handleBooking: () => void;
@@ -16,9 +17,10 @@ const Challenge: React.FC<ChallengeProps> = ({
   handleBooking,
   eventDetail,
 }) => {
+  const agendas = eventDetail?.agendas || []; 
   const { pColor } = useIconColor();
   const [openIndices, setOpenIndices] = useState<Set<number>>(
-    new Set(agendas.map((_, index) => index)) // Initially open all
+    new Set(agendas.map((_: any, index: any) => index)) // Initially open all
   );
 
   const toggleCollapse = (index: number) => {
@@ -93,7 +95,7 @@ const Challenge: React.FC<ChallengeProps> = ({
           </h2>
         </div>
 
-        {agendas.map((item, index) => {
+        {agendas.map((item: any, index: number) => {
           const isOpen = openIndices.has(index);
           return (
             <div key={index} className="flex flex-col space-y-2 pb-4">
@@ -117,7 +119,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
                 {isOpen && (
                   <Button
-                    label={item.time}
+                    label={`${item.time} ${""} mins`}
                     className="ml-2 max-sm:ml-1 whitespace-nowrap self-start font-semibold text-sm max-sm:text-xs
                      max-[400px]:text-[10px] dark:shadow-lg dark:shadow-gray-800  bg-black text-white
                    px-4 max-sm:px-2 max-sm:py-1"

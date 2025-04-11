@@ -62,33 +62,6 @@ export const footerLinks = [
 
 
 
-export const agendas = [
-  {
-    title: "Opening Discussion: The Importance of Inclusion",
-    desc: "Explore why diversity and inclusion matter in the workplace and how they drive innovation, collaboration, and overall team success.",
-    time: "20 Minutes",
-  },
-  {
-    title: "Interactive Case Studies & Scenarios",
-    desc: "Engage with real-world diversity challenges through case studies and scenarios that highlight workplace biases and opportunities for growth.",
-    time: "40 Minutes",
-  },
-  {
-    title: "Team Discussion & Personal Reflection",
-    desc: "Participate in guided discussions and self-reflection exercises to understand different perspectives and foster a more inclusive mindset.",
-    time: "30 Minutes",
-  },
-  {
-    title: "Strategy Development",
-    desc: "Work together to create actionable plans and strategies for promoting inclusivity within your team and organization.",
-    time: "45 Minutes",
-  },
-  {
-    title: "Q&A and Wrap-up",
-    desc: "Wrap up the session with key takeaways, open discussions, and next steps to implement inclusive practices in your workplace.",
-    time: "20 Minutes",
-  },
-];
 
 export const carousel = [
   {
@@ -110,13 +83,6 @@ export const carousel = [
 
 
 
-  export const services: string[] = [
-    "Personalized 1-on-1 Coaching – Health, fitness, and stress management.",
-    "Healthy Meal Plans – Custom nutrition plans for employees.",
-    "On-Site Fitness Equipment & Trainers – Yoga mats, resistance bands, and instructors.",
-    "Live Relaxation Music – Professional musicians for calming ambiance.",
-    "Wellness Gift Kits – Custom merchandise like water bottles, stress balls, and planners.",
-  ];
 
   export const servicesTags =['Diversity training materials',
     'Interactive sessions', 
@@ -156,6 +122,7 @@ export const carousel = [
     //   'Sydney, NSW, AU', 'Paris, ÎLE-DE-FR, FR',
     // 'Tokyo, 13, JP', 'Berlin, BE, DE','Los Angeles, CA, US',
     //  'São Paulo, SP, BR', 'Mumbai, MH, IN']
+    
     
     export const cardData = [
       {
@@ -219,6 +186,44 @@ export const carousel = [
         slug: "Corporate-Casual-Lunch",
       },
     ];
+
+    export const services: string[] = [
+      "Venue Rental – Choose from premium corporate training spaces.",
+      "Catering Services – Coffee, snacks, and lunch options.",
+      "Guest Speaker Session – A leadership expert to enhance the session.",
+      "Event Photography – Capture key moments professionally.",
+      "Personalized Certificates – Customized digital or printed certificates.",
+    ];
+  
+
+    export const agendas = [
+      {
+        title: "Opening Discussion: The Importance of Inclusion",
+        desc: "Explore why diversity and inclusion matter in the workplace and how they drive innovation, collaboration, and overall team success.",
+        time: "20 Minutes",
+      },
+      {
+        title: "Interactive Case Studies & Scenarios",
+        desc: "Engage with real-world diversity challenges through case studies and scenarios that highlight workplace biases and opportunities for growth.",
+        time: "40 Minutes",
+      },
+      {
+        title: "Team Discussion & Personal Reflection",
+        desc: "Participate in guided discussions and self-reflection exercises to understand different perspectives and foster a more inclusive mindset.",
+        time: "30 Minutes",
+      },
+      {
+        title: "Strategy Development",
+        desc: "Work together to create actionable plans and strategies for promoting inclusivity within your team and organization.",
+        time: "45 Minutes",
+      },
+      {
+        title: "Q&A and Wrap-up",
+        desc: "Wrap up the session with key takeaways, open discussions, and next steps to implement inclusive practices in your workplace.",
+        time: "20 Minutes",
+      },
+    ];
+    
     
     export const data = [
       { name: "Jan", sales: 4000 },
