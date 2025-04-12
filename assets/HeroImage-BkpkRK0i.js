@@ -1,0 +1,3 @@
+import{j as e}from"./index-BVjVsSAy.js";import{L as m}from"./LazyImage-CG8NzcMQ.js";const d=({className:a,src:r,alt:s,rounded:l=!1})=>e.jsx("div",{className:`w-full flex justify-center ${l?"w-1/2 max-md:w-full":""}`,children:e.jsx("div",{className:`relative 
+    ${l?"w-full max-md:w-[90%] rounded-hero-image mx-auto flex justify-center":" w-full h-auto max-w-full  max-h-full overflow-hidden"}`,children:e.jsx(m,{src:r,alt:s,className:`
+        ${l?"w-full object-cover aspect-[569/486] rounded-[50%] rounded-bl-[5%] rounded-tr-[5%] shadow-lg":"w-full h-full max-h-[400px] rounded-lg shadow-md"} ${a}`})})});export{d as H};
