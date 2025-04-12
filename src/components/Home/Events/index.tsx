@@ -39,7 +39,7 @@ const EventSection: React.FC<EventSectionProps> = ({
   if (!events || events.length === 0) return null; 
 
   return (
-    <div className={`w-full relative py-4 max-xs:px-0 ${bgColor}`}>
+    <div className={`w-full relative py-4  max-xs:px-0 ${bgColor}`}>
     <div
       className={`z-[1] flex flex-col items-center py-4 mx-auto ${textColor}`}
     >

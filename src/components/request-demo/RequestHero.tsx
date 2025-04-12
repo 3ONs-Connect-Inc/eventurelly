@@ -4,7 +4,7 @@ import HeroImage from "../ui/hero/HeroImage";
 
 const RequestHero = () => {
   return (
-    <HeroContainer className="mb-4 max-sm:mb-2 gap-10 ">
+    <HeroContainer className="mb-4 max-sm:mb-2 gap-10 px-6">
       <div className="flex flex-row max-md:flex-col-reverse items-center mt-4  justify-between w-full mb-8 max-md:mb-2">
         <HeroContent
           title="Transform Team Bonding with Eventurelly – Experience a Live Demo Today!"

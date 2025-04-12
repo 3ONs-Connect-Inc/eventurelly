@@ -37,17 +37,22 @@ const SearchPage: React.FC<SearchProps> = ({collectionName}) => {
         name="Eventurelly."
         type="website"
       />
-
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow ">
+      <div
+        className={`w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ${bgColor}`}
+      >
+        <div className="max-w-7xl mx-auto px-6 max-xs:px-0">
         <SearchBar />
 
-        <SearchContents    
-           loading={loading}
-           handleLearnMore={handleLearnMore}
-         />
-     
+<SearchContents    
+   loading={loading}
+   handleLearnMore={handleLearnMore}
+ />
+        </div>
       </div>
-      <Footer showButtons={true}/>
+      <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">
+ <Footer showButtons={true}/>
+ </div>
+
     </div>
   );
 };

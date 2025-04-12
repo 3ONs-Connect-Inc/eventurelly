@@ -16,16 +16,17 @@ const GuestUser: React.FC<GuestUserProps> = ({ handleNavigation }) => {
       <div
         className={`${bgGradient} min-h-auto flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 xl:px-16`}
       >
-        <div className="w-full max-w-7xl mx-auto ">
+        <div className="w-full max-w-7xl mx-auto px-6 max-xs:px-0">
           <SearchBar />
-          <HeroSection />
+         
         </div>
+        <HeroSection />
       </div>
 
       <div
         className={`w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ${bgColor}`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6 max-xs:px-0">
             <TopPick />
 
           <div id="teamBondingSection">

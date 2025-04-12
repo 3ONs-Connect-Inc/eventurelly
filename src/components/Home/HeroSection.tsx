@@ -45,7 +45,7 @@ export const HeroSection = () => {
       >
         {carousel.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-row max-md:flex-col-reverse items-center mt-4  justify-between w-full mb-8 max-md:mb-2">
+            <div className="flex flex-row max-md:flex-col-reverse items-center mt-4  justify-between w-full mb-18 max-md:mb-2">
               {isLoggedIn ? (
                 <HeroContent
                   title={item.title}

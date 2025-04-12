@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       `/sign-up?role=${title === "Corporate Admin" ? "admin" : "member"}`
     );
   };
-  
+
   return (
     <div className="relative   overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full">
       <Seo
@@ -25,16 +25,14 @@ const Home: React.FC = () => {
         type="website"
       />
       {isLoggedIn ? (
-        <LoggedInUser
-        />
+        <LoggedInUser />
       ) : (
-        <GuestUser
-          handleNavigation={handleNavigation}
-        />
+        <GuestUser handleNavigation={handleNavigation} />
       )}
-
       <BackToTop />
-      <Footer showButtons={true}/>
+      <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">
+        <Footer showButtons={true} />
+      </div>
     </div>
   );
 };

@@ -21,9 +21,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`sticky  top-0 dark:shadow-gray-800 left-0 w-full  ${bgColor} shadow-md p-4   z-[999]`}
+      className={`sticky  top-0 dark:shadow-gray-800 left-0 w-full  ${bgColor} shadow-md p-4  max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16  z-[999]`}
     >
-       <div className="max-w-7xl mx-auto flex justify-between items-center">
+       <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
        <Logo />
       <div className="max-md:block hidden">
         <motion.button

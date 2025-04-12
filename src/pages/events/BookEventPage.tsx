@@ -56,7 +56,9 @@ const BookEventPage:React.FC<EventProps> = () => {
       </div>
 
       <BackToTop />
-      <Footer showButtons={false} />
+      <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">
+ <Footer showButtons={false}/>
+ </div>
     </div>
   );
 };

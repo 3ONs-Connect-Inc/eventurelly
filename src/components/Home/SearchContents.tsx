@@ -85,9 +85,9 @@ const SearchContents: React.FC<SearchProps> = ({
   if (!searchTerm) return null;
 
   return (
-    <div className="flex items-center   py-4 px-6 max-xs:px-0">
+    <div className="flex items-center   py-4 max-xs:px-0">
       <div
-        className={`w-full  flex flex-col items-center py-4 px-6 mx-auto ${textColor}`}
+        className={`w-full  flex flex-col items-center py-4  mx-auto ${textColor}`}
       >
 
       {loading || isSearching ? (

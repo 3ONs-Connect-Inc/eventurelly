@@ -63,7 +63,9 @@ const EventCategoryPage: React.FC = () => {
       </div>
 
       <BackToTop />
-      <Footer showButtons={true} />
+      <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">
+ <Footer showButtons={true}/>
+ </div>
     </div>
   );
 };

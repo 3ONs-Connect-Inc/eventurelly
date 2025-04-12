@@ -12,7 +12,7 @@ const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
 
   return (
     <footer
-      className={`${bgColor} ${textColor}  flex items-center justify-center max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16`}
+      className={`${bgColor} ${textColor}  flex items-center justify-center `}
     >
       <div className="w-full max-w-7xl py-10 px-6 ">
         {/* Top Section */}

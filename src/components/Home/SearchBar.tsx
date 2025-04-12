@@ -60,7 +60,7 @@ export const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full">
+    <div className="flex items-center  gap-4 border border-border-gray bg-white p-2 xs:p-3 mt-15 rounded-full shadow-md  mx-auto mb-8 max-sm:mb-0 w-full">
       <input
         type="text"
         value={searchTerm}

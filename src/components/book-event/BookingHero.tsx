@@ -16,7 +16,7 @@ const fallbackImage =
        "/images/top-picks/img6.png";
        
   return (  
-    <HeroContainer className="mt-0 mb-2 p-4">
+    <HeroContainer className="mt-0 mb-2 p-4 ">
       <HeroImage src={fallbackImage || "/images/ppl/p6.png"} alt="Escape Room" />
  
       <HeroContent

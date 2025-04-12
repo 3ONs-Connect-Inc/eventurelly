@@ -4,8 +4,8 @@ const TeamBonding: React.FC<{ handleNavigation: (title: string) => void }> = ({
   handleNavigation,
 }) => {
   return (
-    <div className=" flex flex-col items-center  py-10 px-6 max-xs:px-0">
-      <div className="w-full  bg-pink  mx-auto py-10 px-6 rounded-lg flex flex-col  items-center gap-10">
+    <div className=" flex flex-col items-center  py-10">
+      <div className="w-full  bg-pink  mx-auto py-10  rounded-lg flex flex-col  items-center gap-10">
         <div className="flex flex-col items-center justify-center text-center ">
           <h2 className="text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8   font-bold mb-4 ">
             Elevate Your Team Bonding Experience

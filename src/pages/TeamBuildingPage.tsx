@@ -10,15 +10,15 @@ import { useAppSelector } from "../hooks/redux";
 
 const TeamBuildingPage = () => {
   const { bgGradient, bgColor } = useIconColor();
-   const { isLoggedIn } = useAppSelector((state) => state.user);
-const navigate = useNavigate();
+  const { isLoggedIn } = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const handleNavigation = (title: string) => {
     navigate(
       `/sign-up?role=${title === "Corporate Admin" ? "admin" : "member"}`
     );
   };
-  
+
   return (
     <div
       className={`${bgColor}  overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
@@ -34,20 +34,21 @@ const navigate = useNavigate();
       >
         <TeamHero />
       </div>
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow ">
-        <TeamEvents />
-        {isLoggedIn ? (
-              null
-        ) : (
-          <div id="teamBondingSection">
-          <TeamBonding handleNavigation={handleNavigation} />
+      <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ">
+        <div className="max-w-7xl  mx-auto px-6 max-xs:px-0">
+          <TeamEvents />
+          {isLoggedIn ? null : (
+            <div id="teamBondingSection">
+              <TeamBonding handleNavigation={handleNavigation} />
+            </div>
+          )}
         </div>
-        )}
-       
       </div>
-      
+
       <BackToTop />
-      <Footer showButtons={true}/>
+      <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">
+        <Footer showButtons={true} />
+      </div>
     </div>
   );
 };
