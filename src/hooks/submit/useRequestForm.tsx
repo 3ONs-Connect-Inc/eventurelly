@@ -91,7 +91,9 @@ useEffect(() => {
 // Handle Blur (when user leaves the input)
 const handleBlur = (field: string) => {
   setTouched((prev) => ({ ...prev, [field]: true }));
-  validate();
+  if (isSubmitted) {
+    validate(); 
+  }
 };
 
 
@@ -114,7 +116,7 @@ const handleBlur = (field: string) => {
       });
   
       setIsSuccess(true);
-      setIsSubmitted(false);
+    //  setIsSubmitted(false);
       setFormData({  
         firstName: "",
         lastName: "",

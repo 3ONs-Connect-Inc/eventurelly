@@ -28,7 +28,7 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
   return (
     <div className="flex flex-col items-center mx-auto py-10 ">
       <div
-        className={`${bgColor2} ${textColor} w-full rounded-lg shadow-md border border-border-gray p-8`}
+        className={`${bgColor2} ${textColor} w-full rounded-lg shadow-md border border-border-gray p-8 sm:p-15`}
       >
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold max-md:text-2xl">
@@ -122,7 +122,7 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
           <div className="flex justify-end max-sm:justify-center ">
             <button
               type="submit"
-              className="flex max-xs:px-4 items-center whitespace-nowrap gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex max-xs:px-4 items-center whitespace-nowrap gap-2 bg-primary hover:bg-primary/90 mt-4 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isLoading || !checkFormComplete() || !isFormValid}
             >
               {isLoading ? "Submitting..." : "Submit"}

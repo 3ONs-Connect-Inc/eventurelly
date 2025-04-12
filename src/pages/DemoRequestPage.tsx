@@ -19,7 +19,7 @@ const DemoRequest = () => {
         type="event"
       />
 
-      <div className="relative w-full  flex flex-col items-center">
+      <div className="relative w-full  flex flex-col items-center mb-6">
         <div
           className={`${bgGradient} max-h-[900px]  flex flex-col w-full px-6 sm:px-8 lg:px-12 xl:px-16 relative pb-40`}
         >
