@@ -119,7 +119,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
                 {isOpen && (
                   <Button
-                    label={`${item.time} ${""} mins`}
+                    label="item.time"
                     className="ml-2 max-sm:ml-1 whitespace-nowrap self-start font-semibold text-sm max-sm:text-xs
                      max-[400px]:text-[10px] dark:shadow-lg dark:shadow-gray-800  bg-black text-white
                    px-4 max-sm:px-2 max-sm:py-1"
