@@ -28,7 +28,7 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
   return (
     <div className="flex flex-col items-center mx-auto py-10 ">
       <div
-        className={`${bgColor2} ${textColor} w-full rounded-lg shadow-md border border-border-gray p-8 sm:p-15`}
+        className={`${bgColor2} ${textColor} shadow-lg w-full rounded-lg  border border-border-gray p-8 sm:p-15`}
       >
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold max-md:text-2xl">
