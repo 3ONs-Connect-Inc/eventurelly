@@ -19,13 +19,13 @@ const DemoRequest = () => {
         type="event"
       />
 
-      <div className="relative w-full flex flex-col items-center">
+      <div className="relative w-full  flex flex-col items-center">
         <div
           className={`${bgGradient} max-h-[900px]  flex flex-col w-full px-6 sm:px-8 lg:px-12 xl:px-16 relative pb-40`}
         >
           <RequestHero />
         </div>
-        <div className="-mt-45 w-full px-6 max-xs:px-0 sm:px-8 lg:px-12 xl:px-16 relative
+        <div className="-mt-45 w-full max-w-5xl px-6 max-xs:px-0 sm:px-8 lg:px-12 xl:px-16 relative
          max-[768px]:-mt-35">
           <RequestForm countries={countries}/>
           </div>

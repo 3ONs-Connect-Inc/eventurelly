@@ -24,7 +24,7 @@ const HeroContent: React.FC<HeroContentProps> = ({  buttonProps, title, descript
 
   return (
     <div className={`text-${alignCenter ? "center text-center  max-w-5xl mt-6" : "left text-center md:text-left max-md:mt-6   space-y-3 w-1/2  max-md:w-full max-md:text-center max-md:justify-center"} w-full `}>
-      <h2 className={`${textColor}  mt-4 max-sm:-mt-2 text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold
+      <h2 className={`${textColor}  mt-4  text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold
      ${alignCenter ? '': 'mr-1 max-md:mr-0 max-md:mt-4 flex '} `}>
         {title}
       </h2>
@@ -34,7 +34,7 @@ const HeroContent: React.FC<HeroContentProps> = ({  buttonProps, title, descript
       </p>
    
       {buttonProps && (
-        <div className="flex max-md:justify-center mt-4 max-xs:px-2 ">
+        <div className="flex max-md:justify-center mt-8 max-xs:px-2 ">
           <Button {...buttonProps} />
         </div>
       )}

@@ -30,6 +30,7 @@ export const useRequestForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
   const activeUser = useAppSelector((state: RootState) => state.user.activeUser);
 
@@ -47,14 +48,14 @@ const validate = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10}$/;
 
-  if (touched.firstName) {
+  if (isSubmitted || touched.firstName) {
     if (!formData.firstName.trim()) {
     newErrors.firstName = "First name is required.";
   } else if (touched.firstName && !nameRegex.test(formData.firstName.trim())) {
     newErrors.firstName = "First name can only contain letters, apostrophes, periods, and hyphens.";
   }}
 
-  if (touched.lastName) {
+  if (isSubmitted || touched.lastName) {
     if (!formData.lastName.trim()) {
     newErrors.lastName = "Last name is required.";
   } else if (touched.lastName && !nameRegex.test(formData.lastName.trim())) {
@@ -65,7 +66,7 @@ const validate = () => {
     newErrors.email = "Please enter a valid email address.";
   }
 
-  if (touched.companyContact) {
+  if (isSubmitted || touched.companyContact) {
     if (!formData.companyContact.trim()) {
       newErrors.companyContact = "Country code is required.";
     } else if (!validCountryCodes.has(formData.companyContact)) {
@@ -73,7 +74,7 @@ const validate = () => {
     }
   }
 
-  if (touched.phoneNumber && !phoneRegex.test(formData.phoneNumber.trim())) {
+  if (isSubmitted || touched.phoneNumber && !phoneRegex.test(formData.phoneNumber.trim())) {
     newErrors.phoneNumber = "Phone number must be exactly 10 digits.";
   }
 
@@ -96,6 +97,7 @@ const handleBlur = (field: string) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitted(true);
     const userId = activeUser?.id; 
 
     if (!userId) {
@@ -112,6 +114,7 @@ const handleBlur = (field: string) => {
       });
   
       setIsSuccess(true);
+      setIsSubmitted(false);
       setFormData({  
         firstName: "",
         lastName: "",
@@ -124,6 +127,7 @@ const handleBlur = (field: string) => {
       console.error("Error submitting form:", err);
     } finally {
       setIsLoading(false);
+    
     }
   };
 

@@ -240,6 +240,11 @@ body {
 }
 
 
+@media(max-width: 897px){
+  .rounded-hero-image{
+    max-width: 500px ;
+  }
+}
 
 
 @media (max-width: 896px) {

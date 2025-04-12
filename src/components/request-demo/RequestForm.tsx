@@ -1,7 +1,7 @@
 import { useIconColor } from "../../hooks/ui/useIconColor";
 import Input from "../ui/Input";
 import PhoneInput from "../ui/PhoneInput";
-import { useRequestForm } from "../../hooks/forms/useRequestForm";
+import { useRequestForm } from "../../hooks/submit/useRequestForm";
 import SuccessModal from "../ui/modal/SuccessModal";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { Country } from "../../types";
@@ -24,9 +24,9 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
     setIsSuccess,
     handleSubmit,
   } = useRequestForm();
-
+  
   return (
-    <div className="flex flex-col items-center max-w-7xl mx-auto py-10 px-4">
+    <div className="flex flex-col items-center mx-auto py-10 ">
       <div
         className={`${bgColor2} ${textColor} w-full rounded-lg shadow-md border border-border-gray p-8`}
       >

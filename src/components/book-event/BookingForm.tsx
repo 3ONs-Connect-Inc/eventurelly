@@ -1,4 +1,4 @@
-import { useEventBooking } from "../../hooks/forms/useEventBooking";
+import { useEventBooking } from "../../hooks/submit/useEventBooking";
 import Input from "../ui/Input";
 import Checkbox from "../ui/Checkbox";
 import SuccessModal from "../ui/modal/SuccessModal";
