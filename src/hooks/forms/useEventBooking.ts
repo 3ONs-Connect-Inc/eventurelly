@@ -29,7 +29,16 @@ export const useEventBooking = (
     slug: slug || "",
     eventNamePrefix: "",
     eventDate: null,
-    optionalServices: [],
+    optionalServices:
+    typeof eventDetail?.optionalServices === "object" &&
+    !Array.isArray(eventDetail.optionalServices)
+      ? eventDetail.optionalServices
+      : Object.fromEntries(
+          (eventDetail?.optionalServices ?? []).map((service: string) => [
+            service,
+            false,
+          ])
+        ),
     eventName: eventDetail.eventName,
     eventDescription: eventDetail.eventDescription,
     eventFormat: eventDetail.eventFormat,
@@ -156,23 +165,16 @@ export const useEventBooking = (
   };
 
   const handleCheckboxChange = (service: string) => {
-    setFormData((prev) => {
-      const updatedServices = prev.optionalServices.includes(service)
-        ? prev.optionalServices.filter((s) => s !== service)
-        : [...prev.optionalServices, service];
-
-      return { ...prev, optionalServices: updatedServices };
-    });
-
-    // Clear the error only after submit has been attempted
-    // if (isSubmitted && errors.optionalServices) {
-    //   setErrors((prevErrors) => {
-    //     const newErrors = { ...prevErrors };
-    //     delete newErrors.optionalServices;
-    //     return newErrors;
-    //   });
-    // }
+    setFormData((prev) => ({
+      ...prev,
+      optionalServices: {
+        ...prev.optionalServices,
+        [service]: !prev.optionalServices[service],
+      },
+    }));
   };
+  
+  
 
   const checkEventExists = async (): Promise<boolean> => {
     const q = query(

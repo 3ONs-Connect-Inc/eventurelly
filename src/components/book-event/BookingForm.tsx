@@ -17,7 +17,8 @@ eventDetail: any
 const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }) => {
   const navigate = useNavigate();
   const { textColor, pColor, bgColor2 } = useIconColor();
-  const optionalServices = eventDetail?.optionalServices ?? [];
+  const optionalServices = Object.keys(eventDetail?.optionalServices ?? {});
+
   const {
     formData,
     errors,
@@ -29,11 +30,6 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
     handleSubmit,
     setIsSuccess,
   } = useEventBooking(eventId, slug, eventDetail);
-
-  // const eventTitle = 
-  // collectionName === "bookings"
-  //   ? eventDetail?.eventNamePrefix ?? eventDetail?.eventName  
-  //   : eventDetail?.eventName;
 
   const renderServices = (services: string[]) =>
     services.length > 0 ? (
@@ -192,13 +188,13 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
                   <li key={index} className="flex items-center gap-2">
                   <Checkbox
                     name={service}
-                    checked={formData.optionalServices.includes(service)}
+                    checked={formData.optionalServices[service] || false}
                     onChange={() => handleCheckboxChange(service)}
                     label={service}
                   />
                 </li>
               ))}
-            </ul>
+            </ul>  
           </div>
   ) : (
     <div className="py-2"></div>

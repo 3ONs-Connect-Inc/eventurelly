@@ -8,9 +8,9 @@ interface OptionalServicesProps {
 const OptionalServices: React.FC<OptionalServicesProps> = ({ eventDetail }) => {
   const { pColor } = useIconColor();
 
-  const optionalServices = eventDetail?.optionalServices ?? [];
+  const optionalServices = Object.keys(eventDetail?.optionalServices ?? {});
 
-  return (
+  return (  
     <div className="p-6 max-xs:p-0 rounded-lg sm:items-center sm:justify-center">
       {eventDetail.isBooked ? (
         <>

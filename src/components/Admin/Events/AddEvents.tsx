@@ -22,7 +22,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
     agendas: [],
     servicesIncluded: [],
     servicesNotIncluded: [],
-    optionalServices: [],
+    optionalServices: {},
   });
 
   const [loading, setLoading] = useState(false);
@@ -105,11 +105,17 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
 
     const searchKeywords = generateSearchKeywords();
     const eventNameLower = eventName.toLowerCase();
+     // Reset optionalServices to all `false` before submitting
+     const sanitizedOptionalServices = Object.keys(eventData.optionalServices).reduce((acc, service) => {
+      acc[service] = false; // Set all optional services to false
+      return acc;
+    }, {} as { [key: string]: boolean });
     let success;
 
     if (eventId) {
       success = await updateEvent(eventId, {
         ...eventData,
+        optionalServices: sanitizedOptionalServices,
         eventNameLower,
         searchKeywords,
       });
@@ -117,6 +123,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
     } else {
       const newEventId = doc(collection(db, "events")).id;
       success = await addEvent({ id: newEventId, ...eventData,
+        optionalServices: sanitizedOptionalServices,
         eventNameLower,  
         searchKeywords,
        });
@@ -138,7 +145,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
         agendas: [],
         servicesIncluded: [],
         servicesNotIncluded: [],
-        optionalServices: [],
+        optionalServices: {},
       });
     }
     setLoading(false);
@@ -201,10 +208,19 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
 
 
 <MultiTextInput
-  label="Optional Services"
-  values={eventData.optionalServices ?? []}
-  onChange={(values) => setEventData((prev) => ({ ...prev, optionalServices: values }))}
-/>
+          label="Optional Services"
+          values={Object.keys(eventData.optionalServices)} // Show keys (service names)
+          onChange={(values: string[]) => {
+            const updatedOptionalServices = values.reduce((acc, service) => {
+              acc[service] = true; // Mark selected services as true
+              return acc;
+            }, {} as { [key: string]: boolean });
+            setEventData((prev) => ({
+              ...prev,
+              optionalServices: updatedOptionalServices,
+            }));
+          }}
+        />
         
         <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
           {loading ? (eventId ? "Updating..." : "Adding...") : (eventId ? "Update Event" : "Add Event")}

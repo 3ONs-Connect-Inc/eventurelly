@@ -16,7 +16,7 @@ export const useFetchEventDetail = (collectionName: string, eventId?: string) =>
       setError(null);
 
       try {
-    
+      
         const docRef = doc(db, collectionName, eventId);
         const docSnap = await getDoc(docRef);
 

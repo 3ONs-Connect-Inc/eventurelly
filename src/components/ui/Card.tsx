@@ -1,4 +1,4 @@
-import { tagColorMap } from "../../../data";
+
 import { useIconColor } from "../../hooks/ui/useIconColor";
 import LazyImage from "../LazyImage";
 import Button from "./Button";
@@ -38,13 +38,13 @@ const Card: React.FC<CardProps> = ({
   buttonTextColor = false,
   scale =false,
   onClick,
-  tags,
+  //tags,
   imageClassName = "rounded-lg",
 }) => {
   const { textColor, pColor, bgColor2 } = useIconColor();
 // Format the date
 const formattedDate = date
-? format(new Date(date), "MMMM d, yyyy 'at' h:mm a")
+? format(new Date(date), "MMMM d, yyyy ")
 : "";
 
   return (
@@ -70,7 +70,7 @@ const formattedDate = date
 
 
       <div className="flex flex-col flex-grow w-full">
-      {Array.isArray(tags) && tags.length > 0 && (
+      {/* {Array.isArray(tags) && tags.length > 0 && (
   <div className="self-start flex gap-2 mt-2 flex-wrap">
     {tags.map((tag, idx) => (
       <span
@@ -82,7 +82,7 @@ const formattedDate = date
       </span>
     ))}
   </div>
-)}
+)} */}
 
       <h2
         className={`text-lg font-bold max-xs:text-base/5 ${textColor} mb-2 truncate w-full flex-grow"

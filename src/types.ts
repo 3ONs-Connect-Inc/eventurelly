@@ -61,7 +61,7 @@ export interface Event {
  agendas: { title: string; desc: string; time: string }[];
   servicesIncluded?: string[];
   servicesNotIncluded?: string[];
-  optionalServices?: string[];
+  optionalServices: { [serviceName: string]: boolean };
 }
 
 export interface BookingData {
@@ -72,7 +72,7 @@ export interface BookingData {
   eventId?: string;
   eventName: string;
   eventDate: Date | null;
-  optionalServices: string[];
+  optionalServices: { [serviceName: string]: boolean };
   eventDescription: string;
   eventFormat: string;
   location: string;

@@ -9,7 +9,7 @@ const useClickOutside = (
       if (
         refs.every((ref) => ref.current && !ref.current.contains(event.target as Node))
       ) {
-        onClickOutside();
+        onClickOutside();  
       }  
     };
 
