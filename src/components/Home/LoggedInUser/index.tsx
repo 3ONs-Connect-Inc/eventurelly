@@ -23,6 +23,7 @@ const LoggedInUser: React.FC = () => {
          
         </div>  
         <HeroSection />
+        <div className="w-full h-16 bg-gradient-to-b from-transparent to-white dark:to-[var(--dark)]" />
       </div>
 
       <div

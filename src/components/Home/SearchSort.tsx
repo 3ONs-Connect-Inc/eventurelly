@@ -49,7 +49,7 @@ const SearchSort: React.FC= () => {
         {selectedTags.map((tag, index) => (
           <span
             key={index}
-            className="bg-pink text-primary font-semibold max-xs:hidden
+            className="bg-secondary text-primary font-semibold max-xs:hidden
       rounded-lg px-3 py-1 max-md:mb-6 text-sm max-md:px-2 "
        onClick={() => handleTagClick(tag)}  >
             {tag}
@@ -59,8 +59,8 @@ const SearchSort: React.FC= () => {
 
 <div
         ref={dropdownRef}
-        className="max-xs:self-start flex flex-row whitespace-nowrap items-center  py-2 px-3 rounded-lg border  border-border-gray shadow-md 
-     gap-2 cursor-pointer max-md:px-3  max-md:py-2 dark:border-gray dark:shadow-gray-800  "
+        className="max-xs:self-start flex flex-row whitespace-nowrap items-center  py-2 px-3 rounded-lg border  border-border-foreground shadow-md 
+     gap-2 cursor-pointer max-md:px-3  max-md:py-2 dark:border-foreground dark:shadow-gray-800  "
       >
         <div
           onClick={() => setShowDropdown(!showDropdown)}

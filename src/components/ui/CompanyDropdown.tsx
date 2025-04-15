@@ -74,18 +74,18 @@ const CompanyDropdown: React.FC<CompanyDropdownProps> = ({
           onKeyDown={handleKeyDown}
           ref={inputRef}
           className={`dark:opacity-55 w-full px-3 py-2 rounded-lg text-base font-normal border-2 border-solid ${
-            errors[name] ? "border-red-500 pr-10" : "border-gray-300"
+            errors[name] ? "border-destructive pr-10" : "border-gray-300"
           } focus:border-[#6C36FE] focus:outline-none`}
           placeholder="Search and select a company"
         />
 
         {errors[name] && (
-          <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-red-500 h-5 w-5 my-auto" />
+          <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-destructive h-5 w-5 my-auto" />
         )}
       </div>
 
       {errors[name] && (
-        <p className="text-red-500 text-sm mt-1">{errors[name]}</p>
+        <p className="text-destructive text-sm mt-1">{errors[name]}</p>
       )}
 
       {isDropdownVisible && value && filteredCompanies.length > 0 && (
@@ -117,7 +117,7 @@ const CompanyDropdown: React.FC<CompanyDropdownProps> = ({
       )}
 
       {isDropdownVisible && value && filteredCompanies.length === 0 && (
-        <p className="text-sm text-red-500">No matching companies found</p>
+        <p className="text-sm text-destructive">No matching companies found</p>
       )}
     </div>
   );

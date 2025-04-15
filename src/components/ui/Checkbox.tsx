@@ -33,7 +33,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         {/* Custom Checkbox with Checkmark */}
         <label 
           htmlFor={name}
-          className="w-5 h-5 min-w-[20px] min-h-[20px] border-2 border-border-gray rounded-md flex items-center justify-center cursor-pointer 
+          className="w-5 h-5 min-w-[20px] min-h-[20px] border-2 border-border-foreground rounded-md flex items-center justify-center cursor-pointer 
                   peer-checked:bg-[#6C36FE] peer-checked:border-[#6C36FE]"
         >
           {/* SVG Checkmark: Hidden by Default, Shown When Checked */}
@@ -56,7 +56,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         </label>
       </div>
       {errors?.[name] && (
-        <p className="text-red-500 text-sm  mb-2">{errors[name]}</p>
+        <p className="text-destructive text-sm  mb-2">{errors[name]}</p>
       )}
     </div>
   );

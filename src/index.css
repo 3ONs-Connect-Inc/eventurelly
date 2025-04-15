@@ -23,42 +23,6 @@ body {
   --font-outfit: "Outfit", serif;
   --font-inter: "Inter", serif;
 
-  --color-primary: #6C36FE;
-  --color-black: #000000;
-  --color-black-light: #473d65;
-  --color-bg-footer: #190E3D;
-  --color-gray: #535862;
-  --color-dark-gray: #181D27;
-  --color-gray-light: #E6E6E6;
-  --color-off-white: #FDFDFD;
-  --color-pink-light: #f9f5ff;
-  --color-border-gray: #D1D5DB;
-  --color-border-red: #EF4444;
-  --color-pink: #F9F5FF;
-  --hover: #4825a7;
-  --dark:  #0e1414; 
-  --dark-theme: #182121; 
-  --light: #f2f2f2;
-  --white: #ffffff;
-
-  /* --color-primary: #6C36FE;
-  --color-black: #000000;
-  --color-black-light: #473d65;
-  --color-bg-footer: #190E3D;
-  --color-gray: #535862;
-  --color-dark-gray: #181D27;
-  --color-gray-light: #E6E6E6;
-  --color-off-white: #FDFDFD;
-  --color-pink-light: #f9f5ff;
-  --color-border-gray: #D1D5DB;
-  --color-border-red: #EF4444;
-  --color-pink: #F9F5FF;
-  --hover: #4825a7;
-  --dark:  #0e1414; 
-  --dark-theme: #182121; 
-  --light: #f2f2f2;
-  --white: #ffffff; */
-
   --text-large: 48px; /*  big 5xl*/
   --text-bigger: 36px; /*  md 4xl */
   --text-big: 30px;  /*  sm 3xl */
@@ -67,11 +31,30 @@ body {
   --text-small: 12px; /*  sm  text-xs */
 
 
+
+  --color-gray-light: #E6E6E6;
+  --color-pink-light: #f9f5ff;
+  --color-primary:  #6C36FE;
+  --color-background: #ffffff;
+  --color-secondary-background: #FDFDFD;
+  --color-secondary: #F9F5FF;
+  --color-border-gray: #D1D5DB;
+  --color-border-foreground: #D1D5DB;
+  --color-foreground:#535862;
+  --color-dark-foreground: #181D27;
+  --color-secondary-foreground : #E6E6E6;
+  --color-footer-foreground: #190E3D;
+  --color-destructive: #ef4444;
+ --color-ring: #ffd;
+
+  --light: #f2f2f2;
+  --white: #ffffff;
+  --hover: #4825a7;
+  --dark:  #0e1414; 
+  --dark-theme: #182121; 
 }
 
-.dark{
 
-}
 
 
 /* hover*/

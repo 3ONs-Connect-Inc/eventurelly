@@ -36,7 +36,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
       services.map((item)=> (
         <span key={item}
         className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
-        dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+        dark:bg-gray-600 focus:border-border-foreground cursor-not-allowed`}
         >
           {item}
         </span>
@@ -44,7 +44,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
     ) : (
       <span 
         className={`bg-gray-200 ${pColor} px-3 py-1 rounded-full text-sm
-        dark:bg-gray-600 focus:border-border-gray cursor-not-allowed`}
+        dark:bg-gray-600 focus:border-border-foreground cursor-not-allowed`}
         >
          No Services listed
         </span>
@@ -53,7 +53,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
   return (
     <div className={`flex flex-col items-center max-w-5xl mx-auto py-10 px-6`}>
       <div
-        className={`${bgColor2} ${textColor} w-full  rounded-lg shadow-lg max-xs:p-6  max-[320px]:p-2  border-border-gray  mx-auto py-10 px-6  flex flex-col  items-center `}
+        className={`${bgColor2} ${textColor} w-full  rounded-lg shadow-lg max-xs:p-6  max-[320px]:p-2  border-border-foreground  mx-auto py-10 px-6  flex flex-col  items-center `}
       >
         <div className="text-center mb-6 max-xs:mt-10">
           <h2 className="mt-4 max-sm:-mt-2 text-3xl max-md:text-lg  font-bold">
@@ -77,7 +77,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
               errors={errors}
               placeholder="Prefix (optional) "
             />
-            <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:-mt-2 border p-2 border-border-gray rounded-lg focus:border-border-gray cursor-not-allowed bg-gray-100 dark:bg-gray-700">
+            <span className="flex flex-wrap h-11 max-xs:h-auto mt-6 max-md:-mt-2 border p-2 border-border-foreground rounded-lg focus:border-border-foreground cursor-not-allowed bg-gray-100 dark:bg-gray-700">
             { eventDetail.eventName}
             </span>
           </div>
@@ -86,7 +86,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Event Description
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed">
             {eventDetail.eventDescription}
             </span>  
           </div>
@@ -95,7 +95,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Event Format
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed">
               {eventDetail.eventFormat}
             </span>
           </div>  
@@ -104,7 +104,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Location
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed ">
             {eventDetail.location}
             </span>
           </div>
@@ -113,7 +113,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Duration
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed ">
             {eventDetail.duration}
             </span>
           </div>
@@ -122,7 +122,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Event Category
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed ">
             {eventDetail.eventCategory}
             </span>
           </div>
@@ -131,7 +131,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
              expected Outcome
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed ">
             {eventDetail.expectedOutcome}
             </span>
           </div>
@@ -140,7 +140,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Team Size
             </label>
-            <span className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-gray cursor-not-allowed ">
+            <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed ">
             {eventDetail.teamSize}
             </span>
           </div>
@@ -149,7 +149,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Services Included
             </label>
-            <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
+            <div className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700">
               {renderServices(eventDetail?.servicesIncluded || [])}
             </div>
           </div>
@@ -158,12 +158,12 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
             <label className={`block text-sm font-medium ${textColor} mb-1`}>
               Services Not Included
             </label>
-            <div className="flex flex-wrap gap-2 border p-2 border-border-gray rounded-lg bg-gray-100 dark:bg-gray-700">
+            <div className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700">
             {renderServices(eventDetail?.servicesNotIncluded || [])} 
             </div>
           </div>
 
-          <div className="w-full  border-border-gray h-11 px-3 py-2 text-base font-normal rounded-lg focus:border-[#6C36FE] focus:outline-none border-2 border-solid">
+          <div className="w-full  border-border-foreground h-11 px-3 py-2 text-base font-normal rounded-lg focus:border-[#6C36FE] focus:outline-none border-2 border-solid">
             <DatePicker
               selected={formData.eventDate}  
               onChange={handleDateChange}
@@ -173,7 +173,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
               className="w-full "
             />
             {errors.eventDate && (
-              <p className="text-red-500 mt-4 ">{errors.eventDate}</p>
+              <p className="text-destructive mt-4 ">{errors.eventDate}</p>
             )}
           </div>
        
@@ -201,7 +201,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
   )}
           <button
             type="submit"
-            className="w-full font-semibold py-2 rounded-lg bg-primary bg-hover text-white flex items-center justify-center"
+            className="w-full font-semibold py-2 cursor-pointer rounded-lg bg-primary bg-hover text-white flex items-center justify-center"
           >
               {isLoading ? "Submitting..." : eventDetail.isBooked ? "Update Booking" : "Book This Event"}
             <FiArrowUpRight className="ml-2 font-bold" />

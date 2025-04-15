@@ -25,7 +25,7 @@ const Services:React.FC<ServicesProps>= ({eventDetail}) => {
   return (
     <div className="flex flex-col gap-12 mt-4">
     <div className="flex flex-col md:flex-row gap-10">
-    <div className="border border-border-gray p-6 max-[320px]:p-1 rounded-lg w-full md:w-1/2 max-w-max">
+    <div className="border border-border-foreground p-6 max-[320px]:p-1 rounded-lg w-full md:w-1/2 max-w-max">
           <h2 className="text-2xl max-sm:text-lg max-xs:text-base text-green-600 font-bold mb-4 max-xs:mt-4">
             Services Included
           </h2>
@@ -34,8 +34,8 @@ const Services:React.FC<ServicesProps>= ({eventDetail}) => {
       </div>
       </div>
 
-      <div className="border border-border-gray p-6 max-[320px]:p-1 rounded-lg w-full md:w-1/2 max-w-max">
-      <h2 className="text-2xl max-sm:text-lg max-xs:text-base font-bold mb-4 text-red-600 max-xs:mt-4">
+      <div className="border border-border-foreground p-6 max-[320px]:p-1 rounded-lg w-full md:w-1/2 max-w-max">
+      <h2 className="text-2xl max-sm:text-lg max-xs:text-base font-bold mb-4 text-destructive max-xs:mt-4">
             Services Not Included
           </h2>
         <div className="flex flex-col gap-4 mt-8 max-sm:mt-4">

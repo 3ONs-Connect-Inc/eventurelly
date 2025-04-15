@@ -28,7 +28,7 @@ const EventHeader: React.FC<EventHeaderProps> = ({
     <div className="w-full mt-0 flex flex-row max-xs:flex-col py-4 px-2 justify-between items-center mb-8 max-sm:mb-4">
           <div className="self-start text-left">
             <Button
-              className={`mb-6 border-border-gray font-semibold text-sm max-xs:text-small ${pColor}`}
+              className={`mb-6 border-border-foreground font-semibold text-sm max-xs:text-small ${pColor}`}
               label={title}
             />
             <h2 className="mr-10 max-md:mr-0 text-5xl font-bold max-md:text-bigger max-sm:text-big max-xs:text-mid">

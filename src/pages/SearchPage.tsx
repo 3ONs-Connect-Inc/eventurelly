@@ -25,7 +25,7 @@ const SearchPage: React.FC<SearchProps> = ({collectionName}) => {
   
 
    if (loading) return <Spinner />;
-   if (error) return <p className="text-red-500">{error}</p>;
+   if (error) return <p className="text-destructive">{error}</p>;
 
   return (
     <div

@@ -57,7 +57,7 @@ const NewPassword: React.FC<PasswordResetProps> = ({
           }}
         />
         {errors?.password && (
-          <p className="text-red-500 text-sm  text-left  mb-3">
+          <p className="text-destructive text-sm  text-left  mb-3">
             {errors.password}
           </p>
         )}

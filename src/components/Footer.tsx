@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { footerLinks } from "../../data";
 import { useIconColor } from "../hooks/ui/useIconColor";
 import Logo from "./navbar/Logo";
@@ -9,6 +9,8 @@ import { useAppSelector } from "../hooks/redux";
 const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
   const { textColor, bgColor, pColor } = useIconColor();
   const { isLoggedIn } = useAppSelector((state) => state.user);
+  const location = useLocation();
+  const isTeamBuildingPage = location.pathname === "/team-building-events"; 
 
   return (
     <footer
@@ -17,11 +19,11 @@ const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
       <div className="w-full max-w-7xl py-10 px-6 ">
         {/* Top Section */}
         {showButtons && (
-        <div className="bg-bg-footer mx-auto py-10 px-6   text-center flex flex-col items-center justify-center rounded-lg">
+        <div className="bg-footer-foreground mx-auto py-10 px-6   text-center flex flex-col items-center justify-center rounded-lg">
           <h2 className="text-white text-big max-md:text-mid font-bold mb-4">
             Let’s build stronger, happier teams together!
           </h2>
-          <p className="text-gray-light font-normal text-xl mb-6 max-md:text-base max-sm:text-tiny">
+          <p className="text-secondary-foreground font-normal text-xl mb-6 max-md:text-base max-sm:text-tiny">
             Boost team bonding, engagement, and satisfaction with unforgettable
             experiences that strengthen connections and improve retention.
           </p>
@@ -40,10 +42,10 @@ const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
             <Link to="/demo-request" >
             <Button
                label="Request a demo"
-               className="bg-white text-gray px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
+               className="bg-white text-foreground px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
              />
             </Link>
-              <a href="#teamBondingSection">
+            <a href={isTeamBuildingPage ? "/sign-up" : "#teamBondingSection"}>
               <Button
                label="Get started"
                className="bg-primary text-white px-4 py-2 text-base cursor-pointer bg-hover max-sm:text-tiny font-semibold"
@@ -96,7 +98,7 @@ const Footer:React.FC<{showButtons: boolean}> = ({showButtons}) => {
           </div>
         </div>
         {/* Divider Line */}
-        <div className="border-t border-border-gray my-6  mx-auto"></div>
+        <div className="border-t border-border-foreground my-6  mx-auto"></div>
 
         {/* Bottom Section */}
         <div className=" mx-auto  flex flex-col md:flex-row justify-between text-center md:text-left ">

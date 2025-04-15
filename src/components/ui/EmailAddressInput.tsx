@@ -43,11 +43,11 @@ const EmailAddressInput: React.FC<EmailAddressInputProps> = ({
             onChange={onUsernameChange}
             placeholder="abc"
             className={`dark:opacity-55 w-full px-3 py-2 text-base font-normal rounded-l-lg ${textColor} border-2 border-solid ${
-              errors.emailUsername ? "border-red-500" : "border-gray-300"
+              errors.emailUsername ? "border-destructive" : "border-gray-300"
             } focus:border-[#6C36FE] focus:outline-none`}
           />
           {errors.emailUsername && (
-            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-destructive h-5 w-5" />
           )}
         </div>
 
@@ -58,7 +58,7 @@ const EmailAddressInput: React.FC<EmailAddressInputProps> = ({
             value={emailDomain || ""}
             onChange={onDomainChange}
             className={`dark:opacity-55 w-full px-3 py-2.5 text-base font-normal rounded-r-lg ${textColor} border-2 border-solid ${
-              errors.emailDomain ? "border-red-500" : "border-gray-300"
+              errors.emailDomain ? "border-destructive" : "border-gray-300"
             } focus:border-[#6C36FE] focus:outline-none`}
           >
             {domains.map((domain, index) => (
@@ -68,14 +68,14 @@ const EmailAddressInput: React.FC<EmailAddressInputProps> = ({
             ))}
           </select>
           {errors.emailDomain && (
-            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-destructive h-5 w-5" />
           )}
 
         </div>
         
       </div>
-      {errors.emailUsername && <p className="text-red-500 text-sm">{errors.emailUsername}</p>}
-{errors.emailDomain && <p className="text-red-500 text-sm">{errors.emailDomain}</p>}
+      {errors.emailUsername && <p className="text-destructive text-sm">{errors.emailUsername}</p>}
+{errors.emailDomain && <p className="text-destructive text-sm">{errors.emailDomain}</p>}
 
     </div>
   );

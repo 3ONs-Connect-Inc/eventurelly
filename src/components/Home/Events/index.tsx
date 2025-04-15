@@ -35,7 +35,7 @@ const EventSection: React.FC<EventSectionProps> = ({
   };
 
   if (loading) return <Spinner />;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-destructive">{error}</p>;
   if (!events || events.length === 0) return null; 
 
   return (
@@ -53,7 +53,7 @@ const EventSection: React.FC<EventSectionProps> = ({
           pColor={pColor}
         />
         {loading && <Spinner />}
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-destructive">{error}</p>}
         {title === "Top Events" ? (
           <EventGrid events={events} handleLearnMore={handleLearnMore} />
         ) : (

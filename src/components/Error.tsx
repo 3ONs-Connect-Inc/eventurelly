@@ -27,14 +27,14 @@ const Error: React.FC<ErrorProps> = ({ message, onReset }) => {
         <div className="flex justify-center gap-4">
           <button
             onClick={handleGoHome}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition"
+            className="px-4 py-2 bg-primary cursor-pointer hover:bg-primary text-white font-medium rounded-lg transition"
           >
             Go to Home
           </button>
           {onReset && (
             <button
               onClick={onReset}
-              className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium rounded-lg transition"
+              className="px-4 py-2 bg-gray-300 cursor-pointer hover:bg-gray-400 text-gray-800 font-medium rounded-lg transition"
             >
               Try Again
             </button>

@@ -42,6 +42,7 @@ const BookEventPage:React.FC<EventProps> = () => {
           <BookingHero
            eventDetail={eventDetail}
            />
+           
         </div>
 
         <div
@@ -52,7 +53,9 @@ const BookEventPage:React.FC<EventProps> = () => {
           slug={slug} 
           eventDetail={eventDetail}
           />
+          
         </div>
+        
       </div>
 
       <BackToTop />

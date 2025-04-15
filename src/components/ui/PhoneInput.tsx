@@ -110,11 +110,11 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
             onFocus={() => setShowSuggestions(true)}
             placeholder="Code"
             className={`dark:opacity-55 px-3 py-2 text-base ${textColor} font-normal w-full rounded-l-lg border-2 ${
-              errors.companyContact ? "border-red-500" : "border-gray-300"
+              errors.companyContact ? "border-destructive" : "border-gray-300"
             } focus:border-[#6C36FE]  focus:outline-none border-2 border-solid `}
           />
           {errors.companyContact && (
-            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+            <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-destructive h-5 w-5" />
           )}
         </div>
 
@@ -140,19 +140,19 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     placeholder="Phone Number"
     maxLength={10}
     className={`dark:opacity-55 w-full px-3 py-2 text-base font-normal rounded-r-lg ${textColor} border-2 ${
-      errors.phoneNumber ? "border-red-500" : "border-gray-300"
+      errors.phoneNumber ? "border-destructive" : "border-gray-300"
     } focus:border-[#6C36FE]  focus:outline-none border-2 border-solid `}
   />
   {errors.phoneNumber && (
-    <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 h-5 w-5" />
+    <AiOutlineExclamationCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 text-destructive h-5 w-5" />
   )}
 </div>
 
       </div>
 
       {/* Error Messages */}
-      {errors.companyContact && <p className="text-red-500 text-xs mt-1">{errors.companyContact}</p>}
-      {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>}
+      {errors.companyContact && <p className="text-destructive text-xs mt-1">{errors.companyContact}</p>}
+      {errors.phoneNumber && <p className="text-destructive text-xs mt-1">{errors.phoneNumber}</p>}
 
       {/* Country Suggestions */}
       {showSuggestions && filteredCountries.length > 0 && (

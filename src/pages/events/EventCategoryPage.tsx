@@ -54,6 +54,7 @@ const EventCategoryPage: React.FC = () => {
             handleBooking={handleBooking}
           />
         )}
+           <div className="w-screen  h-10 bg-gradient-to-b from-transparent to-white dark:to-[var(--dark)]" />
       </div>
 
       <div className=" px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow mb-8">

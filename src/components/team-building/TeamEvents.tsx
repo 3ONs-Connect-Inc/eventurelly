@@ -13,10 +13,10 @@ const TeamEvents: React.FC = () => {
   const handleLearnMore = (id: string, slug: string) => {
     const formattedSlug = slug.replace(/\s+/g, "-");
     navigate(`/event-details/events/${id}/${formattedSlug}`);
-  };
+  };  
 
   if (loading) return <Spinner />;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-destructive">{error}</p>;
   if (!events) return null;
 
   return (

@@ -70,7 +70,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
         <div className="flex flex-col mt-8">
           <span
-            className={`${pColor} border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny  font-semibold max-w-max`}
+            className={`${pColor} border border-border-foreground rounded-lg px-2 py-1 text-sm max-xs:text-tiny  font-semibold max-w-max`}
           >
             {eventDetail.eventName}
           </span>
@@ -86,7 +86,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
         <div className="flex flex-col mt-10">
           <span
-            className={`${pColor} border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max`}
+            className={`${pColor} border border-border-foreground rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max`}
           >
             {eventDetail.eventName}
           </span>
@@ -141,9 +141,9 @@ const Challenge: React.FC<ChallengeProps> = ({
       </div>
 
       {eventDetail.isBooked ? null : (
-        <div className="w-1/3 max-w-md max-md:w-full h-auto mt-10 max-md:mt-4 bg-pink border border-pink-100 p-6 max-[320px]:p-1 rounded-lg shadow-lg flex flex-col space-y-4 self-start">
+        <div className="w-1/3 max-w-md max-md:w-full h-auto mt-10 max-md:mt-4 bg-secondary border border-pink-100 p-6 max-[320px]:p-1 rounded-lg shadow-lg flex flex-col space-y-4 self-start">
           <img src="/images/icon/kite.png" alt="" className="w-12 h-12" />
-          <h2 className="text-dark-gray text-2xl max-sm:text-lg max-xs:text-base font-bold">
+          <h2 className="text-dark-foreground text-2xl max-sm:text-lg max-xs:text-base font-bold">
             Ready to Plan Your Team Event?
           </h2>
           <div className="flex flex-col space-y-2">
@@ -158,7 +158,7 @@ const Challenge: React.FC<ChallengeProps> = ({
                   alt=""
                   className="self-start w-5 h-5"
                 />
-                <p className="text-gray font-normal text-base max-xs:text-tiny -mt-1 ">
+                <p className="text-foreground font-normal text-base max-xs:text-tiny -mt-1 ">
                   {text}
                 </p>
               </span>
@@ -167,7 +167,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
           <button
             onClick={handleBooking}
-            className="mb-2 flex items-center justify-center whitespace-nowrap space-x-4 bg-primary bg-hover text-white font-semibold text-base max-xs:text-tiny max-[250px]:space-x-2  px-4 py-2 rounded-lg "
+            className="mb-2 flex items-center cursor-pointer justify-center whitespace-nowrap space-x-4 bg-primary bg-hover text-white font-semibold text-base max-xs:text-tiny max-[250px]:space-x-2  px-4 py-2 rounded-lg "
           >
             <span>Book This Event</span>
             <img

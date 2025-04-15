@@ -99,13 +99,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
           {/* Error Icon */}
           {errors?.[name] && (
-            <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-red-500 h-5 w-5 my-auto " />
+            <AiOutlineExclamationCircle className="absolute inset-y-0 right-2 text-destructive h-5 w-5 my-auto " />
           )}
         </div>
 
         {/* Error Message */}
         {errors?.[name] && (
-          <p className="text-red-500 text-sm mt-1">{errors[name]}</p>
+          <p className="text-destructive text-sm mt-1">{errors[name]}</p>
         )}
       </div>
     );

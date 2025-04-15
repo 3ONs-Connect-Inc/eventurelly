@@ -69,18 +69,18 @@ text-lg items-center justify-center mt-4 space-x-2 max-xs:flex-col"
        
       </div>
 
-      <div className="flex flex-wrap max-sm:hidden justify-center bg-white p-4 border border-border-gray rounded-lg mt-8 shadow-md max-w-4xl mx-auto">
+      <div className="flex flex-wrap max-sm:hidden justify-center bg-white p-4 border border-border-foreground rounded-lg mt-8 shadow-md max-w-4xl mx-auto">
         {eventDetails.map((detail, index) =>
           detail.value ? (
             <div key={index}
-              className="flex items-center p-4 border-r border-border-gray last:border-r-0 
+              className="flex items-center p-4 border-r border-border-foreground last:border-r-0 
               space-x-4 w-full sm:w-auto">
               <img src={detail.icon} alt={detail.label} className="w-6 h-6 max-md:w-5 max-md:h-5" />
               <span className="flex flex-col whitespace-nowrap">
-                <h2 className="text-base max-md:text-tiny flex whitespace-nowrap font-bold text-gray">
+                <h2 className="text-base max-md:text-tiny flex whitespace-nowrap font-bold text-foreground">
                   {detail.label}
                 </h2>
-                <p className="text-gray text-base max-md:text-tiny font-medium flex whitespace-nowrap">
+                <p className="text-foreground text-base max-md:text-tiny font-medium flex whitespace-nowrap">
                   {detail.value}
                 </p>
               </span>

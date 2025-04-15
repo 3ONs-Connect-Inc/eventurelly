@@ -154,7 +154,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 border rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4">{eventId ? "Edit Event" : "Add New Event"}</h2>
-      {message && <p className="mb-3 text-red-500">{message}</p>}
+      {message && <p className="mb-3 text-destructive">{message}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="eventName" placeholder="Event Name" value={eventData.eventName} onChange={handleChange} required className="w-full p-2 border rounded" />
         <input type="text" name="eventTagline" placeholder="Event Tagline" value={eventData.eventTagline} onChange={handleChange} required className="w-full p-2 border rounded" />

@@ -122,7 +122,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({
 
               {/* Success/Error Messages */}
               {errors?.email && (
-                <p className="text-red-500 text-sm mb-3">{errors.email}</p>
+                <p className="text-destructive text-sm mb-3">{errors.email}</p>
               )}
               {message && (
                 <p className="text-green-500 text-sm mb-3">{message}</p>

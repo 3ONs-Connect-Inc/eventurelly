@@ -49,7 +49,7 @@ const formattedDate = date
 
   return (
     <div
-  className={`${bgColor2} border-border-gray shadow-lg p-4 rounded-lg flex flex-col items-center text-center 
+  className={`${bgColor2} border-border-foreground shadow-lg p-4 rounded-lg flex flex-col items-center text-center 
       w-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl
       ${className} ${scale ? "hover:scale-105 " : "hover:scale-98"}
       dark:border-gray-800 transition-transform duration-300 ease-in-out hover:shadow-lg 
@@ -115,9 +115,9 @@ const formattedDate = date
       >
         <Button
           label={buttonText}
-          className={` rounded-lg border text-black  text-base font-semibold max-xs:text-small border-border-gray hover-effect
+          className={` rounded-lg border text-black  text-base font-semibold max-xs:text-small border-border-foreground hover-effect
              ${buttonFullWidth ? "w-full " : ""}
-                ${buttonColor ? "bg-pink" : "bg-white"}
+                ${buttonColor ? "bg-secondary" : "bg-white"}
                 ${buttonTextColor ? "text-primary" : ""}
              `}
           onClick={onClick}

@@ -5,10 +5,12 @@ import BackToTop from "../components/BackToTop";
 import { useAppSelector } from "../hooks/redux";
 import LoggedInUser from "../components/Home/LoggedInUser";
 import GuestUser from "../components/Home/GuestUser";
+import { useIconColor } from "../hooks/ui/useIconColor";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAppSelector((state) => state.user);
+  const { bgColor } = useIconColor();
 
   const handleNavigation = (title: string) => {
     navigate(
@@ -17,7 +19,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="relative   overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full">
+    <div className={`${bgColor} relative   overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full`}>
       <Seo
         title="Home"
         description="Home page."

@@ -21,6 +21,7 @@ const GuestUser: React.FC<GuestUserProps> = ({ handleNavigation }) => {
          
         </div>
         <HeroSection />
+        <div className="w-screen  h-10 bg-gradient-to-b from-transparent to-white dark:to-[var(--dark)]" />
       </div>
 
       <div

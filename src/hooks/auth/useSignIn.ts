@@ -6,7 +6,7 @@ import { auth, db } from "../../firebase/config";
 import { User } from "../../types";
 import {
   browserLocalPersistence,
-  browserSessionPersistence,
+  browserSessionPersistence,  
   setPersistence,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -43,9 +43,10 @@ const useSignIn = () => {
   useEffect(() => {
     const savedEmail = localStorage.getItem("rememberedEmail");
     if (savedEmail) {
-      setFormData((prev) => ({ ...prev, email: savedEmail, rememberMe: true }));
+      setFormData((prev) => ({ ...prev, email: savedEmail, rememberMe: false }));
     }
   }, []);
+  
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =

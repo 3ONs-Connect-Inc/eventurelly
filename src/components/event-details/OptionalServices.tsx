@@ -14,7 +14,7 @@ const OptionalServices: React.FC<OptionalServicesProps> = ({ eventDetail }) => {
     <div className="p-6 max-xs:p-0 rounded-lg sm:items-center sm:justify-center">
       {eventDetail.isBooked ? (
         <>
-          <span className="whitespace-nowrap border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max">
+          <span className="whitespace-nowrap border border-border-foreground rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max">
             Added at extra cost
           </span>
           <h2 className="text-5xl font-bold max-md:text-bigger max-sm:text-big max-xs:text-mid mt-4">
@@ -23,7 +23,7 @@ const OptionalServices: React.FC<OptionalServicesProps> = ({ eventDetail }) => {
         </>
       ) : (
         <>
-          <span className="whitespace-nowrap border border-border-gray rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max">
+          <span className="whitespace-nowrap border border-border-foreground rounded-lg px-2 py-1 text-sm max-xs:text-tiny font-semibold max-w-max">
             Available at extra cost
           </span>
           <h2 className="text-5xl font-bold max-md:text-bigger max-sm:text-big max-xs:text-mid mt-4">

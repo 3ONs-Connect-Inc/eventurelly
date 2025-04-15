@@ -3,10 +3,12 @@ import SignIn from "../../components/auth/SignIn";
 import { Link } from "react-router-dom";
 import LazyImage from "../../components/LazyImage";
 import Seo from "../../components/Seo";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 const SignInAccount: React.FC = () => {
+    const  {bgColor} = useIconColor()
   return (
-    <div className="flex flex-col md:flex-row min-h-screen w-full">
+    <div className={` ${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
       <Seo
         title="Sign in Account"
         description="Sign in Account page."
@@ -61,7 +63,7 @@ const SignInAccount: React.FC = () => {
         {/* Text section for larger screens */}
         <div className="hidden md:absolute md:bottom-10 md:left-10 md:text-white md:block">
           <h2 className="text-4xl font-bold">Welcome back,</h2>
-          <p className="mt-4 text-lg max-w-sm text-gray-light font-normal">
+          <p className="mt-4 text-lg max-w-sm text-secondary-foreground font-normal">
             Access your dashboard, manage bookings, and connect with clients
             seamlessly.
           </p>

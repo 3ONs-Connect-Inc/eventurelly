@@ -12,7 +12,7 @@ const AuthButtons = ({ handleLogout, isLoggedIn }: { handleLogout: () => void; i
           <Link to="/sign-in">
             <Button
               label="Log In"
-              className="text-primary bg-white rounded-lg border font-semibold font-inter border-border-gray hover-effect cursor-pointer"
+              className="text-primary bg-white rounded-lg border font-semibold font-inter border-border-foreground hover-effect cursor-pointer"
             />
           </Link>
           <Link to="/sign-up">

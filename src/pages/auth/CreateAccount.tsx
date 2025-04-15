@@ -4,13 +4,15 @@ import useFetchCountries from "../../hooks/ui/useFetchCountries";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import LazyImage from "../../components/LazyImage";
+import { useIconColor } from "../../hooks/ui/useIconColor";
 
 const CreateAccount: React.FC = () => {
   const countries = useFetchCountries();
+  const  {bgColor} = useIconColor()
 
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen w-full">
+    <div className={`${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
       <Seo
         title="Create Account"
         description="Create account page."
@@ -44,15 +46,13 @@ const CreateAccount: React.FC = () => {
           <LazyImage
             src="/images/ppl/p3.png"
             alt="background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover "
           />
-          {/* <div className="absolute top-0 right-0 w-3 h-full bg-gradient-to-l dark:from-gray-900 from-gray-300 via-transparent to-transparent" />
- */}
         </div>
         {/* Text section */}
-        <div className="absolute bottom-10 left-10 text-white">
+        <div className="absolute bottom-10 left-10 text-background">
           <h2 className="text-4xl font-bold ">Create an Account</h2>
-          <p className="mt-4 text-lg max-w-sm text-gray-light font-normal ">
+          <p className="mt-4 text-lg max-w-sm text-secondary-foreground font-normal ">
             Access your dashboard, manage bookings, and connect with clients
             seamlessly.
           </p>
