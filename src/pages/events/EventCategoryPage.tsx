@@ -18,11 +18,11 @@ const EventCategoryPage: React.FC = () => {
     collectionName || "events",
     id
   );
-
+  
   if (loading) return <Spinner />;
   if (error) return <p className="text-red-500">{error}</p>;
   if (!eventDetail) return null;
-
+  
     const handleBooking = () => {
       if (eventDetail.isBooked) {
         navigate(`/edit-event/${collectionName}/${id}/${slug}`);

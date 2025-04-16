@@ -75,7 +75,7 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
           confirmPassword={confirmPassword}
           setConfirmPassword={setConfirmPassword} 
           errors={errors}
-          setErrors={setErrors}  
+          setErrors={setErrors}    
           loading={loading}
           setLoading={setLoading}
           message={message}  

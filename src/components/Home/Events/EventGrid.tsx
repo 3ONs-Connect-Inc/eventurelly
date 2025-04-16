@@ -22,7 +22,7 @@ const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
          key={index}
          image={card.image || fallbackImage}
          title={card.eventName}
-         description={card.eventDescription}
+         description={card.eventDesc}
          buttonText={card.buttonText || "Learn More"}
          className="self-start text-left border "
          buttonAlignment="center"

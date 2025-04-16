@@ -12,7 +12,7 @@ const CreateAccount: React.FC = () => {
 
 
   return (
-    <div className={`${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
+    <div className={`${bgColor} flex flex-col md:flex-row min-h-screen  w-full`}>
       <Seo
         title="Create Account"
         description="Create account page."
@@ -68,7 +68,7 @@ const CreateAccount: React.FC = () => {
       </div>
 
       {/* Right Section */}
-      <div className="flex flex-col w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
+      <div className="flex flex-col justify-center items-center w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
      
 
         {/* Forms */}
