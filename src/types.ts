@@ -75,7 +75,7 @@ export interface BookingData {
   eventDate: Date | null;
   optionalServices: { [serviceName: string]: boolean };
   eventDescription: string;
-  eventDesc: string;
+  eventDesc?: string;
   eventFormat: string;
   location: string;
   eventCategory?: string,
