@@ -38,7 +38,7 @@ const TeamEvents: React.FC = () => {
                 key={index}
                 image={card.image || fallbackImage}
                 title={card.eventName}
-                description={card.eventDesc}
+                description={card.eventDescription}
                 buttonText={card.buttonText || "Learn More"}
                 className="self-start text-left border"
                 buttonAlignment="center"

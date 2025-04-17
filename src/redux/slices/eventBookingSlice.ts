@@ -8,7 +8,6 @@ interface BookingData {
   eventName: string;
   eventDate: string | null;
   optionalServices: { [serviceName: string]: boolean };
-  eventDesc?: string;
   eventDescription: string;
   eventFormat: string;
   location: string;

@@ -11,7 +11,6 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
   const [eventData, setEventData] = useState<Omit<Event, "id">>({
     eventName: "",
     eventTagline: "",
-    eventDesc: "",
     eventDescription: "",
     slug: "",
     eventFormat: "",
@@ -135,7 +134,6 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
       setEventData({
         eventName: "",
         eventTagline: "",
-        eventDesc: "",
         eventDescription: "",
         slug: "",
         eventFormat: "",
@@ -160,7 +158,6 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="eventName" placeholder="Event Name" value={eventData.eventName} onChange={handleChange} required className="w-full p-2 border rounded" />
         <input type="text" name="eventTagline" placeholder="Event Tagline" value={eventData.eventTagline} onChange={handleChange} required className="w-full p-2 border rounded" />
-        <textarea name="eventDesc" placeholder="Event Desc" value={eventData.eventDesc} onChange={handleChange} required className="w-full p-2 border rounded" />
         <textarea name="eventDescription" placeholder="Event Description" value={eventData.eventDescription} onChange={handleChange} required className="w-full p-2 border rounded" />
         <input type="text" name="slug"   readOnly placeholder="Slug" value={eventData.slug} onChange={handleChange} className="w-full p-2 border rounded" />
       

@@ -8,12 +8,13 @@
 body {
   font-family: "Figtree", serif;
     overflow-x: hidden;
-   
+     
 
 }
 
 @theme {
   --breakpoint-xs: 480px;
+  --breakpoint-2xs: 564px;
   --breakpoint-sm: 640px;
   --breakpoint-2sm: 768px; 
   --breakpoint-md: 896px;

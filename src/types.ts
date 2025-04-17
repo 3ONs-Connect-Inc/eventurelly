@@ -49,7 +49,6 @@ export interface Event {
   eventNameLower?: string;
   bookingId?: string;
   eventDescription: string;
-  eventDesc: string;
   buttonText?: string;
   slug: string;
   eventFormat?: string;
@@ -75,7 +74,6 @@ export interface BookingData {
   eventDate: Date | null;
   optionalServices: { [serviceName: string]: boolean };
   eventDescription: string;
-  eventDesc?: string;
   eventFormat: string;
   location: string;
   eventCategory?: string,
