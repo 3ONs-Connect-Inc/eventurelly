@@ -10,7 +10,7 @@ interface EventGridProps {
 
 const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
   return (
-    <div className="grid grid-cols-1 2xs:grid-cols-2 2sm:grid-cols-3 md:grid-cols-3 gap-6 w-full h-full justify-items-center">
+    <div className="grid grid-cols-1 xs:grid-cols-2 2sm:grid-cols-3 md:grid-cols-3 gap-6 w-full h-full justify-items-center">
       {events.slice(0, 7).map((card, index) => {
         const fallbackImage =
           cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
@@ -30,7 +30,7 @@ const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
             buttonFullWidth
             buttonColor
             buttonTextColor
-            imageClassName="rounded-lg w-full h-48 "
+            imageClassName="rounded-lg "
             scale
             onClick={() => handleLearnMore(card.id, card.slug)}
           />

@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({
         ${className} ${scale ? "hover:scale-105" : "hover:scale-98"}
         dark:border-gray-800 transition-transform duration-300 ease-in-out hover:shadow-lg`}
     >
-      <div className={`overflow-hidden mb-4 ${imageClassName}`}>
+      <div className={`max-w-full max-h-48 overflow-hidden mb-4 ${imageClassName}`}>
         <LazyImage
           src={image}
           alt={title}
