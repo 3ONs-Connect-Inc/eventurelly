@@ -16,7 +16,7 @@ const EventCategoryPage: React.FC = () => {
   const { collectionName, id, slug } = useParams();
   const { loading, error, eventDetail } = useFetchEventDetail(
     collectionName || "events",
-    id
+    id  
   );
   
   if (loading) return <Spinner />;

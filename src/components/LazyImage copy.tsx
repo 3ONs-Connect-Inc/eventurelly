@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import imageCompression from "browser-image-compression";
-import { Loader } from "lucide-react";
 
 const LazyImage = ({
   src,
   alt,
   className,
+  placeholder,
 }: {
   src: string;
   alt: string;
   className?: string;
+  placeholder?: string;
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [compressedSrc, setCompressedSrc] = useState<string>("");
@@ -39,7 +40,7 @@ const LazyImage = ({
               setCompressedSrc(compressedUrl);
             } catch (error) {
               console.error("Image compression failed:", error);
-              setCompressedSrc(src); // fallback
+              setCompressedSrc(src); // fallback to original
             } finally {
               setIsCompressing(false);
             }
@@ -57,28 +58,16 @@ const LazyImage = ({
   }, [src]);
 
   return (
-    <div className="h-full relative flex items-center justify-center" ref={containerRef}>
+    <div className="h-full" ref={containerRef}>
       {isVisible && (
-        <>
-{isCompressing ? (
-  <div className="flex items-center justify-center h-[60px] w-full">
-    <div className="flex justify-center items-center h-full">
-      <Loader className="h-16 w-16 text-gray-400  "   style={{
-    animation: "spin 2s linear infinite",
-  }}/>
-    </div>
-  </div>
-) : (
-  <img
-    src={compressedSrc}
-    alt={alt}
-    className={`${className} transition-all duration-300 ease-in-out`}
-    loading="lazy"
-  />
-)}
-
-
-        </>
+        <img
+          src={isCompressing ? placeholder || src : compressedSrc}
+          alt={alt}
+          className={`${className}
+           ${ isCompressing ? "blur-none scale-101" : "blur-0 transition-all duration-300 ease-in-out" }
+           `}
+          loading="lazy"
+        />
       )}
     </div>
   );

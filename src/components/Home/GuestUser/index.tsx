@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useIconColor } from "../../../hooks/ui/useIconColor";
 import { SearchBar } from "../SearchBar";
 import { HeroSection } from "../HeroSection";
 import TeamBonding from "../TeamBonding";
 import { TopPick } from "../Events";
+import { useLocation } from "react-router-dom";
 
 interface GuestUserProps {
   handleNavigation: (title: string) => void;
 }
 const GuestUser: React.FC<GuestUserProps> = ({ handleNavigation }) => {
   const { bgGradient, bgColor } = useIconColor();
+  const location = useLocation();
 
-  return (
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("scrollTo") === "teamBonding") {
+      const element = document.getElementById("teamBondingSection");
+      if (element) {
+        element.scrollIntoView({ behavior: "auto" });
+      }
+    }
+  }, [location]);
+  
+  return (  
     <>
       <div
         className={`${bgGradient} min-h-auto flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 xl:px-16`}

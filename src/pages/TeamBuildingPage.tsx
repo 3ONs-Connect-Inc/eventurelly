@@ -29,7 +29,7 @@ const TeamBuildingPage = () => {
         <div className="max-w-7xl  mx-auto px-6 max-xs:px-0">
           <TeamEvents />
         </div>
-      </div>
+      </div>  
 
       <BackToTop />
       <div className="max-xs:px-0 px-6 sm:px-8 lg:px-12 xl:px-16 ">

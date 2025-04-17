@@ -25,7 +25,7 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
       navigation={false}
       modules={[Navigation]}
       onSwiper={(swiper) => (swiperRef.current = swiper)}
-      className="w-full h-full"
+      className="w-full h-full "
     >
       {events.map((card, index) => {
         const fallbackImage =
@@ -34,7 +34,7 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
           "/images/top-picks/img6.png";
 
         return (
-          <SwiperSlide key={index} className="flex justify-center h-full">
+          <SwiperSlide key={index} className="flex justify-center  h-full p-1">
             <div className="h-full w-full max-w-xs sm:max-w-sm md:max-w-md flex">
               <Card
                 image={card.image || fallbackImage}
