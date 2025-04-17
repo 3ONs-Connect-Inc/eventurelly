@@ -48,23 +48,23 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div
-      className={`${bgColor2} border-border-foreground shadow-lg p-4 rounded-lg flex flex-col justify-between
+      className={`${bgColor2} border-border-foreground shadow-lg p-4 rounded-lg flex flex-col items-center justify-between
         w-full h-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl
         ${className} ${scale ? "hover:scale-105" : "hover:scale-98"}
         dark:border-gray-800 transition-transform duration-300 ease-in-out hover:shadow-lg`}
     >
-      <div className={`w-full h-48 overflow-hidden mb-4 ${imageClassName}`}>
+      <div className={`overflow-hidden mb-4 ${imageClassName}`}>
         <LazyImage
           src={image}
           alt={title}
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full max-w-full sm:max-w-full"
         />
       </div>
 
       <div className="flex flex-col flex-grow w-full">
         <h2
           className={`text-lg font-bold max-xs:text-base/5 ${textColor} mb-2 truncate w-full ${
-            textAlignment === "left" ? "self-start mt-2" : "justify-center"
+            textAlignment === "left" ? "self-start mt-2" : "flex items-center justify-center"
           }`}
         >
           {title}

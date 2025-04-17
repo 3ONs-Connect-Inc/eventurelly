@@ -30,7 +30,7 @@ const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
             buttonFullWidth
             buttonColor
             buttonTextColor
-            imageClassName="rounded-lg"
+            imageClassName="rounded-lg w-full h-48 "
             scale
             onClick={() => handleLearnMore(card.id, card.slug)}
           />

@@ -49,7 +49,7 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
                 buttonFullWidth
                 buttonColor
                 buttonTextColor
-                imageClassName="rounded-lg"
+                imageClassName="rounded-lg w-full h-48 "
                 onClick={() => handleLearnMore(card.id, card.slug)}
               />
             </div>
