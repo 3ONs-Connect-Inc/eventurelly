@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import imageCompression from "browser-image-compression";
-import { Loader } from "lucide-react";
+// import { Loader } from "lucide-react";
 
 const LazyImage = ({
   src,
@@ -63,9 +63,9 @@ const LazyImage = ({
 {isCompressing ? (
   <div className="flex items-center justify-center h-[60px] w-full">
     <div className="flex justify-center items-center h-full">
-      <Loader className="h-16 w-16 text-gray-400  "   style={{
+      {/* <Loader className="h-16 w-16 text-gray-400  "   style={{
     animation: "spin 2s linear infinite",
-  }}/>
+  }}/> */}
     </div>
   </div>
 ) : (
