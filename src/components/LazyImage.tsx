@@ -64,7 +64,7 @@ const LazyImage = ({
   <div className="flex items-center justify-center h-[60px] w-full">
     <div className="flex justify-center items-center h-full">
       {/* <Loader className="h-16 w-16 text-gray-400  "   style={{
-    animation: "spin 2s linear infinite",
+    animation: "spin 2s linear infinite", 
   }}/> */}
     </div>
   </div>
