@@ -12,7 +12,7 @@ const Error: React.FC<ErrorProps> = ({ message, onReset }) => {
   const handleGoHome = () => {
     if (onReset) {
       onReset();
-    }
+    }  
     navigate("/");
   };
 

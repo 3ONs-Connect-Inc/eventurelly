@@ -20,7 +20,7 @@ createRoot(document.getElementById("root")!).render(
         <PersistGate loading={<Spinner />} persistor={persistor}>
           <ThemeProvider>
             <BrowserRouter>
-              <ErrorBoundary>
+              <ErrorBoundary>  
                 <Suspense fallback={<Spinner />}>
                   <App />
                 </Suspense>

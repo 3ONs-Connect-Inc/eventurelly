@@ -61,7 +61,7 @@ const SignInAccount: React.FC = () => {
         </div>
 
         {/* Text section for larger screens */}
-        <div className="hidden md:absolute md:bottom-10 md:left-10 md:text-white md:block">
+        <div className="hidden md:absolute md:bottom-20 md:left-15 md:text-white md:block">
           <h2 className="text-4xl font-bold">Welcome back,</h2>
           <p className="mt-4 text-lg max-w-sm text-secondary-foreground font-normal">
             Access your dashboard, manage bookings, and connect with clients
@@ -79,10 +79,11 @@ const SignInAccount: React.FC = () => {
       </div>
 
       {/* Right Section - Below left section on small screens */}
-
-      <div className="flex flex-col justify-center items-center w-full max-w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
-        <SignIn />
-      </div>
+         <div className="flex flex-col justify-center items-center w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
+     <div className="w-full max-w-md">
+         <SignIn />
+     </div>
+     </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { footerLinks } from "../../data";
 import { useIconColor } from "../hooks/ui/useIconColor";
 import Logo from "./navbar/Logo";
@@ -8,11 +8,11 @@ import { useAppSelector } from "../hooks/redux";
 const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
   const { textColor, bgColor, pColor } = useIconColor();
   const { isLoggedIn } = useAppSelector((state) => state.user)
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleGetStarted = () => {
-  //   navigate("/?scrollTo=teamBonding");
-  // };
+  const handleGetStarted = () => {
+    navigate("/?scrollTo=teamBonding");
+  };
   
   return (
     <footer
@@ -48,13 +48,12 @@ const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
                       className="bg-white text-foreground px-4 py-2 cursor-pointer hover-effect text-base max-sm:text-tiny font-semibold"
                     />
                   </Link>
-                  <a href= "#teamBondingSection">
+
                   <Button
-                   //  onClick={handleGetStarted}
+                     onClick={handleGetStarted}
                       label="Get started"
                       className="bg-primary text-white px-4 py-2 text-base cursor-pointer bg-hover max-sm:text-tiny font-semibold"
                     /> 
-               </a>
                 </>
               )}
             </div>

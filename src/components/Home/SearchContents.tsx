@@ -113,13 +113,13 @@ const SearchContents: React.FC<SearchProps> = ({
         description={card.eventDescription}
        // tags={Array.isArray(card.eventCategory) ? card.eventCategory : [card.eventCategory]}
         buttonText={card.buttonText || "Learn More"}
-        className="self-start text-left border "
+        className="h-full w-full text-left border"
         buttonAlignment="center"
         textAlignment="left"
         buttonFullWidth
         buttonColor
         buttonTextColor
-        imageClassName="w-full h-full"
+        imageClassName="rounded-lg"
         scale
         onClick={() => handleLearnMore(card.id, card.slug,  card.collectionName)}
       />

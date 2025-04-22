@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import imageCompression from "browser-image-compression";
-// import { Loader } from "lucide-react";
+
 
 const LazyImage = ({
   src,
   alt,
-  className,
+  className = "",
 }: {
   src: string;
   alt: string;
@@ -15,6 +15,9 @@ const LazyImage = ({
   const [compressedSrc, setCompressedSrc] = useState<string>("");
   const [isCompressing, setIsCompressing] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // ✅ Detect if loader should be shown based on class
+  const shouldShowLoader = className.includes("with-loader");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,24 +63,22 @@ const LazyImage = ({
     <div className="h-full relative flex items-center justify-center" ref={containerRef}>
       {isVisible && (
         <>
-{isCompressing ? (
-  <div className="flex items-center justify-center h-[60px] w-full">
-    <div className="flex justify-center items-center h-full">
-      {/* <Loader className="h-16 w-16 text-gray-400  "   style={{
-    animation: "spin 2s linear infinite", 
-  }}/> */}
-    </div>
-  </div>
-) : (
-  <img
-    src={compressedSrc}
-    alt={alt}
-    className={`${className} transition-all duration-300 ease-in-out`}
-    loading="lazy"
-  />
-)}
+          {isCompressing && shouldShowLoader ? (
+            <div className="flex items-center justify-center h-[60px] w-full">
 
+<div className="flex justify-center items-center h-full">
+  <img className="h-16 w-16" src="/images/loader.gif" alt="" />
+</div>
 
+            </div>
+          ) : (
+            <img
+              src={compressedSrc}
+              alt={alt}
+              className={`${className} transition-all duration-300 ease-in-out`}
+              loading="lazy"
+            />
+          )}
         </>
       )}
     </div>

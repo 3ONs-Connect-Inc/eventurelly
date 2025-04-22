@@ -21,7 +21,7 @@ const BookEventPage = lazy(() => import('../pages/events/BookEventPage'));
 
 const UserRoutes= () => { 
   const location = useLocation();
-  const hideNavbarRoutes = ["/sign-in", 
+  const hideNavbarRoutes = ["/sign-in",   
     "/sign-up"
   ];
 

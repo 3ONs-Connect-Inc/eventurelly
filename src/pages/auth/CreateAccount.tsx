@@ -50,7 +50,7 @@ const CreateAccount: React.FC = () => {
           />
         </div>
         {/* Text section */}
-        <div className="absolute bottom-10 left-10 text-background">
+        <div className="absolute bottom-40 left-15 text-background">
           <h2 className="text-4xl font-bold ">Create an Account</h2>
           <p className="mt-4 text-lg max-w-sm text-secondary-foreground font-normal ">
             Access your dashboard, manage bookings, and connect with clients

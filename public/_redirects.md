@@ -1,5 +1,3 @@
-->/* /index.html 200
-
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
@@ -9,7 +7,3 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule . /index.html [L]
 </IfModule>
-<Files .env>
-    Order allow,deny
-    Deny from all
-  </Files>

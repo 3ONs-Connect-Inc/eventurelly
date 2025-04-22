@@ -87,7 +87,7 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
               Event Description
             </label>
             <span className="flex flex-wrap gap-2 border p-2 border-border-foreground rounded-lg bg-gray-100 dark:bg-gray-700 focus:border-border-foreground cursor-not-allowed">
-            {eventDetail.eventDesc}
+            {eventDetail.eventDescription}
             </span>  
           </div>
 

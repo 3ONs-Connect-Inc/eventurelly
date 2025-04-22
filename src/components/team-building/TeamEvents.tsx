@@ -47,6 +47,7 @@ const TeamEvents: React.FC = () => {
                 buttonColor
                 buttonTextColor
                 imageClassName="w-full h-full"
+                scale
                 onClick={() => handleLearnMore(card.id, card.eventName)}
               />
             );

@@ -2,7 +2,6 @@
 import { cardData } from "../../../../data";
 import Card from "../../ui/Card";
 
-
 interface EventGridProps {
   events: any[];  
   handleLearnMore: (id: string, slug: string) => void;
@@ -30,7 +29,7 @@ const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
             buttonFullWidth
             buttonColor
             buttonTextColor
-            imageClassName="rounded-lg"
+            imageClassName="rounded-lg "
             scale
             onClick={() => handleLearnMore(card.id, card.slug)}
           />

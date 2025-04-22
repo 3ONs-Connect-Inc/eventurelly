@@ -21,6 +21,7 @@ body {
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 2560px;
   --font-outfit: "Outfit", serif;
   --font-inter: "Inter", serif;
 
@@ -54,7 +55,6 @@ body {
   --dark:  #0e1414; 
   --dark-theme: #182121; 
 }
-
 
 
 

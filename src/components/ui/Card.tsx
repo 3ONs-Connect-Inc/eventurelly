@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({
         <LazyImage
           src={image}
           alt={title}
-          className="object-cover w-full h-full max-w-full sm:max-w-full"
+          className="object-cover w-full h-full max-w-full with-loader sm:max-w-full"
         />
       </div>
 
@@ -71,7 +71,7 @@ const Card: React.FC<CardProps> = ({
         </h2>
 
         <div className="min-h-[3rem] mb-2">
-          <p className={`text-sm ${pColor} font-normal line-clamp-2`}>
+          <p className={`text-sm ${pColor} font-normal line-clamp-3`}>
             {description || "\u00A0" /* Ensures consistent spacing */}
           </p>
         </div>
