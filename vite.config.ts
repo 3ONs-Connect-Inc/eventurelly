@@ -10,4 +10,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['react-firebase-hooks'], 
   },
+  publicDir: 'public',
 });
