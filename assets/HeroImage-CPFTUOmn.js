@@ -1,3 +1,3 @@
-import{j as l}from"./index-Bj8hweEQ.js";import{L as s}from"./LazyImage-C9arZuG1.js";const d=({className:a,src:o,alt:r,rounded:e=!1})=>l.jsx("div",{className:`w-full flex justify-center ${e?"w-1/2 max-md:w-full":""}`,children:l.jsx("div",{className:`relative 
+import{j as l}from"./index-BXLmG5Yr.js";import{L as s}from"./LazyImage-BKGJRCNs.js";const d=({className:a,src:o,alt:r,rounded:e=!1})=>l.jsx("div",{className:`w-full flex justify-center ${e?"w-1/2 max-md:w-full":""}`,children:l.jsx("div",{className:`relative 
     ${e?"w-full max-md:w-[90%] rounded-hero-image mx-auto flex justify-center":" w-full h-auto max-w-full  max-h-full overflow-hidden"}`,children:l.jsx(s,{src:o,alt:r,className:`
         ${e?"w-full object-cover aspect-[569/486] rounded-[50%] rounded-bl-[5%] with-loader rounded-tr-[5%] shadow-lg":"w-full h-full max-h-[400px] object-cover rounded-lg shadow-md  with-loader "} ${a}`})})});export{d as H};
