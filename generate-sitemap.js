@@ -2,7 +2,7 @@
 import admin from 'firebase-admin';
 import { Buffer } from 'buffer';
 
-const serviceAccountJson = Buffer.from(import.meta.env.VITE_SERVICE_ACCOUNT_KEY, 'base64').toString('utf-8');
+const serviceAccountJson = Buffer.from(process.env.VITE_SERVICE_ACCOUNT_KEY, 'base64').toString('utf-8');
 
 const serviceAccount = JSON.parse(serviceAccountJson);
 
