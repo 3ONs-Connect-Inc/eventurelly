@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://eventurelly.com/</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/sign-in</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/sign-up</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/2fa-auth</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/verify-email</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/forgot-password</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/password-success</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/search</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/team-building-events</loc>
+  </url>
+  <url>
+    <loc>https://eventurelly.com/demo-request</loc>
+  </url>
+</urlset>
