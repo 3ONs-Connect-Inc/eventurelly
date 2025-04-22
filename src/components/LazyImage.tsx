@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import imageCompression from "browser-image-compression";
+import loader from '/images/loader.gif'
 
 const LazyImage = ({
   src,
@@ -68,7 +69,7 @@ const LazyImage = ({
           {isCompressing && shouldShowLoader ? (
             <div className="flex items-center justify-center h-[60px] w-full">
               <div className="flex justify-center items-center h-full">
-                <img className="h-16 w-16" src="/images/loader.gif" alt="" />
+                <img className="h-16 w-16" src={loader} alt="" />
               </div>
             </div>
           ) : (
