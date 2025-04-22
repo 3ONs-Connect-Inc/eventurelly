@@ -36,6 +36,8 @@ jobs:
         run: npm run build # The build command of your project
       - name: Debug build output
         run: ls -la && ls -la ./dist
+      - name: Move Sitemap to dist
+        run: mv public/sitemap.xml dist/sitemap.xml
       - name: Push
         uses: s0/git-publish-subdir-action@develop
         

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import imageCompression from "browser-image-compression";
 
-
 const LazyImage = ({
   src,
   alt,
@@ -60,16 +59,17 @@ const LazyImage = ({
   }, [src]);
 
   return (
-    <div className="h-full relative flex items-center justify-center" ref={containerRef}>
+    <div
+      className="h-full relative flex items-center justify-center"
+      ref={containerRef}
+    >
       {isVisible && (
         <>
           {isCompressing && shouldShowLoader ? (
             <div className="flex items-center justify-center h-[60px] w-full">
-
-<div className="flex justify-center items-center h-full">
-  <img className="h-16 w-16" src="/images/loader.gif" alt="" />
-</div>
-
+              <div className="flex justify-center items-center h-full">
+                <img className="h-16 w-16" src="/images/loader.gif" alt="" />
+              </div>
             </div>
           ) : (
             <img
