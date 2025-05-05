@@ -3,11 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import RootLayout from "../pages/admin/Layout";
 import NotFound from "../pages/NotFound";
 
-
 const DashboardPage = lazy(() => import("../pages/admin/Home"));
 const Events = lazy(() => import("../pages/admin/Events"));
-
-
 
 const Admin = () => {
   return (
@@ -17,7 +14,6 @@ const Admin = () => {
        <Route index element={<DashboardPage />} />
          <Route path="/events" element={<Events />} />
        <Route path="/reports" element={<Events />} />
-
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
