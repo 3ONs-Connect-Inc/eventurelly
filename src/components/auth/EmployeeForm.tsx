@@ -27,6 +27,7 @@ const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
     handleSubmit,
     setFormData,
     setErrors,
+    formSubmitted
   } = useEmployeeFormHandler(
     {
       id: "",
@@ -71,10 +72,11 @@ const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           type="text"
           name="firstName"
           value={formData.firstName}
+         
           onChange={handleChange}
           placeholder="John"
           errors={{
-            firstName: errors.firstName,
+            firstName: formSubmitted ? errors.firstName : undefined,
           }}
           setErrors={setErrors}
         />
@@ -87,7 +89,7 @@ const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           onChange={handleChange}
           placeholder="Doe"
           errors={{
-            lastName: errors.lastName,
+            lastName: formSubmitted ? errors.lastName : undefined,
           }}
           setErrors={setErrors}
         />
@@ -98,7 +100,7 @@ const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           value={formData.companyName}
           onChange={handleChange}
           errors={{
-            companyName: errors.companyName,
+            companyName: formSubmitted ? errors.companyName : undefined,
           }}
           setErrors={setErrors}
         />

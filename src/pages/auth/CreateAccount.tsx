@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CAdminForm from "../../components/auth/CAdminForm";
 import useFetchCountries from "../../hooks/ui/useFetchCountries";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Seo from "../../components/Seo";
 import LazyImage from "../../components/LazyImage";
 import { useIconColor } from "../../hooks/ui/useIconColor";
+import EmployeeForm from "../../components/auth/EmployeeForm";
 
 const CreateAccount: React.FC = () => {
   const countries = useFetchCountries();
-  const  {bgColor} = useIconColor()
+  const  {bgColor} = useIconColor();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const role = queryParams.get("role");
+  const [isCorporateAdmin, setIsCorporateAdmin] = useState(role !== "member");
 
+  const handleToggle = (selection: boolean) => {
+    setIsCorporateAdmin(selection);
+  };
+
+  useEffect(() => {
+    setIsCorporateAdmin(role !== "member");
+  }, [role]);
 
   return (
     <div className={`${bgColor} flex flex-col md:flex-row min-h-screen  w-full`}>
@@ -44,7 +56,7 @@ const CreateAccount: React.FC = () => {
         <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-[#170055] to-[#000000] opacity-0"></div>
         <div className="absolute inset-0 h-full">
           <LazyImage
-            src="/images/ppl/p3.png"
+            src="/eventurelly/p3.png"
             alt="background"
             className="w-full h-full object-cover "
           />
@@ -69,11 +81,36 @@ const CreateAccount: React.FC = () => {
 
       {/* Right Section */}
       <div className="flex flex-col justify-center items-center w-full md:w-1/2 mt-10 p-6 px-26 max-[1031px]:px-10  max-md:items-center max-[568px]:px-5 max-md:mt-10">
-     
+      <div className="flex bg-gray-200 rounded-lg p-1 mb-6 w-64 text-center max-[258px]:w-55">
+          <div
+            className={`w-1/2 py-2 rounded-lg  font-medium text-xs cursor-pointer transition-all duration-300 ${
+              isCorporateAdmin
+                ? "bg-white shadow-md text-gray-900"
+                : "text-gray-600 "
+            }`}
+            onClick={() => handleToggle(true)}
+          >
+            Corporate Admin
+          </div>
+          <div
+            className={`w-1/2 py-2 rounded-lg  font-medium text-xs cursor-pointer transition-all duration-300 ${
+              !isCorporateAdmin
+                ? "bg-white shadow-md text-gray-900"
+                : "text-gray-600"
+            }`}
+            onClick={() => handleToggle(false)}
+          >
+            Corporate Member
+          </div>
+        </div>
 
         {/* Forms */}
         <div className="w-full max-w-md">
+        {isCorporateAdmin ? (
             <CAdminForm countries={countries} />
+          ) : (
+            <EmployeeForm countries={countries} />
+          )}
         </div>
       </div>
     </div>

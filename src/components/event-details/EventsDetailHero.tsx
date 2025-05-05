@@ -28,7 +28,7 @@ const fallbackImage =
   
   return (
     <HeroContainer className="mt-8 mb-10 p-4">
-      <HeroImage src={fallbackImage || "/images/ppl/p4.png"} alt="Escape Room" />
+      <HeroImage src={fallbackImage || "/eventurelly/p4.png"} alt="Escape Room" />
 
       
       <div className="text-center w-full max-w-2xl mt-6">

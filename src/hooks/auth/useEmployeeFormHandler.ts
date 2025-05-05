@@ -14,12 +14,13 @@ export const useEmployeeFormHandler = (
   defaultFormData: any,  
   recaptchaRef: any,
   captchaToken: string | null
-) => {
+) => {  
   const [formData, setFormData] = useState(defaultFormData);
   const [errors, setErrors] = useState<Partial<Record<keyof User, string>>>({});
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [domains, setDomains] = useState<string[]>([]);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
 
   useEffect(() => {
@@ -91,9 +92,10 @@ export const useEmployeeFormHandler = (
     }
   };
 
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setFormSubmitted(true);
     const validationErrors = userValidation(formData, domains);
 
     setErrors(validationErrors);
@@ -158,7 +160,7 @@ export const useEmployeeFormHandler = (
 
       toast.success("Registration successful");
       recaptchaRef.current?.reset();
-      navigate("/sign-in");
+      navigate("/2fa-auth");
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("The email address is already in use by another account.");
@@ -179,5 +181,6 @@ export const useEmployeeFormHandler = (
     handleSubmit,
     setFormData,
     setErrors,
+    formSubmitted
   };
 };

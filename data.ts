@@ -67,17 +67,17 @@ export const carousel = [
   {
     title: "Strengthen Bonds, Build a Thriving Team",
     desc: "Create unforgettable experiences that bring your team closer. Our corporate events foster collaboration, trust, and a sense of belonging—turning colleagues into a connected workforce.",
-    img: "/images/slides/blob.png",
+    img: "/eventurelly/blob.png",
   },
   {
     title: "Inspire Connection, Ignite Engagement",
     desc: "Boost morale and employee engagement with events that inspire. From interactive workshops to thrilling experiences, we help you design moments that keep your team motivated and invested.",
-    img: "/images/slides/blob2.png",
+    img: "/eventurelly/blob2.png",
   },
   {
     title: "Create a Workplace Where People Belong",
     desc: "Happy employees stay longer. Our expertly curated corporate events enhance job satisfaction, making your company a place where people want to grow, thrive, and succeed.",
-    img: "/images/slides/blob3.png",
+    img: "/eventurelly/blob3.png",
   },
 ];
 
@@ -127,7 +127,7 @@ export const carousel = [
     export const cardData = [
       {
         id: "sjxcy7snskns8h",
-        image: "/images/top-picks/img1.png",
+        image: "/eventurelly/img1.png",
         eventName: "Leadership Development Workshop",
         eventDescription:
           "Foster growth and collaboration with hands-on leadership exercises designed to enhance decision-making, teamwork, and strategic thinking.",
@@ -137,7 +137,7 @@ export const carousel = [
       },
       {
         id: "tg6vkansiq8w8hucndcv",
-        image: "/images/top-picks/img2.png",
+        image: "/eventurelly/img2.png",
         eventName: "Diversity & Inclusion Workshop",
         eventDescription:
           "Encourage open discussions, explore real-world scenarios, and develop actionable strategies to build a diverse and welcoming work environment.",
@@ -147,7 +147,7 @@ export const carousel = [
       },
       {
         id: "ajk90jincnu7agu",
-        image: "/images/top-picks/img3.png",
+        image: "/eventurelly/img3.png",
         eventName: "Corporate Wellness Day",
         eventDescription:
           "A day dedicated to health and wellness! Engage in yoga, stress management workshops, and interactive fitness activities to promote a healthy work culture.",
@@ -157,7 +157,7 @@ export const carousel = [
       },
       {
         id: "uasc78wsye98hfwoi",
-        image: "/images/top-picks/img4.png",
+        image: "/eventurelly/img4.png",
         eventName: "Chess Tournament",
         eventDescription:
           "Test your problem-solving skills in a high-energy chess tournament that encourages strategic thinking, teamwork, and friendly competition.",
@@ -167,7 +167,7 @@ export const carousel = [
       },
       {
         id: "87tcubjinc98wn",
-        image: "/images/top-picks/img5.png",
+        image: "/eventurelly/img5.png",
         eventName: "Soccer Event",
         eventDescription:
           "Unleash your competitive spirit in an exciting soccer match where collaboration and strategy lead to victory. Perfect for team bonding and fitness!",
@@ -177,7 +177,7 @@ export const carousel = [
       },
       {
         id: "hbsacyu56src7yshcnb",
-        image: "/images/top-picks/img6.png",
+        image: "/eventurelly/img6.png",
         eventName: "Corporate Casual Lunch",
         eventDescription:
           "Take a break from work and enjoy a relaxed team lunch designed to encourage informal networking, collaboration, and camaraderie in a stress-free setting.",

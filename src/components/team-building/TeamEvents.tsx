@@ -40,7 +40,7 @@ const TeamEvents: React.FC = () => {
                 title={card.eventName}
                 description={card.eventDescription}
                 buttonText={card.buttonText || "Learn More"}
-                className="self-start text-left border"
+                className="w-full h-full self-start text-left border"
                 buttonAlignment="center"
                 textAlignment="left"
                 buttonFullWidth

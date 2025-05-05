@@ -10,6 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { HelmetProvider } from "react-helmet-async";
 import Spinner from "./components/Spinner.tsx";
 import { ErrorBoundary } from "./pages/ErrorBoundary.tsx";
+import { BackThemeProvider} from "./components/Admin/contexts/BackThemeContext.tsx";
 
 const helmetContext = {};
 
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
     <HelmetProvider context={helmetContext}>
       <Provider store={store}>
         <PersistGate loading={<Spinner />} persistor={persistor}>
+          <BackThemeProvider storageKey="theme">
           <ThemeProvider>
             <BrowserRouter>
               <ErrorBoundary>  
@@ -27,6 +29,7 @@ createRoot(document.getElementById("root")!).render(
               </ErrorBoundary>
             </BrowserRouter>
           </ThemeProvider>
+          </BackThemeProvider>
         </PersistGate>
       </Provider>
     </HelmetProvider>

@@ -57,7 +57,7 @@ const RoleRoute: React.FC<{ children: React.ReactNode; allowedRoles: string[] }>
 
   return hasAccess ? <>{children}</> : <Navigate to="/" />;
 };
-
+  
 // AdminRoute Component
 export const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <RoleRoute allowedRoles={["Admin"]}>{children}</RoleRoute>;

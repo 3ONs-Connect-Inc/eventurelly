@@ -10,4 +10,4 @@ const ThemeToggle = ({ toggleTheme, theme }: { toggleTheme: () => void; theme: s
       {theme === "light" ? <FiMoon size={20} /> : <GoSun size={20} />}
     </button>
   );
-  export default ThemeToggle;
+  export default ThemeToggle;  

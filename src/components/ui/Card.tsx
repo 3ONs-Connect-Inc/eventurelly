@@ -48,8 +48,8 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div
-      className={`${bgColor2} border-border-foreground shadow-lg p-4 rounded-lg flex flex-col items-center justify-between
-        w-full h-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl
+      className={`${bgColor2}   border-border-foreground shadow-lg p-4 rounded-lg flex flex-col items-center justify-between
+       max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl
         ${className} ${scale ? "hover:scale-105" : "hover:scale-98"}
         dark:border-gray-800 transition-transform duration-300 ease-in-out hover:shadow-lg`}
     >
@@ -57,8 +57,11 @@ const Card: React.FC<CardProps> = ({
         <LazyImage
           src={image}
           alt={title}
-          className="object-cover w-full h-full max-w-full with-loader sm:max-w-full"
-        />
+          className={`object-cover w-full h-full max-w-full with-loader sm:max-w-full`}
+          quality={95} 
+          {...(textAlignment === "left" ? { width: 1000, height: 500 } : {})}
+          
+      />
       </div>
 
       <div className="flex flex-col flex-grow w-full">
@@ -71,7 +74,7 @@ const Card: React.FC<CardProps> = ({
         </h2>
 
         <div className="min-h-[3rem] mb-2">
-          <p className={`text-sm ${pColor} font-normal line-clamp-3`}>
+          <p className={`text-sm ${pColor} font-normal line-clamp-3 `}>
             {description || "\u00A0" /* Ensures consistent spacing */}
           </p>
         </div>

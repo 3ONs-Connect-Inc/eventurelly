@@ -18,13 +18,14 @@ const HeroImage: React.FC<HeroImageProps> = ({ className, src, alt, rounded = fa
     }`}
   >
     <LazyImage
-      src={src}
+      src={src}  
       alt={alt}
       className={`
         ${rounded 
           ? "w-full object-cover aspect-[569/486] rounded-[50%] rounded-bl-[5%] with-loader rounded-tr-[5%] shadow-lg"
           : "w-full h-full max-h-[400px] object-cover rounded-lg shadow-md  with-loader "
         } ${className}`}
+        quality={100} 
     />
   </div>
 </div>

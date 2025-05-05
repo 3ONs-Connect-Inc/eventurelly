@@ -39,7 +39,7 @@ const SignInAccount: React.FC = () => {
         <div className="relative w-full md:hidden h-100 overflow-hidden ">
           <img
             loading="lazy"
-            src="/images/ppl/p3.png"
+            src="/eventurelly/p3.png"
             alt="background"
             className="w-full h-full object-cover object-top"
           />
@@ -53,7 +53,7 @@ const SignInAccount: React.FC = () => {
         {/* Background image for larger screens */}
         <div className="hidden md:block absolute inset-0 h-full">
           <LazyImage
-            src="/images/ppl/p3.png"
+            src="/eventurelly/p3.png"
             alt="background"
             className="w-full h-full object-cover"
           />
