@@ -75,6 +75,7 @@ export const HeroSection = () => {
               )}
 
               <HeroImage src={item.img} alt={item.title} rounded />
+              
             </div>
           </SwiperSlide>
         ))}

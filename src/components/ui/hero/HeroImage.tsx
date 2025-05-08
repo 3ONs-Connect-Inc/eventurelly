@@ -27,7 +27,9 @@ const HeroImage: React.FC<HeroImageProps> = ({ className, src, alt, rounded = fa
         } ${className}`}
         quality={100} 
     />
+    
   </div>
+  
 </div>
     
   );
