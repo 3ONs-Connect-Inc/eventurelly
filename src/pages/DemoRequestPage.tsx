@@ -1,13 +1,13 @@
 import Seo from "../components/Seo";
 import Footer from "../components/Footer";
-import { useIconColor } from "../hooks/ui/useIconColor";
+import { useColor } from "../hooks/ui/useColor";
 import RequestHero from "../components/request-demo/RequestHero";
 import RequestForm from "../components/request-demo/RequestForm";
 import BackToTop from "../components/BackToTop";
 import useFetchCountries from "../hooks/ui/useFetchCountries";
 
 const DemoRequest = () => { 
-  const { bgGradient, bgColor } = useIconColor();
+  const { bgGradient, bgColor } = useColor();
   const countries = useFetchCountries();
 
   return (

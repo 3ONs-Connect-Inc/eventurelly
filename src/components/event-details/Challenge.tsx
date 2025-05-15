@@ -1,5 +1,5 @@
 
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import Button from "../ui/Button";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import Services from "./Services";
@@ -18,7 +18,7 @@ const Challenge: React.FC<ChallengeProps> = ({
   eventDetail,
 }) => {
   const agendas = eventDetail?.agendas || []; 
-  const { pColor } = useIconColor();
+  const { pColor } = useColor();
   const [openIndices, setOpenIndices] = useState<Set<number>>(
     new Set(agendas.map((_: any, index: any) => index)) // Initially open all
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useIconColor } from "../../../hooks/ui/useIconColor";
+import { useColor } from "../../../hooks/ui/useColor";
 import { SearchBar } from "../SearchBar";
 import { HeroSection } from "../HeroSection";
 import TeamBonding from "../TeamBonding";
@@ -10,7 +10,7 @@ interface GuestUserProps {
   handleNavigation: (title: string) => void;
 }
 const GuestUser: React.FC<GuestUserProps> = ({ handleNavigation }) => {
-  const { bgGradient, bgColor } = useIconColor();
+  const { bgGradient, bgColor } = useColor();
   const location = useLocation();
 
   useEffect(() => {

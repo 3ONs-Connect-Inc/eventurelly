@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import { CgSortAz } from "react-icons/cg";
 import { defaultTags } from "../../../data";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -10,7 +10,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 //  }
 
 const SearchSort: React.FC= () => {
-    const { textColor, bgColor2 } = useIconColor();
+    const { textColor, bgColor2 } = useColor();
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();

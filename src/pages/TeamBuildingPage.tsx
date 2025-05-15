@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 import Seo from "../components/Seo";
 import TeamEvents from "../components/team-building/TeamEvents";
 import TeamHero from "../components/team-building/TeamHero";
-import { useIconColor } from "../hooks/ui/useIconColor";
+import { useColor } from "../hooks/ui/useColor";
 
 const TeamBuildingPage = () => {
-  const { bgGradient, bgColor } = useIconColor();
+  const { bgGradient, bgColor } = useColor();
 
   return (
     <div

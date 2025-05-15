@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import Card from "../ui/Card";
 import { cardData } from "../../../data";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import { CgSortAz } from "react-icons/cg";
 import useClickOutside from "../../hooks/ui/useClickOutside";
 import { useNavigate } from "react-router-dom";
 
 const SearchContents = () => {
-  const { textColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor2 } = useColor();
   const [showDropdown, setShowDropdown] = useState(false);
   const [sortOption, setSortOption] = useState("Descending");
   const dropdownRef = useRef<HTMLDivElement>(null);

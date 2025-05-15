@@ -1,12 +1,12 @@
 import React from "react";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 
 interface OptionalServicesProps {
   eventDetail: any;
 }
 
 const OptionalServices: React.FC<OptionalServicesProps> = ({ eventDetail }) => {
-  const { pColor } = useIconColor();
+  const { pColor } = useColor();
 
   const optionalServices = Object.keys(eventDetail?.optionalServices ?? {});
 

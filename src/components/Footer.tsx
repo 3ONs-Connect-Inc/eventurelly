@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { footerLinks } from "../../data";
-import { useIconColor } from "../hooks/ui/useIconColor";
+import { useColor } from "../hooks/ui/useColor";
 import Logo from "./navbar/Logo";
 import Button from "./ui/Button";
 import { useAppSelector } from "../hooks/redux";
 
 const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
-  const { textColor, bgColor, pColor } = useIconColor();
+  const { textColor, bgColor, pColor } = useColor();
   const { isLoggedIn } = useAppSelector((state) => state.user)
   const navigate = useNavigate();
 

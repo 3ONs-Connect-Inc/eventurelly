@@ -3,13 +3,13 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { Event } from "../../types";
 import EventForm from "../../components/Admin/Events/AddEvents";
-import { useIconColor } from "../../components/Admin/ui/useIconColor";
+import { useColor } from "../../components/Admin/ui/useColor";
 
 const Events = () => {
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
-  const {textColor} =useIconColor();
+  const {textColor} =useColor();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "events"), (snapshot) => {
@@ -57,7 +57,7 @@ const EventTable = ({
   setSelectedEventId: (id: string | null) => void;
   setShowAddEvent: (show: boolean) => void;
 }) => {
-  const { bgColor} =useIconColor();
+  const { bgColor} =useColor();
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse border border-gray-300">

@@ -1,5 +1,6 @@
 import React from "react";
 import LazyImage from "../../LazyImage";
+import { cn } from "../../../utils/cn";
 
 interface HeroImageProps {
   src: string;
@@ -10,21 +11,21 @@ interface HeroImageProps {
 
 const HeroImage: React.FC<HeroImageProps> = ({ className, src, alt, rounded = false }) => {
   return (
-    <div className={`w-full flex justify-center ${rounded ? 'w-1/2 max-md:w-full' : ""}`}>
-  <div className={`relative 
-    ${rounded 
+    <div className={cn("w-full flex justify-center", rounded && 'max-md:w-full' )}>
+  <div className={cn("relative",
+    rounded 
       ? "w-full max-md:w-[90%] rounded-hero-image mx-auto flex justify-center" 
       : " w-full h-auto max-w-full  max-h-full overflow-hidden"
-    }`}
+  )}
   >
     <LazyImage
       src={src}  
       alt={alt}
-      className={`
-        ${rounded 
+      className={cn (
+        rounded 
           ? "w-full object-cover aspect-[569/486] rounded-[50%] rounded-bl-[5%] with-loader rounded-tr-[5%] shadow-lg"
-          : "w-full h-full max-h-[400px] object-cover rounded-lg shadow-md  with-loader "
-        } ${className}`}
+          : "w-full h-full max-h-[400px] object-cover rounded-lg shadow-md  with-loader ",
+        className)}
         quality={100} 
     />
     

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import Button from "./../../components/ui/Button";
 import Seo from "../../components/Seo";
 
 const PasswordSuccess = () => {
-  const { textColor, bgColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor, bgColor2 } = useColor();
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center  bg-opacity-50 ${bgColor2}`}

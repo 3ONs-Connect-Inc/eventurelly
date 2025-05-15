@@ -5,12 +5,12 @@ import BackToTop from "../components/BackToTop";
 import { useAppSelector } from "../hooks/redux";
 import LoggedInUser from "../components/Home/LoggedInUser";
 import GuestUser from "../components/Home/GuestUser";
-import { useIconColor } from "../hooks/ui/useIconColor";
+import { useColor } from "../hooks/ui/useColor";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAppSelector((state) => state.user);
-  const { bgColor } = useIconColor();
+  const { bgColor } = useColor();
 
   const handleNavigation = (title: string) => {
     navigate(

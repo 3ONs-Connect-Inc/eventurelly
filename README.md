@@ -1,0 +1,3 @@
+ flexible
+
+ npm run test

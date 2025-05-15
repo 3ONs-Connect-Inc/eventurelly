@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import loader from "/images/loader.gif";
+import { IMAGEKIT_BASE_URL } from "../config";
 
-// 👇 Replace with your actual ImageKit base URL
-const IMAGEKIT_BASE_URL = `${import.meta.env.VITE_IK_URL_ENDPOINT}`;
+
 
 interface LazyImageProps {
-  src: string; // relative path, like "gallery/hero.jpg"
+  src: string; 
   alt: string;
   className?: string;
   width?: number;
@@ -59,7 +58,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
         <>
           {shouldShowLoader && !isLoaded && (
             <div className="absolute inset-0 flex items-center justify-center z-10">
-              <img className="h-12 w-12" src={loader} alt="Loading..." />
+              <img className="h-12 w-12" src="/images/loader.gif" alt="Loading..." />
             </div>
           )}
           <img

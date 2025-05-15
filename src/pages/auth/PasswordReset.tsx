@@ -4,7 +4,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import { auth, db } from "../../firebase/config";
 import NewPassword from "../../components/auth/NewPassword";
 import Seo from "../../components/Seo";
@@ -38,7 +38,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({
   setMessage,
   searchParams,
 }) => {
-  const { textColor, bgColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor, bgColor2 } = useColor();
   const [email, setEmail] = useState<string>("");
   const navigate = useNavigate();
 

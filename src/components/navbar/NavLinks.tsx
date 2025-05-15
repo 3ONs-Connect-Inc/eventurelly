@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { navLinks } from "../../../data";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 
 
 
 
 const NavLinks: React.FC = () => {
-    const { textColor } = useIconColor();  
+    const { textColor } = useColor();  
   return (
     <ul className="flex gap-6 items-center font-medium md:text-sm lg:text-base">
       {navLinks.map((link, index) => (

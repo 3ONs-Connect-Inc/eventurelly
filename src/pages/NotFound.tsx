@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useIconColor } from "../hooks/ui/useIconColor";
+import { useColor } from "../hooks/ui/useColor";
 import Button from "../components/ui/Button";
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
-  const { textColor,  bgColor } = useIconColor();
+  const { textColor,  bgColor } = useColor();
   return (
     <div className={`${bgColor} ${textColor} flex flex-col justify-center items-center h-screen w-full  text-center`}>
       <h1 className="text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold mb-4">404 - Page Not Found</h1>

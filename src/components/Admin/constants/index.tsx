@@ -23,7 +23,7 @@ export const navbarLinks = [
                 path: "/admin/reports",
             },
         ],
-    },
+    },  
     {
         title: "Customers",
         links: [

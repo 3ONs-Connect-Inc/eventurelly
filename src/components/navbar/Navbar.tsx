@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useAppSelector } from "../../hooks/redux";
 import useLogout from "../../hooks/auth/useLogout";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import { ThemeContext } from "../../context/ThemeContext";
 import Logo from "./Logo";
 import { motion } from "framer-motion";
@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { isLoggedIn } = useAppSelector((state) => state.user);
   const { handleLogout } = useLogout();
-  const { textColor, bgColor } = useIconColor();  
+  const { textColor, bgColor } = useColor();  
 
   return (
     <nav

@@ -1,12 +1,12 @@
 import  { useRef, useState } from "react";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import { useAppSelector } from "../../hooks/redux";
 import useClickOutside from "../../hooks/ui/useClickOutside";
 
 const Profile = ({ handleLogout }: { handleLogout: () => void }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
      const { activeUser } = useAppSelector((state) => state.user);
-    const {bgColor, textColor, pColor}= useIconColor();
+    const {bgColor, textColor, pColor}= useColor();
 
  // Create a ref for the profile dropdown and profile image
  const dropdownRef = useRef<HTMLDivElement>(null);

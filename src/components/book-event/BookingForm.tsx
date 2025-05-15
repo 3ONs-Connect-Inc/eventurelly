@@ -2,7 +2,7 @@ import { useEventBooking } from "../../hooks/submit/useEventBooking";
 import Input from "../ui/Input";
 import Checkbox from "../ui/Checkbox";
 import SuccessModal from "../ui/modal/SuccessModal";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -16,7 +16,7 @@ eventDetail: any
 
 const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }) => {
   const navigate = useNavigate();
-  const { textColor, pColor, bgColor2 } = useIconColor();
+  const { textColor, pColor, bgColor2 } = useColor();
   const optionalServices = Object.keys(eventDetail?.optionalServices ?? {});
 
   const {

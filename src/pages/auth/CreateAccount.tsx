@@ -4,12 +4,12 @@ import useFetchCountries from "../../hooks/ui/useFetchCountries";
 import { Link, useLocation } from "react-router-dom";
 import Seo from "../../components/Seo";
 import LazyImage from "../../components/LazyImage";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import EmployeeForm from "../../components/auth/EmployeeForm";
 
 const CreateAccount: React.FC = () => {
   const countries = useFetchCountries();
-  const  {bgColor} = useIconColor();
+  const  {bgColor} = useColor();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const role = queryParams.get("role");

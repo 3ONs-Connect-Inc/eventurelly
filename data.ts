@@ -49,6 +49,8 @@ export const footerLinks = [
       { name: "About us", url: "#" },
       { name: "Careers", url: "#" },
       { name: "News", url: "#" },
+      {name: "Privacy Policy", url: "#"},
+      {name: "Terms and Conditions", url: "#"}
     ],
   },
   {

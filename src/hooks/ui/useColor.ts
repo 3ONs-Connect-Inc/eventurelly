@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 
-export const useIconColor = () => { 
+export const useColor = () => { 
     const { theme } = useContext(ThemeContext);
   
     return {

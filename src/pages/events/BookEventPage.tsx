@@ -4,7 +4,7 @@ import BookingForm from "../../components/book-event/BookingForm";
 import BookingHero from "../../components/book-event/BookingHero";
 import Footer from "../../components/Footer";
 import Seo from "../../components/Seo";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import Spinner from "../../components/Spinner";
 import { useFetchEventDetail } from "../../hooks/events/useFetchDetailsEvent";
 
@@ -13,7 +13,7 @@ interface EventProps {
 }
 
 const BookEventPage:React.FC<EventProps> = () => {
-  const { bgGradient, bgColor } = useIconColor();
+  const { bgGradient, bgColor } = useColor();
   const { collectionName, id, slug } = useParams<{
      collectionName?: "bookings" | "events"; id?: string; slug?: string  }>();
      const validCollectionName: "bookings" | "events" = collectionName === "bookings" || collectionName === "events" ? collectionName : "bookings";

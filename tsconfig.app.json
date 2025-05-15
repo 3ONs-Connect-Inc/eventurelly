@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "types": ["node"]
+    "types": ["jest", "@testing-library/jest-dom", "node"]
   },
-  "include": ["src", "src/components/Home/.tsx", "src/components/Home/Events/EventHeader.tsx"]
+  "include": ["src", "test", "src/components/Home/.tsx", "src/components/Home/Events/EventHeader.tsx", "test"]
 }

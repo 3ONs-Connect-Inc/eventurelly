@@ -3,7 +3,7 @@ import { sendEmailVerification, onAuthStateChanged } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/config";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import Seo from "../../components/Seo";
 
 const TwoFactorAuth: React.FC = () => {
@@ -12,7 +12,7 @@ const TwoFactorAuth: React.FC = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [resendLoading, setResendLoading] = useState(false);
   const [resendMessage, setResendMessage] = useState("");
-  const { textColor, bgColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor, bgColor2 } = useColor();
   const navigate = useNavigate();
 
   useEffect(() => {

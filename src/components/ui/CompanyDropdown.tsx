@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useCompanyDropdown } from "../../hooks/ui/useCompanyDropdown";
 import useClickOutside from "../../hooks/ui/useClickOutside";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 
 interface CompanyDropdownProps {
   label: string;
@@ -25,7 +25,7 @@ const CompanyDropdown: React.FC<CompanyDropdownProps> = ({
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLUListElement | null>(null);
-  const { textColor} = useIconColor();
+  const { textColor} = useColor();
   useClickOutside([inputRef, dropdownRef], () => setIsDropdownVisible(false));
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

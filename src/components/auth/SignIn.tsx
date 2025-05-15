@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
-import Checkbox from "../ui/Checkbox";
-import Input from "../ui/Input";
 import useSignIn from "../../hooks/auth/useSignIn";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
+import { FormRenderer } from "../ui/FormRenderer";
+import { signInFormFields } from "../../data/auth/auth";
 
 const SignIn = () => {
-    const { textColor} = useIconColor();
+  const { textColor } = useColor();
   const {
     formData,
     errors,
@@ -16,7 +16,7 @@ const SignIn = () => {
     loading,
     handleChange,
     handleSubmit,
-  } = useSignIn();    
+  } = useSignIn();
 
   return (
     <div className="text-left">
@@ -34,40 +34,21 @@ const SignIn = () => {
         <div className="bg-red-500 text-white font-normal text-base p-2 rounded-md mb-4">
           {generalError}
         </div>
-      )}   
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <Input
-          label="Email Address"
-          type="email"
-          name="email"
-          placeholder="abc@example.com"
-          value={formData.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
+        <FormRenderer
+          fields={signInFormFields}
+          formData={formData}
           errors={errors}
           setErrors={setErrors}
-        />
-
-        <Input
-          label="Password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          errors={errors}
-          setErrors={setErrors}
+          handleChange={handleChange}
+          specialHandlers={{
+            handleBlur,
+          }}
         />
 
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center font-normal font-outfit text-left sm:text-right">
-          <Checkbox
-            name="rememberMe"
-            checked={formData.rememberMe}
-            onChange={handleChange}
-            label="Remember Me"
-          />
           <Link
             to="/forgot-password"
             className="font-normal font-outfit hover:underline dark:text-[var(--light)] text-sm mt-2 sm:mt-0"

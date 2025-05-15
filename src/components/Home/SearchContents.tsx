@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Card from "../ui/Card";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import {  useSearchParams} from "react-router-dom";
 import { searchEventsAndBookings } from "../../firebase/events";
 import { cardData } from "../../../data";
@@ -17,7 +17,7 @@ const SearchContents: React.FC<SearchProps> = ({
   handleLearnMore,
   loading,
 }) => {
-  const { textColor } = useIconColor();
+  const { textColor } = useColor();
   const [searchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false); 

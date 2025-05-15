@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "types": ["node"]
+    "types": ["jest", "@testing-library/jest-dom", "node"]
   },
-  "include": ["vite.config.ts"]
+  "include": ["test", "vite.config.ts"]
 }

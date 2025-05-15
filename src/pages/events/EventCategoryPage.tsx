@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer";
 import Seo from "../../components/Seo";
 import EventDetailHero from "../../components/event-details/EventsDetailHero";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import BackToTop from "../../components/BackToTop";
 import Challenge from "../../components/event-details/Challenge";
 import { useAppSelector } from "../../hooks/redux";
@@ -10,7 +10,7 @@ import Spinner from "../../components/Spinner";
 import { useFetchEventDetail } from "../../hooks/events/useFetchDetailsEvent";
 
 const EventCategoryPage: React.FC = () => {
-  const { bgGradient, textColor, bgColor } = useIconColor();
+  const { bgGradient, textColor, bgColor } = useColor();
   const { isLoggedIn } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const { collectionName, id, slug } = useParams();

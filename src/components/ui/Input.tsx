@@ -1,8 +1,8 @@
-import React, { forwardRef,  useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useIconColor } from "../../hooks/ui/useIconColor";
-
+import { useColor } from "../../hooks/ui/useColor";
+import { cn } from "../../utils/cn";
 
 interface InputProps {
   label?: string;
@@ -16,7 +16,7 @@ interface InputProps {
   errors: any;
   setErrors?: any;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  required?: boolean; 
+  required?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -38,22 +38,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
-  const { textColor} = useIconColor();
+    const { textColor } = useColor();
 
     const togglePasswordVisibility = () => {
       setShowPassword((prev) => !prev);
     };
 
     return (
-      <div className={`mb-4 relative ${className}`}>
-      {label && (
-  <label
-    htmlFor={name}
-    className={`block text-sm font-medium ${textColor} mb-1`}
-  >
-    {label}
-  </label>
-)}
+      <div className={cn("mb-4 relative", className)}>
+        {label && (
+          <label
+            htmlFor={name}
+            className={cn("block text-sm font-medium  mb-1", textColor)}
+          >
+            {label}
+          </label>
+        )}
         <div className="relative ">
           <input
             id={name}
@@ -72,14 +72,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }}
             maxLength={maxLength}
             placeholder={placeholder}
-            onBlur={onBlur} 
+            onBlur={onBlur}
             ref={ref}
-            required={required} 
-            className={` dark:opacity-55 w-full px-3 py-2 border text-base  font-normal  ${textColor} rounded-lg 
-              ${errors?.[name] ? "border-border-red pr-10" : "border-gray-300"}
-              focus:border-[#6C36FE] focus:outline-none border-2 border-solid  
-              
-            `}
+            required={required}
+            className={cn(
+              "dark:opacity-55 w-full px-3 py-2 border text-base  font-normal rounded-lg ",
+              textColor,
+              errors?.[name] ? "border-destructive pr-10" : "border-gray-300",
+              "focus:border-[#6C36FE] focus:outline-none border-2 border-solid"
+            )}
           />
 
           {/* Password Toggle Icon */}
@@ -87,7 +88,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className={`absolute inset-y-0 right-8 flex items-center px-2 ${textColor}`}
+              className={cn(
+                "absolute inset-y-0 right-8 flex items-center px-2",
+                textColor
+              )}
             >
               {showPassword ? (
                 <BsEyeSlash className="h-5 w-5 " />

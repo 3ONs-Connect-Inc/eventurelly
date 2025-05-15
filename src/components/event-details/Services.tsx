@@ -1,4 +1,4 @@
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import OptionalServices from "./OptionalServices";
 
 
@@ -7,7 +7,7 @@ eventDetail: any;
 }
 
 const Services:React.FC<ServicesProps>= ({eventDetail}) => {
-  const { pColor } = useIconColor();
+  const { pColor } = useColor();
 
   const renderServiceList = (services: string[], icon: string) =>
     services.length > 0 ? (

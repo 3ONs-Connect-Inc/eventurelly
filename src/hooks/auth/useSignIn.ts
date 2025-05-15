@@ -77,19 +77,24 @@ const useSignIn = () => {
     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, type, checked, value } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+  
+    const newValue =
+      type === "checkbox" && e.target instanceof HTMLInputElement
+        ? e.target.checked
+        : value;
+  
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: newValue,
     }));
-    // Clear general error when user types
+  
     if (generalError) {
       setGeneralError(null);
     }
   };
+  
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

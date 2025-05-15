@@ -1,5 +1,5 @@
 import React from "react";
-import { useIconColor } from "../../../hooks/ui/useIconColor";
+import { useColor } from "../../../hooks/ui/useColor";
 import { SearchBar } from "../SearchBar";
 import { HeroSection } from "../HeroSection";
 import {
@@ -11,7 +11,7 @@ import {
 
 
 const LoggedInUser: React.FC = () => {
-  const { bgGradient, bgColor } = useIconColor();
+  const { bgGradient, bgColor } = useColor();
  
   return (
     <>

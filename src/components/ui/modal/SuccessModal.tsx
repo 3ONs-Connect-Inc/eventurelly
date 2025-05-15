@@ -1,4 +1,4 @@
-import { useIconColor } from "../../../hooks/ui/useIconColor";
+import { useColor } from "../../../hooks/ui/useColor";
 
 const SuccessModal = ({
   message,
@@ -9,7 +9,7 @@ const SuccessModal = ({
   header: string;
   onClose: () => void;
 }) => {
-  const { textColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor2 } = useColor();
 
   return (
     <div

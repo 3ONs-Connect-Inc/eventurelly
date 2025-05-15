@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import Card from "../ui/Card";
 import { cardData } from "../../../data";
 import { useFetchEvents } from "../../hooks/events/useFetchEvents";
 import Spinner from "../Spinner";
 
 const TeamEvents: React.FC = () => {
-  const { textColor,  bgColor } = useIconColor();
+  const { textColor,  bgColor } = useColor();
   const navigate = useNavigate();
   const { events, loading, error } = useFetchEvents("events");
 

@@ -3,10 +3,10 @@ import SignIn from "../../components/auth/SignIn";
 import { Link } from "react-router-dom";
 import LazyImage from "../../components/LazyImage";
 import Seo from "../../components/Seo";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 
 const SignInAccount: React.FC = () => {
-    const  {bgColor} = useIconColor()
+    const  {bgColor} = useColor()
   return (
     <div className={` ${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
       <Seo
@@ -37,8 +37,7 @@ const SignInAccount: React.FC = () => {
       <div className="relative  w-full md:w-1/2 min-h-full bg-gradient-to-r from-gray-700 to-gray-900 flex flex-col items-center md:block">
         {/* Background image for smaller screens */}
         <div className="relative w-full md:hidden h-100 overflow-hidden ">
-          <img
-            loading="lazy"
+          <LazyImage
             src="/eventurelly/p3.png"
             alt="background"
             className="w-full h-full object-cover object-top"

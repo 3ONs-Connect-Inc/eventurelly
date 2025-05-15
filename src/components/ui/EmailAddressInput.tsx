@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 
 interface EmailAddressInputProps {
   emailUsername: string;
@@ -20,7 +20,7 @@ const EmailAddressInput: React.FC<EmailAddressInputProps> = ({
   onDomainChange,
   errors,
 }) => {
-  const { textColor } = useIconColor();
+  const { textColor } = useColor();
   return (
     <div className={`mb-4 ${textColor} `}>
       {/* Label */}

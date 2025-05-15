@@ -1,15 +1,13 @@
-import { useIconColor } from "../../hooks/ui/useIconColor";
-import Input from "../ui/Input";
-import PhoneInput from "../ui/PhoneInput";
+import { useColor } from "../../hooks/ui/useColor";
 import { useRequestForm } from "../../hooks/submit/useRequestForm";
 import SuccessModal from "../ui/modal/SuccessModal";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { Country } from "../../types";
+import { FormRenderer } from "../ui/FormRenderer";
+import { RequestFields } from "../../data/data";
 
-
-const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
-  const { textColor, pColor, bgColor2 } = useIconColor();
-
+const RequestForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
+  const { textColor, pColor, bgColor2 } = useColor();
 
   const {
     formData,
@@ -20,11 +18,12 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
     setErrors,
     isLoading,
     isSuccess,
+    handleChange,
     checkFormComplete,
     setIsSuccess,
     handleSubmit,
   } = useRequestForm();
-  
+
   return (
     <div className="flex flex-col items-center mx-auto py-10  px-6">
       <div
@@ -40,83 +39,16 @@ const RequestForm: React.FC<{ countries: Country[] }> = ({countries}) => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-0">
-            <Input
-              label="First Name"
-              name="firstName"
-              value={formData.firstName}
-              onBlur={() => handleBlur("firstName")}
-              onChange={(e) =>
-                setFormData({ ...formData, firstName: e.target.value })
-              }
-              errors={errors}
-              placeholder="Enter first name"
-              setErrors={setErrors}
-              type="text"
-            />
-            <Input
-              label="Last Name"
-              type="text"
-              name="lastName"
-              onBlur={() => handleBlur("lastName")}
-              value={formData.lastName}
-              onChange={(e) =>
-                setFormData({ ...formData, lastName: e.target.value })
-              }
-              errors={errors}
-              placeholder="Enter last name"
-              setErrors={setErrors}
-              className="max-md:-mt-3"
-            />
-          </div>
-
-          <Input
-            label="Organization Name"
-            type="text"
-            name="organizationName"
-            value={formData.organizationName}
-            onChange={(e) =>
-              setFormData({ ...formData, organizationName: e.target.value })
-            }
+        <form onSubmit={handleSubmit}>
+          <FormRenderer
+            fields={RequestFields}
+            formData={formData}
             errors={errors}
-            placeholder="Enter organization name"
             setErrors={setErrors}
-          />
-
-          <Input
-            label="Email Address"
-            name="email"
-            type="email"
-            onBlur={() => handleBlur("email")}
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            errors={errors}
-            placeholder="abc@company.com"
-            setErrors={setErrors}
-            required
-          />
-
-          <PhoneInput
-            companyContact={formData.companyContact}
-            phoneNumber={formData.phoneNumber}
+            handleChange={handleChange}
+            specialHandlers={{ handleBlur }}
+            setFormData={setFormData}
             countries={countries}
-            onCompanyContactBlur={() => handleBlur("companyContact")}
-            onPhoneNumberBlur={() => handleBlur("phoneNumber")}
-            onCompanyContactChange={(value) =>
-              setFormData({ ...formData, companyContact: value })
-            }
-            onPhoneNumberChange={(e) => {
-              const value = e.target.value;
-              setFormData({ ...formData, phoneNumber: value });
-            }}
-            errors={{
-              companyContact: errors.companyContact,
-              phoneNumber: errors.phoneNumber,
-            }}
-            setErrors={setErrors}
           />
 
           <div className="flex justify-end max-sm:justify-center ">

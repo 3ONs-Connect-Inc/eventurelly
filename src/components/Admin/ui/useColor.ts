@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BackThemeProviderContext } from "../contexts/BackThemeContext";
 
 
-export const useIconColor = () => { 
+export const useColor = () => { 
     const { theme } = useContext(BackThemeProviderContext);
   
     return {

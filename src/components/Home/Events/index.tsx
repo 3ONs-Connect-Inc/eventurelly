@@ -5,7 +5,7 @@ import EventGrid from "./EventGrid";
 import EventSwiper from "./EventSwiper";
 import { useFetchEvents } from "../../../hooks/events/useFetchEvents";
 import Spinner from "../../Spinner";
-import { useIconColor } from "../../../hooks/ui/useIconColor";
+import { useColor } from "../../../hooks/ui/useColor";
 
 interface EventSectionProps {
   title: string;
@@ -24,7 +24,7 @@ const EventSection: React.FC<EventSectionProps> = ({
   viewMoreLink = "",
   collectionName,
 }) => {
-    const { textColor, pColor, bgColor } = useIconColor();
+    const { textColor, pColor, bgColor } = useColor();
   const navigate = useNavigate();
   const { events, loading, error } = useFetchEvents(collectionName);
   const swiperRef = useRef<any>(null);

@@ -2,7 +2,7 @@ import React, { useState, useRef, ChangeEvent, useEffect } from 'react';
 import useClickOutside from '../../hooks/ui/useClickOutside';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { Country } from '../../types';
-import { useIconColor } from '../../hooks/ui/useIconColor';
+import { useColor } from '../../hooks/ui/useColor';
 
 
 interface PhoneInputProps {
@@ -31,7 +31,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef<HTMLDivElement>(null);
-   const { textColor} = useIconColor();
+   const { textColor} = useColor();
   useClickOutside([inputRef], () => setShowSuggestions(false));
 
   // Update filteredCountries when countries is fetched
@@ -96,7 +96,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
   
   return (
-    <div className="mb-4" ref={inputRef}>
+    <div className="mb-4 mt-4" ref={inputRef}>
       <label className={`${textColor} block text-sm font-medium  mb-1`}>Phone Number</label>
       <div className="flex items-center rounded-lg overflow-hidden">
         {/* Country Code Input */}

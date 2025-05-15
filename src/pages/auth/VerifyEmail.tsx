@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { applyActionCode} from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/config";
-import { useIconColor } from "../../hooks/ui/useIconColor";
+import { useColor } from "../../hooks/ui/useColor";
 import PasswordReset from "./PasswordReset";
 import Seo from "../../components/Seo";
 
@@ -38,7 +38,7 @@ const VerifyEmail: React.FC<UserProps> = ({
 }) => { 
 
   const navigate = useNavigate();
-  const { textColor, bgColor, bgColor2 } = useIconColor();
+  const { textColor, bgColor, bgColor2 } = useColor();
 
   // Extract mode and oobCode from URL
   const mode = searchParams.get("mode");
