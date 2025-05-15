@@ -13,7 +13,7 @@ dist-ssr
 *.local
 .env
 backend/.env
-test/jest.setup.ts
+test
 src/_test_
 
 # Editor directories and files
