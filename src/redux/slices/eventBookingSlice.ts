@@ -4,6 +4,7 @@ interface BookingData {
   eventNamePrefix: string;
   userId?: string;
   eventId?: string;
+  createdBy?: string,
   slug?: string;
   eventName: string;
   eventDate: string | null;

@@ -18,6 +18,8 @@ const TeamBuildingPage = lazy(() => import("../pages/TeamBuildingPage"));
 const EventCategoryPage = lazy(() => import("../pages/events/EventCategoryPage"));
 const DemoRequest = lazy(() => import('../pages/DemoRequestPage'));
 const BookEventPage = lazy(() => import('../pages/events/BookEventPage'));
+const PrivacyPolicyPage = lazy(()=> import( "../pages/PrivacyPolicy"));
+const TermsPage = lazy(()=> import("../pages/Terms"));
 
 const UserRoutes= () => { 
   const location = useLocation();
@@ -89,6 +91,8 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
         <Route path="/book-event/:collectionName/:id/:slug" element={<BookEventPage />} />
         <Route path="/edit-event/:collectionName/:id/:slug" element={<BookEventPage />} />
         <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage/>} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage/>} />
+        <Route path="/terms-and-conditions" element={<TermsPage/>} />
        
         <Route path="*" element={<NotFound />} />
       </Routes>

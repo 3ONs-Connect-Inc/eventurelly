@@ -4,6 +4,7 @@ import HeroContent from "../ui/hero/HeroContent";
 import HeroImage from "../ui/hero/HeroImage";
 import Button from "../ui/Button";
 import { cardData } from "../../../data";
+import { useAppSelector } from "../../hooks/redux";
 
 
 
@@ -13,10 +14,12 @@ interface EventDetailHeroProps {
 }  
 
 const EventDetailHero: React.FC<EventDetailHeroProps> = ({ eventDetail, handleBooking }) => {
-const fallbackImage =
+  const activeUser = useAppSelector((state) => state.user.activeUser);
+
+  const fallbackImage =
        cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image ||
        cardData[cardData.length]?.image ||
-       "/images/top-picks/img6.png";
+       "/images/loader.gif";
   
   const eventDetails = [
     { label: "Format", value: eventDetail?.eventFormat, icon: "/images/icon/user-check.png" },
@@ -25,7 +28,7 @@ const fallbackImage =
     { label: "Team Size", value: eventDetail?.teamSize, icon: "/images/icon/users.png" },
     {  icon: "/images/icon/activity.png", value: "ACTIVITY", label: "Moderate",},
   ];
-  
+
   return (
     <HeroContainer className="mt-8 mb-10 p-4">
       <HeroImage src={fallbackImage || "/eventurelly/p4.png"} alt="Escape Room" />
@@ -44,12 +47,13 @@ const fallbackImage =
  className="flex font-semibold gap-4 max-md:text-base max-xs:text-tiny 
 text-lg items-center justify-center mt-4 space-x-2 max-xs:flex-col"
 >
+{activeUser?.role === "Admin" && activeUser?.id === eventDetail.createdBy ? (
  <Button
    label="Edit this event"
    className="bg-primary text-white bg-hover whitespace-nowrap "
    onClick={handleBooking}
  />
-
+) : null}
  
 </div>
 ) : (

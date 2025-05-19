@@ -49,8 +49,8 @@ export const footerLinks = [
       { name: "About us", url: "#" },
       { name: "Careers", url: "#" },
       { name: "News", url: "#" },
-      {name: "Privacy Policy", url: "#"},
-      {name: "Terms and Conditions", url: "#"}
+      {name: "Privacy Policy", url: "/privacy-policy"},
+      {name: "Terms and Conditions", url: "/terms-and-conditions"}
     ],
   },
   {
@@ -124,7 +124,7 @@ export const carousel = [
     //   'Sydney, NSW, AU', 'Paris, ÎLE-DE-FR, FR',
     // 'Tokyo, 13, JP', 'Berlin, BE, DE','Los Angeles, CA, US',
     //  'São Paulo, SP, BR', 'Mumbai, MH, IN']
-    
+      
     
     export const cardData = [
       {

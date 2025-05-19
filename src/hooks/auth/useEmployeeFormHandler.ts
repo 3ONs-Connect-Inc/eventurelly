@@ -158,7 +158,7 @@ export const useEmployeeFormHandler = (
         await setDoc(userRef, userData);
       }
 
-      toast.success("Registration successful");
+      toast.success("Registration successful");  
       recaptchaRef.current?.reset();
       navigate("/2fa-auth");
     } catch (error: any) {

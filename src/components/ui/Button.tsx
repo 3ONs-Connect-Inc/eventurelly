@@ -9,6 +9,7 @@ interface ButtonProps {
   className?: string;
   disabled?: boolean;
   image?: string; 
+  icon?: React.ReactNode; 
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   disabled,
   image,
+  icon
 }) => {
   const baseClasses =
     "px-6 py-2 font-semibold shadow-md dark:border-0 dark:shadow-lg dark:shadow-gray-800 rounded-lg transition duration-300 cursor-pointer";
@@ -36,9 +38,14 @@ const Button: React.FC<ButtonProps> = ({
     };
 
     const content = (
-      <div className={`${image && "flex max-md:justify-center  max-xs:px-0   px-4 space-x-4  items-center"} `}>
+      <div
+        className={`${
+          image || icon ? "flex max-md:justify-center max-xs:px-0 px-4 space-x-4 items-center" : ""
+        }`}
+      >
         <span>{label}</span>
-        {image && <img src={image} alt="icon" className="w-2.5 h-2.5" />} 
+        {image && <img src={image} alt="icon" className="w-2.5 h-2.5" />}
+        {icon && !image && icon}
       </div>
     );
 

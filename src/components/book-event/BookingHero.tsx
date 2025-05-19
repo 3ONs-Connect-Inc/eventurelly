@@ -13,7 +13,7 @@ const BookingHero: React.FC<BookEventProps> = ({
 const fallbackImage =
        cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image ||
        cardData[cardData.length]?.image ||
-       "/images/top-picks/img6.png";
+       "/images/loader.gif";
        
   return (  
     <HeroContainer className="mt-0 mb-2 p-4 ">

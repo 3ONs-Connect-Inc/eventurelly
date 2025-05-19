@@ -31,7 +31,7 @@ const TeamEvents: React.FC = () => {
               cardData.find((fallback) => fallback.eventName === card.eventName)
                 ?.image ||
               cardData[index % cardData.length]?.image || // Use index if title match fails
-              "/images/top-picks/img6.png";
+              "/images/loader.gif";
 
             return (
               <Card

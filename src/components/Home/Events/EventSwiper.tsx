@@ -31,8 +31,8 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
         const fallbackImage =
           cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
           cardData[index % cardData.length]?.image ||
-          "/images/top-picks/img6.png";
-
+          "/images/loader.gif";
+  
         return (
           <SwiperSlide key={index} className="flex justify-center  h-full p-1">
             <div className="h-full w-full max-w-xs sm:max-w-sm md:max-w-md flex">

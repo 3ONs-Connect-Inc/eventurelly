@@ -33,7 +33,7 @@ const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
             {/* Buttons */}
 
             <div className="flex max-xs:flex-col flex-row justify-center gap-4">
-              {isLoggedIn ? (
+              {isLoggedIn ? (  
                 <Link to="/demo-request">
                   <Button
                     label="Request a demo"
@@ -78,9 +78,9 @@ const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
                     {section.title}
                   </h1>
                   {section.links.map((link, index) => (
-                    <a
+                    <Link
                       key={index}
-                      href={link.url}
+                      to={link.url}
                       className={`${textColor} hover:text-primary cursor-pointer font-normal block text-base max-sm:text-tiny`}
                     >
                       {link.name === "Hybrid" ||
@@ -94,7 +94,7 @@ const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
                       ) : (
                         link.name
                       )}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               ))}

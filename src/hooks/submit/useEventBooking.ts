@@ -213,6 +213,7 @@ export const useEventBooking = (
         slug: slug,
         eventId: eventId,
         eventDate: formData.eventDate ? formData.eventDate.toISOString() : null,
+        createdBy: activeUser.id,
       })
     );
     setIsLoading(true);
@@ -244,6 +245,7 @@ export const useEventBooking = (
             : null,
           eventNamePrefixLower,
           searchKeywords,
+          createdBy: activeUser.id,
         });
       } else {
         const eventExists = await checkEventExists();
@@ -268,6 +270,7 @@ export const useEventBooking = (
           searchKeywords,
           isBooked: true,
           eventNamePrefixLower,
+          createdBy: activeUser.id,
         });
         console.log("New Booking Created:", newBookingRef.id); // Debugging
         await updateDoc(newBookingRef, {

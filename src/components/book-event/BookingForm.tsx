@@ -168,11 +168,11 @@ const BookingForm: React.FC<BookingFormProps> = ({  eventDetail, eventId, slug }
               selected={formData.eventDate}  
               onChange={handleDateChange}
               dateFormat="MM/dd/yyyy"
-              minDate={new Date()} //  Prevents selecting past dates
+              minDate={new Date()} 
               placeholderText="MM/DD/YYYY"
               className="w-full "
             />
-            {errors.eventDate && (
+            {errors.eventDate && (  
               <p className="text-destructive mt-4 ">{errors.eventDate}</p>
             )}
           </div>

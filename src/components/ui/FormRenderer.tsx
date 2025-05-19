@@ -226,7 +226,7 @@ export type FieldConfig = {
               return null;
             }
         })}
-      </div>
+      </div> 
     );
   })}
 </>

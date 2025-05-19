@@ -26,7 +26,7 @@ type Agenda = {
     };
   
     return (
-      <div className="space-y-2">
+      <div className="space-y-4">
         <h3 className="font-medium">Agendas</h3>
         {agendas.map((agenda, index) => (
           <div key={index} className="flex flex-col gap-2 border p-2 rounded">

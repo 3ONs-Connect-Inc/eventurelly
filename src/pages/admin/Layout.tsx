@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from '@uidotdev/usehooks';
-import { useClickOutside } from "../../components/Admin/hooks/use-click-outside";
 import { Header } from "../../components/Admin/layouts/header";
 import { cn } from "../../utils/cn";
 import { Sidebar } from "../../components/Admin/layouts/sidebar";
+import useClickOutside from "../../hooks/ui/useClickOutside";
 
-
-
+  
+   
 const Layout = () => {
-  const isDesktopDevice = useMediaQuery("(min-width: 768px)");
+  const isDesktopDevice = useMediaQuery("(min-width: 896px)");
   const [collapsed, setCollapsed] = useState<boolean>(() => !isDesktopDevice);
 
   const sidebarRef = useRef<HTMLElement | null>(null);

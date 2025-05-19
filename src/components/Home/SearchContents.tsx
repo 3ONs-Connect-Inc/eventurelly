@@ -103,7 +103,7 @@ const SearchContents: React.FC<SearchProps> = ({
     const fallbackImage =
       cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
       cardData[index % cardData.length]?.image ||
-      "/images/top-picks/img6.png";
+      "/images/loader.gif";
 
     return (
       <Card
