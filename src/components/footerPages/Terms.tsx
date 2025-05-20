@@ -150,14 +150,29 @@ const sections = [
   {
     title: "5. Cancellation & Refund Policy",
     content: (
-      <List
-        items={[
-          "Cancellations made 14 days before the event: Full refund",
-          "Cancellations within 7–13 days: 50% refund",
-          "Cancellations less than 7 days: No refund",
-          "Refunds exclude any non-refundable third-party costs or deposits",
-        ]}
-      />
+    <>
+      <ul className="list-disc list-inside space-y-2 pl-2">
+        <li
+          dangerouslySetInnerHTML={{
+            __html:
+              "<strong>Cancellations made 14 days before the event:</strong> Full refund",
+          }}
+        />
+        <li
+          dangerouslySetInnerHTML={{
+            __html:
+              "<strong>Cancellations within 7–13 days:</strong> 50% refund",
+          }}
+        />
+        <li
+          dangerouslySetInnerHTML={{
+            __html:
+              "<strong>Cancellations less than 7 days:</strong> No refund",
+          }}
+        />
+        <li>Refunds exclude any non-refundable third-party costs or deposits.</li>
+      </ul>
+    </>
     ),
   },
   {
