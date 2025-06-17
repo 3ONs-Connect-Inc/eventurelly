@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { BackThemeProviderContext } from "../contexts/BackThemeContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 
 export const useColor = () => { 
-    const { theme } = useContext(BackThemeProviderContext);
+    const { theme } = useContext(ThemeContext);
   
     return {
       textColor: theme === "light" ? "text-slate-900" : "text-slate-50",

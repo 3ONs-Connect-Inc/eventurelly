@@ -1,6 +1,10 @@
-import { Bell, ChevronsLeft, Moon, Search, Sun } from "lucide-react";
-import { useTheme } from "../hooks/use-theme";
+import { Bell, ChevronsLeft,  Search, } from "lucide-react";
 import { Button } from "../ui/Button";
+import { useContext, useRef, useState } from "react";
+import useLogout from "../../../hooks/auth/useLogout";
+import { useClickOutside } from "../hooks/use-click-outside";
+import { ThemeContext } from "../../../context/ThemeContext";
+import ThemeToggle from "../../navbar/ThemeToggle";
 
 interface HeaderProps {
   collapsed: boolean;
@@ -8,7 +12,14 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { handleLogout } = useLogout();
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside([profileRef, dropdownRef], () => setDropdownOpen(false));
 
   return (
     <header className="relative z-10 flex h-[60px] items-center justify-between bg-white px-4 shadow-md transition-colors dark:bg-slate-900">
@@ -32,24 +43,33 @@ export const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
         </div>
       </div>
       <div className="flex items-center gap-x-3">
-        <Button
-          aria-label="theme"
-          className="btn-ghost size-10 "
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        >
-          <Sun size={20} className="dark:hidden" />
-          <Moon size={20} className="hidden dark:block" />
-        </Button>
+      <ThemeToggle toggleTheme={toggleTheme} theme={theme} />
         <Button aria-label="bell icon" className="btn-ghost size-10 ">
           <Bell size={20} />
         </Button>
 
-        <Button
-          aria-label="profile"
-          imgSrc="/images/avatar.png"
-          imgAlt="Profile image"
-          className="size-10 overflow-hidden rounded-full"
-        />
+        <div ref={profileRef} className="relative">
+          <Button
+            aria-label="profile"
+            imgSrc="/images/avatar.png"
+            imgAlt="Profile image"
+            className="size-10 overflow-hidden rounded-full"
+            onClick={() => setDropdownOpen((prev) => !prev)}
+          />
+          {dropdownOpen && (
+            <div
+              ref={dropdownRef}
+              className="absolute right-0 mt-2 w-40 rounded-md bg-white shadow-lg  dark:bg-slate-800"
+            >
+              <button
+                onClick={handleLogout}
+                className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-slate-700"
+              >
+                Log out
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

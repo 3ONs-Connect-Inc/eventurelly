@@ -20,6 +20,7 @@ export const navbarLinks = [
                 label: "Dashboard",
                 icon: Home,
                 path: "/admin",
+                
             },
             {
                 label: "Analytics",
@@ -76,7 +77,7 @@ export const navbarLinks = [
             {
                 label: "Settings",
                 icon: Settings,
-                path: "/settings",
+                path: "/admin/settings",
             },
         ],
     },

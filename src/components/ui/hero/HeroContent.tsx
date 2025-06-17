@@ -37,17 +37,18 @@ const HeroContent: React.FC<HeroContentProps> = ({
           : "text-left md:text-left   max-md:w-full max-md:text-center max-md:justify-center"
       )}
     >
-      <h2
-        className={cn(
-          textColor,
-          " text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 font-bold",
-          alignCenter
-            ? "text-center"
-            : "text-center justify-center md:text-left  mr-1 max-md:mr-0 "
-        )}
-      >
-        {title}
-      </h2>
+     
+<h2
+  className={`
+    ${textColor} 
+    text-large/15 max-md:text-bigger/11 max-sm:text-big/10 max-xs:text-mid/8 
+    font-bold 
+    ${alignCenter ? 'text-center' : 'md:text-left justify-center'} 
+    mr-1 max-md:mr-0
+  `}
+>
+  {title}
+</h2>
 
       <p
         className={cn(

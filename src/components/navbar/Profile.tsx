@@ -43,7 +43,7 @@ const Profile = ({ handleLogout }: { handleLogout: () => void }) => {
             
               <span
                 onClick={handleLogout}
-                className="cursor-pointer text-primary "
+                className={`cursor-pointer ${textColor}`}
               >
                 Log out
               </span>

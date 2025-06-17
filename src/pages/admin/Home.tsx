@@ -4,25 +4,25 @@ import {
   Package,
   Users,
 } from "lucide-react";
-import { useTheme } from "../../components/Admin/hooks/use-theme";
 import { Footer } from "../../components/Admin/layouts/footer";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import {  useEffect } from "react";
 import { useDashboardStats } from "../../components/Admin/hooks/useDashboardStats";
-import OverViewChart from "../../components/Admin/Charts/OverViewCharts";
-import {BookingsTable} from "../../components/Admin/Tables/BookingTable";
+//import OverViewChart from "../../components/Admin/Charts/OverViewCharts";
+//import { ThemeContext } from "../../context/ThemeContext";
+//import {BookingsTable} from "../../components/Admin/Tables/BookingTable";
 
 
 const DashboardPage = () => {
-  const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
+ // const { theme } = useContext(ThemeContext); 
   const {
     totalEvents,
     totalBookings,
     totalUsers,
     totalDemoRequest,
-    recentDemoRequests,
+  //  recentDemoRequests,
     topBookings,
     loading,
   } = useDashboardStats();
@@ -79,13 +79,13 @@ const DashboardPage = () => {
         ))}
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <OverViewChart theme={theme === "system" ? "light" : theme} />
+      {/* <OverViewChart theme={theme === "system" ? "light" : theme} /> */}
 
         <div className="card col-span-1 md:col-span-2 lg:col-span-3">
           <div className="card-header">
             <p className="card-title">Recent Demo Requests</p>
           </div>
-          <div className="card-body h-[300px] overflow-auto p-0">
+          {/* <div className="card-body h-[300px] overflow-auto p-0">
             {recentDemoRequests.map((request) => (
               <div
                 key={request.id}
@@ -112,13 +112,14 @@ const DashboardPage = () => {
                
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       {isLoading ? (
         <p className="text-center text-gray-500">Loading top bookings...</p>
       ) : (
-        <BookingsTable topBookings={ topBookings }/>
+        <></>
+        // <BookingsTable topBookings={ topBookings }/>
       )}
       <Footer />
     </div>

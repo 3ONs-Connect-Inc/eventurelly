@@ -22,30 +22,3 @@ const useClickOutside = (
 
 export default useClickOutside;
 
-
-// const useClickOutside = (refs: RefObject<HTMLElement>[], onClickOutside: () => void) => {
-//   useEffect(() => {
-//     const handleClickOutside = (event: MouseEvent) => {
-//       let isInside = false;
-
-//       for (const ref of refs) {
-//         if (ref.current && ref.current.contains(event.target as Node)) {
-//           isInside = true;
-//           break;
-//         }
-//       }
-
-//       if (!isInside) {
-//         onClickOutside();
-//       }
-//     };
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, [onClickOutside, refs]); 
-
-// };
-
-// export default useClickOutside;
