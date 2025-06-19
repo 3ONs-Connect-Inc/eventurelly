@@ -5,7 +5,7 @@ import { Eye } from "lucide-react";
 import LazyImage from "../../LazyImage";
 import { Button } from "../ui/Button";
 import { AdminTable, Column } from "./AdminTable";
-import { cardData } from "../../constants";
+
 
 export const BookingsTable: React.FC<{ topBookings: BookingData[] }> = ({
   topBookings,
@@ -21,16 +21,10 @@ export const BookingsTable: React.FC<{ topBookings: BookingData[] }> = ({
     {
       header: "Image",
       render: (booking) => {
-        const match = cardData.find(
-          (card) =>
-            card.id === booking.eventId ||
-            card.eventName.trim().toLowerCase() ===
-              booking.eventName.trim().toLowerCase()
-        );
-        const image = match?.image || "/images/loader.gif";
+        
         return (
           <LazyImage
-            src={image}
+            src={booking.eventImage}
             alt={booking.eventName}
             className="rounded-lg object-cover h-15 w-20"
           />

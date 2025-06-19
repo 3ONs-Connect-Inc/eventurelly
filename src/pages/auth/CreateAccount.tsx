@@ -3,7 +3,6 @@ import CAdminForm from "../../components/auth/CAdminForm";
 import useFetchCountries from "../../hooks/ui/useFetchCountries";
 import { Link, useLocation } from "react-router-dom";
 import Seo from "../../components/Seo";
-import LazyImage from "../../components/LazyImage";
 import { useColor } from "../../hooks/ui/useColor";
 import EmployeeForm from "../../components/auth/EmployeeForm";
 
@@ -55,9 +54,10 @@ const CreateAccount: React.FC = () => {
         {/* Background image */}
         <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-[#170055] to-[#000000] opacity-0"></div>
         <div className="absolute inset-0 h-full">
-          <LazyImage
-            src="/eventurelly/p3.png"
+          <img
+            src="/images/ppl/p3.png"
             alt="background"
+            loading='lazy'
             className="w-full h-full object-cover "
           />
         </div>

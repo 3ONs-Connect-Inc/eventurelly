@@ -1,7 +1,6 @@
 import React from "react";
 import SignIn from "../../components/auth/SignIn";
 import { Link } from "react-router-dom";
-import LazyImage from "../../components/LazyImage";
 import Seo from "../../components/Seo";
 import { useColor } from "../../hooks/ui/useColor";
 
@@ -37,9 +36,10 @@ const SignInAccount: React.FC = () => {
       <div className="relative  w-full md:w-1/2 min-h-full bg-gradient-to-r from-gray-700 to-gray-900 flex flex-col items-center md:block">
         {/* Background image for smaller screens */}
         <div className="relative w-full md:hidden h-100 overflow-hidden ">
-          <LazyImage
-            src="/eventurelly/p3.png"
+          <img
+            src="/images/ppl/p3.png"
             alt="background"
+            loading="lazy"
             className="w-full h-full object-cover object-top"
           />
 
@@ -51,9 +51,10 @@ const SignInAccount: React.FC = () => {
 
         {/* Background image for larger screens */}
         <div className="hidden md:block absolute inset-0 h-full">
-          <LazyImage
-            src="/eventurelly/p3.png"
+          <img
+            src="/images/ppl/p3.png"
             alt="background"
+            loading='lazy'
             className="w-full h-full object-cover"
           />
          

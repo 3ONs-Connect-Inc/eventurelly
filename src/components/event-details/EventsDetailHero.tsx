@@ -4,9 +4,6 @@ import HeroContent from "../ui/hero/HeroContent";
 import HeroImage from "../ui/hero/HeroImage";
 import Button from "../ui/Button";
 import { useAppSelector } from "../../hooks/redux";
-import { cardData } from "../constants";
-
-
 
 interface EventDetailHeroProps {
   handleBooking: () => void ;  
@@ -16,11 +13,6 @@ interface EventDetailHeroProps {
 const EventDetailHero: React.FC<EventDetailHeroProps> = ({ eventDetail, handleBooking }) => {
   const activeUser = useAppSelector((state) => state.user.activeUser);
 
-  const fallbackImage =
-       cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image ||
-       cardData[cardData.length]?.image ||
-       "/images/loader.gif";
-  
   const eventDetails = [
     { label: "Format", value: eventDetail?.eventFormat, icon: "/images/icon/user-check.png" },
     { label: "Location", value: eventDetail?.location, icon: "/images/icon/map.png" },
@@ -31,7 +23,7 @@ const EventDetailHero: React.FC<EventDetailHeroProps> = ({ eventDetail, handleBo
 
   return (
     <HeroContainer className="mt-8 mb-10 p-4">
-      <HeroImage src={fallbackImage || "/eventurelly/p4.png"} alt="Escape Room" />
+      <HeroImage src={eventDetail.eventImage} alt="Escape Room" />
 
       
       <div className="text-center w-full max-w-2xl mt-6">

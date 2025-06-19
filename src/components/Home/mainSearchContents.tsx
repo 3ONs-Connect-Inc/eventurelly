@@ -1,17 +1,15 @@
 import { useRef, useState } from "react";
-import Card from "../ui/Card";
 import { useColor } from "../../hooks/ui/useColor";
 import { CgSortAz } from "react-icons/cg";
 import useClickOutside from "../../hooks/ui/useClickOutside";
-import { useNavigate } from "react-router-dom";
-import { cardData } from "../constants";
+
+
 
 const SearchContents = () => {
   const { textColor, bgColor2 } = useColor();
   const [showDropdown, setShowDropdown] = useState(false);
   const [sortOption, setSortOption] = useState("Descending");
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   const handleSortClick = (option: string) => {
     setSortOption(option);
@@ -20,10 +18,7 @@ const SearchContents = () => {
 
   useClickOutside([dropdownRef], () => setShowDropdown(false));
 
-  const handleLearnMore = (slug: string) => {
-    navigate(`/event-details/${slug}`);
-  };
-
+ 
   return (
     <div className="flex items-center   py-4 px-6 max-xs:px-0">
       <div
@@ -90,25 +85,7 @@ const SearchContents = () => {
         </div>
 
         {/* Cards Section */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  justify-items-center">
-          {cardData.map((card, index) => (
-            <Card
-              key={index}  
-              image={card.image}
-              title={card.eventName}
-              description={card.eventDescription}
-              buttonText={card.buttonText}
-              className="self-start text-left border  "
-              buttonAlignment="center"
-              textAlignment="left"
-              buttonFullWidth
-              buttonColor
-              buttonTextColor
-              imageClassName="w-full h-full"
-              onClick={() => handleLearnMore(card.slug)}
-            />
-          ))}
-        </div>
+     
       </div>
     </div>
   );

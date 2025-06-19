@@ -1,5 +1,5 @@
 
-import { cardData } from "../constants";
+
 import HeroContainer from "../ui/hero/HeroContainer";
 import HeroContent from "../ui/hero/HeroContent";
 import HeroImage from "../ui/hero/HeroImage";
@@ -11,14 +11,10 @@ eventDetail: any;
 
 const BookingHero: React.FC<BookEventProps> = ({ 
   eventDetail }) => {
-const fallbackImage =
-       cardData.find((fallback) => fallback.eventName === eventDetail.eventName)?.image ||
-       cardData[cardData.length]?.image ||
-       "/images/loader.gif";
        
   return (  
     <HeroContainer className="mt-0 mb-2 p-4 ">
-      <HeroImage src={fallbackImage || "/images/ppl/p6.png"} alt="Escape Room" />
+      <HeroImage src={eventDetail.eventImage} alt="Escape Room" />
  
       <HeroContent
         title={eventDetail.eventNamePrefix ? `${eventDetail.eventNamePrefix} ${eventDetail.eventName}` : eventDetail.eventName}

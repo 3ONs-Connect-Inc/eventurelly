@@ -28,6 +28,7 @@ export const useEventBooking = (
     bookingId: eventDetail.bookingId || "",
     slug: slug || "",
     eventNamePrefix: "",
+      eventImage: eventDetail?.eventImage || "",
     eventDate: null,
     optionalServices:
     typeof eventDetail?.optionalServices === "object" &&
@@ -66,6 +67,7 @@ export const useEventBooking = (
         ...prev,
         bookingId: eventDetail.bookingId || prev.bookingId,
         eventNamePrefix: eventDetail.eventNamePrefix || "",
+          eventImage: eventDetail.eventImage || prev.eventImage,
         eventDate: eventDetail.eventDate
           ? new Date(eventDetail.eventDate)
           : null,

@@ -75,6 +75,7 @@ export const useDashboardStats = () => {
           slug: data.slug,
           eventId: data.eventId,
           eventName: data.eventName,
+          eventImage: data.eventImage,
           eventDate, // now safely parsed
           optionalServices: data.optionalServices || {},
           eventDescription: data.eventDescription,
