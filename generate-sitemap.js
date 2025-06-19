@@ -8,7 +8,7 @@ const serviceAccount = JSON.parse(serviceAccountJson);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
-
+  
 const db = admin.firestore();
 const baseUrl = 'https://eventurelly.com';
 
