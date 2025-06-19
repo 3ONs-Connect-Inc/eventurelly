@@ -6,17 +6,17 @@ import {
 } from "lucide-react";
 import { Footer } from "../../components/Admin/layouts/footer";
 import { useLocation, useNavigate } from "react-router-dom";
-import {  useEffect } from "react";
+import {  useContext, useEffect } from "react";
 import { useDashboardStats } from "../../components/Admin/hooks/useDashboardStats";
-//import OverViewChart from "../../components/Admin/Charts/OverViewCharts";
-//import { ThemeContext } from "../../context/ThemeContext";
+import OverViewChart from "../../components/Admin/Charts/OverViewCharts";
+import { ThemeContext } from "../../context/ThemeContext";
 //import {BookingsTable} from "../../components/Admin/Tables/BookingTable";
 
 
 const DashboardPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
- // const { theme } = useContext(ThemeContext); 
+  const { theme } = useContext(ThemeContext); 
   const {
     totalEvents,
     totalBookings,
@@ -79,7 +79,7 @@ const DashboardPage = () => {
         ))}
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
-      {/* <OverViewChart theme={theme === "system" ? "light" : theme} /> */}
+      <OverViewChart theme={theme === "system" ? "light" : theme} />
 
         <div className="card col-span-1 md:col-span-2 lg:col-span-3">
           <div className="card-header">

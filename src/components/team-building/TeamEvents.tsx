@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useColor } from "../../hooks/ui/useColor";
 import Card from "../ui/Card";
-import { cardData } from "../../../data";
 import { useFetchEvents } from "../../hooks/events/useFetchEvents";
 import Spinner from "../Spinner";
 
@@ -27,16 +26,11 @@ const TeamEvents: React.FC = () => {
      
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  justify-items-center">
         {events.map((card, index) => {
-            const fallbackImage =
-              cardData.find((fallback) => fallback.eventName === card.eventName)
-                ?.image ||
-              cardData[index % cardData.length]?.image || // Use index if title match fails
-              "/images/loader.gif";
-
+            
             return (
               <Card
                 key={index}
-                image={card.image || fallbackImage}
+                image={card.eventImage}
                 title={card.eventName}
                 description={card.eventDescription}
                 buttonText={card.buttonText || "Learn More"}

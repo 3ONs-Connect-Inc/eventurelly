@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { navLinks } from "../../../data";
 import { useColor } from "../../hooks/ui/useColor";
+import { navLinks } from "../constants";
 
 
 

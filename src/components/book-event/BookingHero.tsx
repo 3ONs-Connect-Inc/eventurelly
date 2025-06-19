@@ -1,4 +1,5 @@
-import { cardData } from "../../../data";
+
+import { cardData } from "../constants";
 import HeroContainer from "../ui/hero/HeroContainer";
 import HeroContent from "../ui/hero/HeroContent";
 import HeroImage from "../ui/hero/HeroImage";

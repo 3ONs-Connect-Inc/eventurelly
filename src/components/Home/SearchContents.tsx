@@ -3,9 +3,9 @@ import Card from "../ui/Card";
 import { useColor } from "../../hooks/ui/useColor";
 import {  useSearchParams} from "react-router-dom";
 import { searchEventsAndBookings } from "../../firebase/events";
-import { cardData } from "../../../data";
 import Spinner from "../Spinner";
 import SearchSort from "./SearchSort";
+
 
 
 interface SearchProps {
@@ -100,15 +100,11 @@ const SearchContents: React.FC<SearchProps> = ({
 
 <div className="w-full grid grid-cols-1 xs:grid-cols-2 2sm:grid-cols-3 md:grid-cols-3  gap-6 justify-items-center">
   {searchResults.map((card, index) => {
-    const fallbackImage =
-      cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
-      cardData[index % cardData.length]?.image ||
-      "/images/loader.gif";
-
+  
     return (
       <Card
         key={index}
-        image={card.image || fallbackImage}
+        image={card.eventImage}
         title={card.eventNamePrefix ? `${card.eventNamePrefix} ${card.eventName}` : card.eventName}
         description={card.eventDescription}
        // tags={Array.isArray(card.eventCategory) ? card.eventCategory : [card.eventCategory]}

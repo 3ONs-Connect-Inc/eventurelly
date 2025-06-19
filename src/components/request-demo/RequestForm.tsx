@@ -4,7 +4,7 @@ import SuccessModal from "../ui/modal/SuccessModal";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { Country } from "../../types";
 import { FormRenderer } from "../ui/FormRenderer";
-import { RequestFields } from "../../data/data";
+import { RequestFields } from "../constants";
 
 const RequestForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { textColor, pColor, bgColor2 } = useColor();

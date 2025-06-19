@@ -1,11 +1,11 @@
 import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { carousel } from "../../../data";
 import HeroImage from "../ui/hero/HeroImage";
 import HeroContent from "../ui/hero/HeroContent";
 import HeroContainer from "../ui/hero/HeroContainer";
 import { useAppSelector } from "../../hooks/redux";
+import { carousel } from "../constants";
 
 export const HeroSection = () => {
   const { isLoggedIn } = useAppSelector((state) => state.user);

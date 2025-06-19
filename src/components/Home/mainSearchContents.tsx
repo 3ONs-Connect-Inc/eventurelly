@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import Card from "../ui/Card";
-import { cardData } from "../../../data";
 import { useColor } from "../../hooks/ui/useColor";
 import { CgSortAz } from "react-icons/cg";
 import useClickOutside from "../../hooks/ui/useClickOutside";
 import { useNavigate } from "react-router-dom";
+import { cardData } from "../constants";
 
 const SearchContents = () => {
   const { textColor, bgColor2 } = useColor();

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 
 type ThemeContextType = {
-  theme: "light" | "dark";
+  theme: "light" | "dark" | "system";
   toggleTheme: () => void;
 };
 
@@ -12,7 +12,7 @@ export const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
+  const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
     return localStorage.getItem("theme") === "dark" ? "dark" : "light";
   });
 

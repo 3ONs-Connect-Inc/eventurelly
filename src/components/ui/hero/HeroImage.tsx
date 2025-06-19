@@ -1,5 +1,5 @@
 import React from "react";
-import LazyImage from "../../LazyImage";
+//import LazyImage from "../../LazyImage";
 import { cn } from "../../../utils/cn";
 
 interface HeroImageProps {
@@ -18,7 +18,8 @@ const HeroImage: React.FC<HeroImageProps> = ({ className, src, alt, rounded = fa
       : " w-full h-auto max-w-full  max-h-full overflow-hidden"
   )}
   >
-    <LazyImage
+    {/* <LazyImage */}
+    <img
       src={src}  
       alt={alt}
       className={cn (
@@ -26,7 +27,7 @@ const HeroImage: React.FC<HeroImageProps> = ({ className, src, alt, rounded = fa
           ? "w-full object-cover aspect-[569/486] rounded-[50%] rounded-bl-[5%] with-loader rounded-tr-[5%] shadow-lg"
           : "w-full h-full max-h-[400px] object-cover rounded-lg shadow-md  with-loader ",
         className)}
-        quality={100} 
+        loading="lazy"
     />
     
   </div>

@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { PencilLine, Trash } from "lucide-react";
 import { Event } from "../../../types";
-import { cardData } from "../../../../data";
 import LazyImage from "../../LazyImage";
 import { Button } from "../ui/Button";
 import { useEventForm } from "../hooks/useEventForm";
 import DeleteAlert from "../../ui/modal/DeleteAlert";
 import { AdminTable, Column } from "./AdminTable";
 
-interface Props {
+interface Props {  
   events: Event[];
   onEdit: (id: string) => void;
 }
@@ -21,13 +20,17 @@ const EventsTable = ({ events, onEdit }: Props) => {
   const [showAlert, setShowAlert] = useState(false);
   const { handleDelete } = useEventForm();
 
-  const confirmDelete = async () => {
-    if (selectedId) {
-      await handleDelete(selectedId);
-      setShowAlert(false);
-      setSelectedId(null);
+ const confirmDelete = async () => {
+  if (selectedId) {
+    const event = events.find(e => e.id === selectedId);
+    if (event) {
+      await handleDelete(selectedId, event.eventImage);
     }
-  };
+    setShowAlert(false);
+    setSelectedId(null);
+  }
+};
+
 
   const columns: Column<Event>[] = [
     {
@@ -36,26 +39,21 @@ const EventsTable = ({ events, onEdit }: Props) => {
       className: "w-12",
     },
     {
-      header: "Image",
-      render: (event) => {
-        const matchingCard = cardData.find(
-          (card) =>
-            card.id === event.id ||
-            card.eventName.trim().toLowerCase() ===
-              event.eventName.trim().toLowerCase()
-        );
-        const image = matchingCard?.image || "/images/loader.gif";
-        return (
-          <LazyImage
-            src={image}
-            alt={event.eventName}
-            className="rounded-lg object-cover h-10 w-20"
-            quality={80}
-          />
-        );
-      },
-      className: "w-25",
-    },
+  header: "Image",
+  render: (event) => {
+    const image = event.eventImage || "/images/placeholder.png";
+    return (
+      <LazyImage
+        src={image}
+        alt={event.eventName}
+        className="rounded-lg object-cover h-10 w-20"
+     
+      />
+    );
+  },
+  className: "w-25",
+},
+   
     {
       header: "Event Name",
       render: (event) => (
@@ -77,7 +75,7 @@ const EventsTable = ({ events, onEdit }: Props) => {
       header: "Duration",
       render: (event) => <p>{event.duration}</p>,
       className: "w-50",
-    },
+    },    
     {
       header: "Actions",
       render: (event) => (
@@ -122,7 +120,7 @@ const EventsTable = ({ events, onEdit }: Props) => {
           message={`Are you sure you want to delete "${selectedEventName}"? This action cannot be undone.`}
           onConfirm={confirmDelete}
           onCancel={() => {
-            setShowAlert(false);
+             setShowAlert(false);
             setSelectedId(null);
           }}
         />

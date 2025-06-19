@@ -6,6 +6,7 @@ interface BookingData {
   eventId?: string;
   createdBy?: string,
   slug?: string;
+  eventImage: string;
   eventName: string;
   eventDate: string | null;
   optionalServices: { [serviceName: string]: boolean };

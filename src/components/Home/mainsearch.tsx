@@ -2,9 +2,9 @@
 import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";  
 import { IoSearchOutline } from "react-icons/io5";
-import { filterOptions } from "../../../data";
 import useClickOutside from "../../hooks/ui/useClickOutside";
 import { Link } from "react-router-dom";
+import { filterOptions } from "../constants";
 
 
 export const SearchBar: React.FC = () => {

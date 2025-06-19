@@ -8,8 +8,8 @@ import { useColor } from "../../hooks/ui/useColor";
 import { Country } from "../../types";
 import Button from "../ui/Button";
 import { FormRenderer } from "../ui/FormRenderer";
-import { registerFormFields } from "../../data/auth/auth";
 import { ThemeContext } from "../../context/ThemeContext";
+import { registerFormFields } from "../constants";
 
 const center = {
   lat: 7.2905715,
@@ -118,7 +118,7 @@ const CAdminForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           countries={countries}
           recaptchaRef={recaptchaRef}
           handleRecaptcha={handleRecaptcha}
-          theme={theme}
+          theme={theme === "system" ? undefined : theme}
           showMap={showMap}
           markerPosition={markerPosition}
           setMarkerPosition={setMarkerPosition}

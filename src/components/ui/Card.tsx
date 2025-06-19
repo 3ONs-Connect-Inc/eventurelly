@@ -22,10 +22,13 @@ interface CardProps {
   buttonColor?: boolean;
   imageClassName?: string;
   scale?: boolean;
+  useNativeImg?: boolean;
+
 }
 
 const Card: React.FC<CardProps> = ({
   image,
+  useNativeImg,
   title,
   description,
   date,
@@ -57,16 +60,40 @@ const Card: React.FC<CardProps> = ({
       "dark:border-gray-800 transition-transform duration-300 ease-in-out hover:shadow-lg"
     )}
      >
-      <div className={`max-w-full max-h-48 overflow-hidden mb-4 ${imageClassName}`}>
-        <LazyImage
-          src={image}
-          alt={title}
-          className={`object-cover w-full h-full max-w-full with-loader sm:max-w-full`}
-          quality={95} 
-          {...(textAlignment === "left" ? { width: 1000, height: 500 } : {})}
-          
-      />
-      </div>
+       
+
+      <>
+      {useNativeImg ? (
+        <div className={`max-w-full  overflow-hidden mb-4 ${imageClassName}`}>
+     <img
+    src={image}
+    alt={title}
+    loading="lazy"
+    className={cn(
+      "object-cover w-full h-full max-w-full with-loader sm:max-w-full",
+      imageClassName
+    )}
+    {...(textAlignment === "left" ? { width: 1000, height: 500 } : {})}
+  />
+        </div>
+       ) : (
+  <div className={`
+ 
+  max-w-full aspect-[4/3] sm:aspect-[16/9] max-h-[300px] overflow-hidden mb-4 ${imageClassName}`}>
+ <LazyImage
+    src={image}
+    alt={title}
+      className={`object-cover w-full h-full max-w-full with-loader sm:max-w-full`}
+   
+    {...(textAlignment === "left" ? { width: 1000, height: 500 } : {})}
+  />
+  </div>
+
+  )}
+
+      </>
+
+
 
       <div className="flex flex-col flex-grow w-full">
         <h2

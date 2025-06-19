@@ -1,8 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Card from "../../ui/Card";
-import { cardData } from "../../../../data";
-
 
 interface EventSwiperProps {
   events: any[];
@@ -28,16 +26,12 @@ const EventSwiper: React.FC<EventSwiperProps> = ({ events, swiperRef, handleLear
       className="w-full h-full "
     >
       {events.map((card, index) => {
-        const fallbackImage =
-          cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
-          cardData[index % cardData.length]?.image ||
-          "/images/loader.gif";
-  
+     
         return (
           <SwiperSlide key={index} className="flex justify-center  h-full p-1">
             <div className="h-full w-full max-w-xs sm:max-w-sm md:max-w-md flex">
               <Card
-                image={card.image || fallbackImage}
+                image={card.eventImage}
                 title={`${card.eventNamePrefix} ${card.eventName}`}
                 date={card.eventDate}
                 location={card.location}

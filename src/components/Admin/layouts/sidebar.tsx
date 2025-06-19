@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from '../../../utils/cn';
-import { navbarLinks } from "../constants";
+import { navbarLinks } from "../../constants";
 import { useColor } from "../ui/useColor";
 
 

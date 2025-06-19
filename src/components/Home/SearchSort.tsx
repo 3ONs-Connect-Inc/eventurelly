@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { useColor } from "../../hooks/ui/useColor";
 import { CgSortAz } from "react-icons/cg";
-import { defaultTags } from "../../../data";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { defaultTags } from "../constants";
 
 // interface SearchProps {
 //     events: any;

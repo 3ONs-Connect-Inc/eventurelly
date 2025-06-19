@@ -11,12 +11,14 @@ import {
 } from "firebase/firestore";
 import { Event } from "../../../types";
 import { useAppSelector } from "../../../hooks/redux";
-import { db } from "../../../firebase/config";
+import { db} from "../../../firebase/config";
 import { addEvent, updateEvent } from "../../../firebase/admin/events";
 import { toast } from "react-toastify";
+import { deleteImageFromCloudinary } from "../../../firebase/deleteImageFromCloudinary";
 
 export const useEventForm = (eventId?: string) => {
   const [eventData, setEventData] = useState<Omit<Event, "id">>({
+    eventImage: "",
     eventName: "",
     eventTagline: "",
     eventDescription: "",
@@ -41,6 +43,7 @@ export const useEventForm = (eventId?: string) => {
     if (!eventId) {
       // Reset the form when no eventId (i.e., switching to add mode)
       setEventData({
+        eventImage: "",
         eventName: "",
         eventTagline: "",
         eventDescription: "",
@@ -123,9 +126,9 @@ export const useEventForm = (eventId?: string) => {
       setLoading(false);
       return;
     }
-
-    const { eventName, eventDescription, slug } = eventData;
-    if (!eventName || !eventDescription || !slug) {
+  
+    const { eventName, eventDescription, slug, eventImage } = eventData;
+    if (!eventName || !eventDescription || !slug || !eventImage ) {
       toast.info("Please fill in all required fields.");
       setLoading(false);
       return;
@@ -172,11 +175,12 @@ export const useEventForm = (eventId?: string) => {
       // Only reset the form on success for new event
       if (success) {
         setEventData({
+          eventImage: "",
           eventName: "",
           eventTagline: "",
-          eventDescription: "",
+          eventDescription: "",  
           slug: "",
-          eventFormat: "",
+          eventFormat: "",  
           location: "",
           duration: "",
           teamSize: "",
@@ -193,34 +197,37 @@ export const useEventForm = (eventId?: string) => {
     setLoading(false);
   };
 
-  const handleDelete = async (id: string) => {
-    try {
-      setLoading(true);
+const handleDelete = async (id: string, eventImage: string) => {
+  try {
+    setLoading(true);
 
-      // Delete the event
-      await deleteDoc(doc(db, "events", id));
+    // 1. Delete the event document
+    await deleteDoc(doc(db, "events", id));
 
-      // Get all bookings with the matching eventId
-      const bookingsRef = collection(db, "bookings");
-      const q = query(bookingsRef, where("eventId", "==", id));
-      const querySnapshot = await getDocs(q);
+    // 2. Delete bookings for the event
+    const bookingsRef = collection(db, "bookings");
+    const q = query(bookingsRef, where("eventId", "==", id));
+    const querySnapshot = await getDocs(q);
+    const batch = writeBatch(db);
+    querySnapshot.forEach((docSnap) => {
+      batch.delete(doc(db, "bookings", docSnap.id));
+    });
+    await batch.commit();
 
-      // Batch delete all matching bookings
-      const batch = writeBatch(db);
-      querySnapshot.forEach((docSnap) => {
-        batch.delete(doc(db, "bookings", docSnap.id));
-      });
+    // 3. Delete Cloudinary image (if exists)
+    if (eventImage) {
+        await deleteImageFromCloudinary(eventImage);
+      }
+    
 
-      await batch.commit();
-
-      toast.success("Event and its bookings deleted successfully.");
-    } catch (error) {
-      console.error("Delete failed", error);
-      toast.error("Failed to delete event and bookings.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    toast.success("Event, bookings, and image deleted.");
+  } catch (error) {
+    console.error("Deletion error:", error);
+    toast.error("Failed to delete everything.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return {
     eventData,

@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AuthButtons from "./AuthButtons";
 import ThemeToggle from "./ThemeToggle";
-import { navLinks } from "../../../data";
 import { useColor } from "../../hooks/ui/useColor";
 import { NavLink } from "react-router-dom";
+import { navLinks } from "../constants";
 
 
 const MobileMenu = ({

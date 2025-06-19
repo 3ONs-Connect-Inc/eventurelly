@@ -7,7 +7,8 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
 import { useColor } from "../../hooks/ui/useColor";
 import { FormRenderer } from "../ui/FormRenderer";
-import { employeeFormFields } from "../../data/auth/auth";
+import { employeeFormFields } from "../constants";
+
 
 const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
@@ -71,7 +72,7 @@ const EmployeeForm: React.FC<{ countries: Country[] }> = ({ countries }) => {
           countries={countries}
           recaptchaRef={recaptchaRef}
           handleRecaptcha={handleRecaptcha}
-          theme={theme}
+          theme={theme === "system" ? undefined : theme}
           formSubmitted={formSubmitted}
           domains={domains}
         />

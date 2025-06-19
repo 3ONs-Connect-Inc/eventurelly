@@ -3,7 +3,8 @@ import Button from "../ui/Button";
 import useSignIn from "../../hooks/auth/useSignIn";
 import { useColor } from "../../hooks/ui/useColor";
 import { FormRenderer } from "../ui/FormRenderer";
-import { signInFormFields } from "../../data/auth/auth";
+import { signInFormFields } from "../constants";
+
 
 const SignIn = () => {
   const { textColor } = useColor();

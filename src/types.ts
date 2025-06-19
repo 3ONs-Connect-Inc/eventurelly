@@ -43,7 +43,7 @@ export interface Country {
 export interface Event {
   isBooked?: boolean;
   id: string;
-  image?: string;
+  eventImage: string;
   eventName: string;
   eventTagline: string;
   eventNameLower?: string;
@@ -71,6 +71,7 @@ export interface BookingData {
   userId?: string;
   slug?: string;
   eventId?: string;
+  eventImage: string;
   eventName: string;
   createdBy?: string, 
   eventDate: Date | null;

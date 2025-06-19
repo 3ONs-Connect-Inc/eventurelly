@@ -1,33 +1,30 @@
+
 import { useEffect, useRef, useState } from "react";
-import { IMAGEKIT_BASE_URL } from "../config";
-
-
 
 interface LazyImageProps {
-  src: string; 
+  src: string; // This should be Cloudinary public_id or full URL
   alt: string;
   className?: string;
-  width?: number;
-  height?: number;
-  quality?: number;
+
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
   src,
   alt,
   className = "",
-  width = 1024,
-  height,
-  quality = 80,
+
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const shouldShowLoader = className.includes("with-loader");
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
-  // Generate optimized ImageKit URL
-  const imageKitURL = `${IMAGEKIT_BASE_URL}/${src}?tr=w-${width}${height ? `,h-${height}` : ""},q-${quality},f-auto`;
+  // If src is a full URL, use it as-is
+  const isFullURL = src.startsWith("http");
+  const cloudinaryURL = isFullURL
+    ? src
+    : `https://res.cloudinary.com/${cloudName}/image/upload`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,12 +39,11 @@ const LazyImage: React.FC<LazyImageProps> = ({
       { threshold: 0.1 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
+    if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
+
+  const shouldShowLoader = className.includes("with-loader");
 
   return (
     <div
@@ -62,11 +58,13 @@ const LazyImage: React.FC<LazyImageProps> = ({
             </div>
           )}
           <img
-            src={imageKitURL}
+            src={cloudinaryURL}
             alt={alt}
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
-            className={`${className} transition-opacity duration-300 ease-in-out ${!isLoaded && shouldShowLoader ? "opacity-0" : "opacity-100"}`}
+            className={`${className} transition-opacity duration-300 ease-in-out ${
+              !isLoaded && shouldShowLoader ? "opacity-0" : "opacity-100"
+            }`}
           />
         </>
       )}

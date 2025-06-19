@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { BookingData } from "../../../types";
 import { Eye } from "lucide-react";
 import LazyImage from "../../LazyImage";
-import { cardData } from "../../../../data";
 import { Button } from "../ui/Button";
 import { AdminTable, Column } from "./AdminTable";
+import { cardData } from "../../constants";
 
 export const BookingsTable: React.FC<{ topBookings: BookingData[] }> = ({
   topBookings,

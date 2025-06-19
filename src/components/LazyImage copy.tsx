@@ -1,54 +1,44 @@
-import { useState, useEffect, useRef } from "react";
-import imageCompression from "browser-image-compression";
-import loader from '/images/loader.gif'
+import { useEffect, useRef, useState } from "react";
+import { IMAGEKIT_BASE_URL } from "../config";
 
-const LazyImage = ({
-  src,
-  alt,  
-  className = "",
-}: {
-  src: string;
+
+
+interface LazyImageProps {
+  src: string; 
   alt: string;
   className?: string;
+  width?: number;
+  height?: number;
+  quality?: number;
+}
+
+const LazyImage: React.FC<LazyImageProps> = ({
+  src,
+  alt,
+  className = "",
+  width = 1024,
+  height,
+  quality = 80,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [compressedSrc, setCompressedSrc] = useState<string>("");
-  const [isCompressing, setIsCompressing] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-
   const shouldShowLoader = className.includes("with-loader");
+
+  // Generate optimized ImageKit URL
+  const imageKitURL = `${IMAGEKIT_BASE_URL}/${src}?tr=w-${width}${height ? `,h-${height}` : ""},q-${quality},f-auto`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(async (entry) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
             observer.disconnect();
-
-            try {
-              const response = await fetch(src);
-              const blob = await response.blob();
-              const file = new File([blob], "image.jpg", { type: blob.type });
-
-              const compressedFile = await imageCompression(file, {
-                maxSizeMB: 1,
-                maxWidthOrHeight: 1024,
-                useWebWorker: true,
-              });
-
-              const compressedUrl = URL.createObjectURL(compressedFile);
-              setCompressedSrc(compressedUrl);
-            } catch (error) {
-              console.error("Image compression failed:", error);
-              setCompressedSrc(src); // fallback
-            } finally {
-              setIsCompressing(false);
-            }
           }
         });
-      },
+      },  
       { threshold: 0.1 }
     );
 
@@ -57,7 +47,7 @@ const LazyImage = ({
     }
 
     return () => observer.disconnect();
-  }, [src]);
+  }, []);
 
   return (
     <div
@@ -66,22 +56,20 @@ const LazyImage = ({
     >
       {isVisible && (
         <>
-          {isCompressing && shouldShowLoader ? (
-            <div className="flex items-center justify-center h-[60px] w-full">
-              <div className="flex justify-center items-center h-full">
-                <img className="h-16 w-16" src={loader} alt="" />
-              </div>
+          {shouldShowLoader && !isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <img className="h-12 w-12" src="/images/loader.gif" alt="Loading..." />
             </div>
-          ) : (
-            <img
-              src={compressedSrc}
-              alt={alt}
-              className={`${className} transition-all duration-300 ease-in-out`}
-              loading="lazy"
-            />
-          )}
+          )}   
+          <img
+            src={imageKitURL}
+            alt={alt}
+            loading="lazy"
+            onLoad={() => setIsLoaded(true)}
+            className={`${className} transition-opacity duration-300 ease-in-out ${!isLoaded && shouldShowLoader ? "opacity-0" : "opacity-100"}`}
+          />
         </>
-      )} 
+      )}
     </div>
   );
 };

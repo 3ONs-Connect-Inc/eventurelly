@@ -3,9 +3,10 @@ import { useEventForm } from "../hooks/useEventForm";
 import { MultiTextInput } from "../ui/MultiTextInput";
 import { AgendaInput } from "../ui/AgendaInput";
 import { useColor } from "../ui/useColor";
-import { addEventFormFields } from "../../../data/admin/data";
 import RenderForm from "../ui/RenderForm";
 import { Button } from "../ui/Button";
+import { addEventFormFields } from "../../constants";
+import CloudinaryUpload from "./CloudinaryUpload";
 
 const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
   const {
@@ -30,6 +31,15 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
         className="card-body overflow-auto p-4 space-y-6"
       >
         {/* Event Name and Tagline */}
+
+        <CloudinaryUpload
+          onUploadSuccess={(url) =>
+            setEventData((prev) => ({ ...prev, eventImage: url }))
+          }
+          label="Event Image"
+          eventId={eventId}
+          previousImageUrl={eventData.eventImage}
+        />
 
         <RenderForm
           fields={addEventFormFields}

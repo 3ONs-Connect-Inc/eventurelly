@@ -3,8 +3,8 @@ import HeroContainer from "../ui/hero/HeroContainer";
 import HeroContent from "../ui/hero/HeroContent";
 import HeroImage from "../ui/hero/HeroImage";
 import Button from "../ui/Button";
-import { cardData } from "../../../data";
 import { useAppSelector } from "../../hooks/redux";
+import { cardData } from "../constants";
 
 
 

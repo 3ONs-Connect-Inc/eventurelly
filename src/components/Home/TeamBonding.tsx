@@ -15,29 +15,32 @@ const TeamBonding: React.FC<{ handleNavigation: (title: string) => void }> = ({
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center w-full gap-6 max-md:-mt-4">
+       <div className="flex flex-col 2xs:flex-row justify-center p-2 items-center w-full gap-6 max-md:-mt-4">
+
           <Card
-            image="/eventurelly/p1.jpeg"
+            image="/images/ppl/p1.jpeg"
             title="Corporate Admin"
             description="Manage your company's event operations effortlessly."
             buttonText="Next"
-           scale
-           className="max-w-full md:w-[300px] w-full text-center"
+            scale
+            className="max-w-full md:w-[300px] w-full text-center"
             imageClassName="rounded-full w-24 h-24"
             textAlignment="center"
             onClick={() => handleNavigation("Corporate Admin")}
-          />
+              useNativeImg 
+               />
           <Card
-            image="/eventurelly/p2.jpeg"
+            image="/images/ppl/p2.jpeg"
             title="Corporate Member"
             description="Join your company's event team and collaborate seamlessly."
             buttonText="Next"
-             className="max-w-full md:w-[300px] w-full text-center"
+            className="max-w-full md:w-[300px] w-full text-center"
             imageClassName="rounded-full w-24 h-24"
             textAlignment="center"
             scale
-            onClick={() => handleNavigation("Corporate Member")}
-          />
+            onClick={() => handleNavigation("Corporate Member")}   
+             useNativeImg 
+            />
 
         </div>
       </div>

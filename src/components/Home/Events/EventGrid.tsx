@@ -1,5 +1,6 @@
 
-import { cardData } from "../../../../data";
+
+
 import Card from "../../ui/Card";
 
 interface EventGridProps {
@@ -11,15 +12,11 @@ const EventGrid: React.FC<EventGridProps> = ({ events, handleLearnMore }) => {
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 2sm:grid-cols-3  gap-6 w-full h-full justify-items-center">
       {events.slice(0, 7).map((card, index) => {
-        const fallbackImage =
-          cardData.find((fallback) => fallback.eventName === card.eventName)?.image ||
-          cardData[index % cardData.length]?.image ||
-          "/images/loader.gif";
-
+  
         return (
           <Card
             key={index}
-            image={card.image || fallbackImage}
+            image={card.eventImage}
             title={card.eventName}
             description={card.eventDescription}
             buttonText={card.buttonText || "Learn More"}

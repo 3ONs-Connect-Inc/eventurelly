@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { footerLinks } from "../../data";
 import { useColor } from "../hooks/ui/useColor";
 import Logo from "./navbar/Logo";
 import Button from "./ui/Button";
 import { useAppSelector } from "../hooks/redux";
+import { footerLinks } from "./constants";
 
 const Footer: React.FC<{ showButtons: boolean }> = ({ showButtons }) => {
   const { textColor, bgColor, pColor } = useColor();
