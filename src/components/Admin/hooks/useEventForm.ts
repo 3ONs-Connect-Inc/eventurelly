@@ -63,7 +63,7 @@ export const useEventForm = (eventId?: string) => {
     }
 
     const fetchEvent = async () => {
-      const eventRef = doc(db, "events", eventId);
+      const eventRef = doc(db, "events", eventId) ;
       const eventSnap = await getDoc(eventRef);
       if (eventSnap.exists()) {
         setEventData(eventSnap.data() as Omit<Event, "id">);
@@ -120,7 +120,7 @@ export const useEventForm = (eventId?: string) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
-
+  console.log("Submit triggered");
     if (!activeUser?.id) {
       setMessage("User not authenticated.");
       setLoading(false);
@@ -185,7 +185,7 @@ export const useEventForm = (eventId?: string) => {
           duration: "",
           teamSize: "",
           eventCategory: "",
-          expectedOutcome: "",
+          expectedOutcome: "",  
           agendas: [],
           servicesIncluded: [],
           servicesNotIncluded: [],

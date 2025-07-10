@@ -6,7 +6,7 @@ import { useColor } from "../../hooks/ui/useColor";
 
 const SignInAccount: React.FC = () => {
     const  {bgColor} = useColor()
-  return (
+  return (  
     <div className={` ${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
       <Seo
         title="Sign in Account"

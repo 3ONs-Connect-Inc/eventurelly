@@ -47,7 +47,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
 
   return (
     <div
-      className="h-full relative flex items-center justify-center"
+      className="h-full flex items-center justify-center"
       ref={containerRef}
     >
       {isVisible && (

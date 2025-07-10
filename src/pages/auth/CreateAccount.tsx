@@ -13,7 +13,7 @@ const CreateAccount: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const role = queryParams.get("role");
   const [isCorporateAdmin, setIsCorporateAdmin] = useState(role !== "member");
-
+   
   const handleToggle = (selection: boolean) => {
     setIsCorporateAdmin(selection);
   };

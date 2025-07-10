@@ -14,7 +14,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
     loading,
     message,
     handleChange,
-    handleSelectChange,
+    handleSelectChange,  
     handleSubmit,
     setEventData,
   } = useEventForm(eventId);
@@ -38,6 +38,7 @@ const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
           }
           label="Event Image"
           eventId={eventId}
+            required={!eventId} 
           previousImageUrl={eventData.eventImage}
         />
 

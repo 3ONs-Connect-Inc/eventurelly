@@ -41,6 +41,7 @@ export interface Country {
 }
 
 export interface Event {
+  createdAt?: any;
   isBooked?: boolean;
   id: string;
   eventImage: string;

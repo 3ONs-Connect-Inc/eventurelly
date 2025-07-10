@@ -63,7 +63,7 @@ export interface NavLink {
     {
       title: "Company",
       links: [
-        { name: "About us", url: "#" },
+        { name: "About us", url: "#" },  
         { name: "Careers", url: "#" },
         { name: "News", url: "#" },
         {name: "Privacy Policy", url: "/privacy-policy"},

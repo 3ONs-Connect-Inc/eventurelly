@@ -11,7 +11,7 @@ interface Props {
   events: Event[];
   onEdit: (id: string) => void;
 }
-
+  
 const EventsTable = ({ events, onEdit }: Props) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedEventName, setSelectedEventName] = useState<string | null>(
@@ -30,7 +30,11 @@ const EventsTable = ({ events, onEdit }: Props) => {
     setSelectedId(null);
   }
 };
-
+  const sortedEvents = [...events].sort((a, b) => {
+    const dateA = new Date(a.createdAt).getTime();
+    const dateB = new Date(b.createdAt).getTime();
+    return dateA - dateB; // Ascending order
+  });
 
   const columns: Column<Event>[] = [
     {
@@ -111,7 +115,7 @@ const EventsTable = ({ events, onEdit }: Props) => {
       </div>
 
       <div className="card-body p-0">
-        <AdminTable columns={columns} data={events} title="" />
+        <AdminTable columns={columns} data={sortedEvents}  title="" />
       </div>
 
       {showAlert && selectedId && (

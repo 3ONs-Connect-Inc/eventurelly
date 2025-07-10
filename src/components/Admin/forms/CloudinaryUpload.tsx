@@ -6,6 +6,7 @@ type Props = {
   label?: string;
   eventId?: string;
   previousImageUrl?: string;
+    required?: boolean; 
 };
 
 const CloudinaryUpload: React.FC<Props> = ({
@@ -13,6 +14,7 @@ const CloudinaryUpload: React.FC<Props> = ({
   label = "Upload Image",
   eventId,
   previousImageUrl,
+    required = false, 
 }) => {
   const { uploading, imageUrl, handleUpload } = useCloudinaryUpload();
 
@@ -34,7 +36,7 @@ const CloudinaryUpload: React.FC<Props> = ({
           id="imageUpload"
           onChange={onChange}
           className="hidden"
-          required
+        required={required}
         />
         <label
           htmlFor="imageUpload"

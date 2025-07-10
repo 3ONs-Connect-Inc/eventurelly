@@ -31,7 +31,7 @@ const UserRoutes= () => {
   const {
     newPassword,
     setNewPassword,
-    confirmPassword,
+    confirmPassword,  
     setConfirmPassword,
     errors,
     setErrors,
