@@ -11,7 +11,7 @@ interface Props {
   events: Event[];
   onEdit: (id: string) => void;
 }
-  
+
 const EventsTable = ({ events, onEdit }: Props) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedEventName, setSelectedEventName] = useState<string | null>(
@@ -30,6 +30,7 @@ const EventsTable = ({ events, onEdit }: Props) => {
     setSelectedId(null);
   }
 };
+
   const sortedEvents = [...events].sort((a, b) => {
     const dateA = new Date(a.createdAt).getTime();
     const dateB = new Date(b.createdAt).getTime();

@@ -26,6 +26,7 @@ const CloudinaryUpload: React.FC<Props> = ({
     if (url) onUploadSuccess(url);
   };
 
+  
   return (
     <div className="flex flex-col space-y-2">
       <div className="relative w-full max-w-xs">

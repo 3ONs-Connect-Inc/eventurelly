@@ -73,6 +73,7 @@ export const useEventForm = (eventId?: string) => {
     fetchEvent();
   }, [eventId]);
 
+  
   const generateSearchKeywords = () => {
     const keywords = new Set<string>();
     const addKeyword = (text?: string) => {

@@ -40,6 +40,7 @@ export interface Country {
   name: string;
 }
 
+
 export interface Event {
   createdAt?: any;
   isBooked?: boolean;

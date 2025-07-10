@@ -8,6 +8,7 @@ import { Button } from "../ui/Button";
 import { addEventFormFields } from "../../constants";
 import CloudinaryUpload from "./CloudinaryUpload";
 
+
 const EventForm: React.FC<{ eventId?: string }> = ({ eventId }) => {
   const {
     eventData,

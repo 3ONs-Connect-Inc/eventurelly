@@ -39,7 +39,7 @@ const RenderForm: React.FC<RenderFormProps> = ({
           placeholder: field.placeholder,
           className: "p-3 border rounded w-full",
         };
-
+        
         return (
           <div key={field.name}>
             <label
