@@ -33,7 +33,7 @@ const EventsTable = ({ events, onEdit }: Props) => {
   const sortedEvents = [...events].sort((a, b) => {
     const dateA = new Date(a.createdAt).getTime();
     const dateB = new Date(b.createdAt).getTime();
-    return dateA - dateB; // Ascending order
+    return dateA - dateB; 
   });
 
   const columns: Column<Event>[] = [
