@@ -57,7 +57,7 @@ const EventHeader: React.FC<EventHeaderProps> = ({
           )}
           {hasViewMore && (
             <button
-              className="flex items-center gap-2 cursor-pointer max-sm:hidden bg-primary text-white px-5 py-2 rounded-lg shadow-md text-base max-md:text-tiny font-semibold transition bg-hover mt-14"
+              className="flex  self-start xs:items-center gap-2 cursor-pointer  bg-primary text-white px-5 max-sm:px-1.5 py-2 rounded-lg shadow-md text-[10px] sm:text-base font-semibold transition bg-hover mt-4 xs:mt-14"
               onClick={() => navigate(viewMoreLink || "#")}
             >
               <span>View More</span>
@@ -65,7 +65,7 @@ const EventHeader: React.FC<EventHeaderProps> = ({
                 src="/images/icon/arrow-right.png"
                 loading="lazy"
                 alt="icon"
-                className="w-5"
+                className="w-3 sm:w-5 "
               />
             </button>
           )}
