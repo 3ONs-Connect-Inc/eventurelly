@@ -13,7 +13,7 @@ export const validateForm = (
   const errors: FormErrors = {};
 
   const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10}$/;
 
@@ -45,18 +45,15 @@ export const validateForm = (
   if (!formData.terms)
     errors.terms = "You must agree with our terms and condition.";
 
-  if (!formData.password.trim()) {
-    errors.password = "Password is required.";
-  } else if (formData.password.length < 8) {
-    errors.password =
-      "Password must be at least 8 characters and must contain at least 1 uppercase letter, one lowercase letter, one number, and one special character";
-  } else if (formData.password.length > 8) {
-    errors.password =
-      "Password must not exceed 8 characters and must contain at least 1 uppercase letter, one lowercase letter, one number, and one special character";
-  } else if (!passwordRegex.test(formData.password)) {
-    errors.password =
-      "Password  must contain at least 1 uppercase letter, one lowercase letter, one number, and one special character";
-  }
+if (!formData.password.trim()) {
+  errors.password = "Password is required.";
+} else if (formData.password.length < 8) {
+  errors.password =
+    "Password must be at least 8 characters and must contain at least 1 uppercase letter, one lowercase letter, one number, and one special character";
+} else if (!passwordRegex.test(formData.password)) {
+  errors.password =
+    "Password must contain at least 1 uppercase letter, one lowercase letter, one number, and one special character";
+}
 
   if (!formData.confirmPassword.trim()) {
     errors.confirmPassword = "Password is required.";
