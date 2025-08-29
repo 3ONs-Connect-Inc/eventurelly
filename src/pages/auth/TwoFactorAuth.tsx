@@ -107,12 +107,14 @@ const TwoFactorAuth: React.FC = () => {
     <div
       className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ${bgColor2}`}
     >
-         <Seo
-            title="Two Factor Authentication"
-            description="Two Factor Authentication page."
-            name="Eventurelly."
-            type="website"
-          />
+       <Seo
+  title="Two-Factor Authentication | Eventurelly"
+  description="Verify your identity with two-factor authentication to securely access your Eventurelly account."
+  name="Eventurelly"
+  type="website"
+  robots="noindex, nofollow"
+/>
+
       <div
         className={`p-6 rounded-lg shadow-lg text-center w-full max-w-md ${bgColor} ${textColor}`}
       >

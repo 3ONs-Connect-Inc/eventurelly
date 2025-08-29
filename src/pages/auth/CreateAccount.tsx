@@ -25,10 +25,11 @@ const CreateAccount: React.FC = () => {
   return (
     <div className={`${bgColor} flex flex-col md:flex-row min-h-screen  w-full`}>
       <Seo
-        title="Create Account"
-        description="Create account page."
+          title="Sign Up | Eventurelly - Plan and Share Your Events"
+  description="Create your Eventurelly account to start planning, organizing, and sharing events seamlessly. Join thousands of event creators today."
         name="Eventurelly."
         type="website"
+        robots="noindex, nofollow"
       />
       {/* Logo - Visible on small screens only */}
       <div className="mx-4 w-40 mt-4 h-auto md:hidden">

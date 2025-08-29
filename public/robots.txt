@@ -1,4 +1,8 @@
 User-agent: *
-Allow: /
+Disallow: /sign-in
+Disallow: /sign-up
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /unauthorized
 
 Sitemap: https://eventurelly.com/sitemap.xml

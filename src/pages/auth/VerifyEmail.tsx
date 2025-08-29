@@ -94,12 +94,14 @@ const VerifyEmail: React.FC<UserProps> = ({
 
     return (
       <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ${bgColor2}`}>
-         <Seo
-            title="Email Verification"
-            description="Email Verification page."
-            name="Eventurelly."
-            type="website"
-          />
+  <Seo
+  title="Verify Your Email | Eventurelly"
+  description="Confirm your email address to activate your Eventurelly account and start planning your events."
+  name="Eventurelly"
+  type="website"
+  robots="noindex, nofollow"
+/>
+
       <div className={`p-6 rounded-lg shadow-lg text-center w-full max-w-md ${bgColor} ${textColor}`}>
       {loading ? (
           <h2 className="text-xl font-semibold mb-2">Processing your request...</h2>

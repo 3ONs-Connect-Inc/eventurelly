@@ -12,12 +12,13 @@ const DemoRequest = () => {
 
   return (
     <div className={`${bgColor} overflow-hidden min-h-screen flex flex-col overflow-x-hidden mt-0 max-w-full`}>
-      <Seo
-        title="Request Demo"
-        description="Request Demo page."
-        name="Eventurelly."
-        type="event"
-      />
+     
+<Seo
+  title="Request a Demo | See Eventurelly in Action"
+  description="Schedule a personalized demo of Eventurelly to explore how our platform helps you create, manage, and promote events effortlessly."
+  name="Eventurelly"
+  type="website"
+/>
 
       <div className="relative w-full  flex flex-col items-center mb-6">
         <div

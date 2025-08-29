@@ -1,33 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Static Routes -->
   <url>
-    <loc>https://eventurelly.com/</loc>
+    <loc>https://www.eventurelly.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/sign-in</loc>
+    <loc>https://www.eventurelly.com/sign-in</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/sign-up</loc>
+    <loc>https://www.eventurelly.com/sign-up</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/2fa-auth</loc>
+    <loc>https://www.eventurelly.com/2fa-auth</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/verify-email</loc>
+    <loc>https://www.eventurelly.com/verify-email</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/forgot-password</loc>
+    <loc>https://www.eventurelly.com/forgot-password</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/password-success</loc>
+    <loc>https://www.eventurelly.com/password-success</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/search</loc>
+    <loc>https://www.eventurelly.com/search</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/team-building-events</loc>
+    <loc>https://www.eventurelly.com/team-building-events</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://eventurelly.com/demo-request</loc>
+    <loc>https://www.eventurelly.com/demo-request</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://www.eventurelly.com/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eventurelly.com/terms-and-conditions</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eventurelly.com/unauthorized</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  
+
+
 </urlset>

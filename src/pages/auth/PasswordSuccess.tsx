@@ -9,12 +9,14 @@ const PasswordSuccess = () => {
     <div
       className={`fixed inset-0 flex items-center justify-center  bg-opacity-50 ${bgColor2}`}
     >
-         <Seo
-            title="Password Success"
-            description="Password Success page."
-            name="Eventurelly."
-            type="website"
-          />
+       <Seo
+  title="Password Reset Successful | Eventurelly"
+  description="Your password has been successfully reset. You can now log in and continue planning your events with Eventurelly."
+  name="Eventurelly"
+  type="website"
+  robots="noindex, nofollow"
+/>
+
       <div
         className={`p-6 rounded-lg shadow-lg text-center w-full max-w-md ${bgColor} ${textColor}`}
       >

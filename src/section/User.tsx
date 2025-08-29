@@ -4,6 +4,7 @@ import NotFound from '../pages/NotFound';
 import Navbar from "../components/navbar/Navbar";
 import { lazy} from "react";
 import usePasswordReset from "../hooks/auth/usePasswordReset";
+import UnauthorizedPage from "../components/UnauthorizedPage";
 
 
 const Home  = lazy(() => import("../pages/Home"));  
@@ -77,7 +78,7 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
           confirmPassword={confirmPassword}
           setConfirmPassword={setConfirmPassword} 
           errors={errors}
-          setErrors={setErrors}    
+          setErrors={setErrors}      
           loading={loading}
           setLoading={setLoading}
           message={message}  
@@ -93,7 +94,8 @@ const handleNewPasswordSubmit = (e: React.FormEvent) => {
         <Route path="/event-details/:collectionName/:id/:slug" element={<EventCategoryPage/>} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage/>} />
         <Route path="/terms-and-conditions" element={<TermsPage/>} />
-       
+       <Route path="/unauthorized" element={<UnauthorizedPage />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

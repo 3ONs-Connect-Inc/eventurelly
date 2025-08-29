@@ -13,12 +13,13 @@ const TeamBuildingPage = () => {
     <div
       className={`${bgColor}  overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
     >
-      <Seo
-        title="Team Building"
-        description="Team Building page."
-        name="Eventurelly."
-        type="website"
-      />
+     <Seo
+  title="Team Building Events | Strengthen Your Team with Eventurelly"
+  description="Discover and organize engaging team building events with Eventurelly. Boost collaboration, communication, and morale through fun and effective activities."
+  name="Eventurelly"
+  type="website"
+/>
+
       <div
         className={`${bgGradient} min-h-auto flex flex-col items-center justify-center w-full  px-6 sm:px-8 lg:px-12 xl:px-16`}
       >

@@ -9,11 +9,13 @@ const SignInAccount: React.FC = () => {
   return (  
     <div className={` ${bgColor} flex flex-col md:flex-row min-h-screen w-full`}>
       <Seo
-        title="Sign in Account"
-        description="Sign in Account page."
-        name="Eventurelly."
-        type="website"
-      />
+  title="Sign In to Your Account | Eventurelly"
+  description="Access your Eventurelly account to manage and organize your events seamlessly. Sign in securely to get started."
+  name="Eventurelly"
+  type="website"
+  robots="noindex, nofollow"
+/>
+
       {/* Logo - Visible on small screens only */}
       <div className="md:hidden mx-4 w-40 h-auto mt-4 mb-10">
         <Link to="/">

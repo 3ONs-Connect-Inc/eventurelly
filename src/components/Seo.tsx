@@ -7,15 +7,16 @@ interface SEOProps {
     description: string;
     name: string;
     type: string;
+    robots?: string
   }
   
-  const Seo: React.FC<SEOProps> = ({ title, description, name, type }) => {
+  const Seo: React.FC<SEOProps> = ({ title, robots, description, name, type }) => {
     return (
       <Helmet>
         {/* Standard metadata tags */}
         <title>{title}</title>
         <meta name="description" content={description} />
-        
+        {robots && <meta name="robots" content={robots} />}
         {/* Open Graph / Facebook Meta Tags */}
         <meta property="og:type" content={type} />
         <meta property="og:title" content={title} />

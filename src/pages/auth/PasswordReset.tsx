@@ -99,12 +99,14 @@ const PasswordReset: React.FC<PasswordResetProps> = ({
 
   return (
     <div className="relative z-50">
-      <Seo
-        title="Password Reset"
-        description="Password Reset page."
-        name="Eventurelly."
-        type="website"
-      />
+<Seo
+  title="Reset Your Password | Eventurelly"
+  description="Securely reset your Eventurelly account password and regain access to your event planning dashboard."
+  name="Eventurelly"
+  type="website"
+  robots="noindex, nofollow"
+/>
+
       {!isResetMode ? (
         <div
           className={` flex   justify-center items-center min-h-screen px-4 ${bgColor2}`}

@@ -20,12 +20,13 @@ const Home: React.FC = () => {
 
   return (
     <div className={`${bgColor} relative   overflow-hidden  min-h-screen  overflow-x-hidden   flex flex-col mt-0  max-w-full`}>
-      <Seo
-        title="Home"
-        description="Home page."
-        name="Eventurelly."
-        type="website"
-      />
+     <Seo
+  title="Eventurelly | Plan, Promote & Book Events Effortlessly"
+  description="Eventurelly is your all-in-one event platform to create, manage, and promote events. Reach more attendees and streamline your event planning process."
+  name="Eventurelly"
+  type="website"
+/>
+
       {isLoggedIn ? (
         <LoggedInUser />
       ) : (

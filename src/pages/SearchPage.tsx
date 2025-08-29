@@ -31,12 +31,13 @@ const SearchPage: React.FC<SearchProps> = ({collectionName}) => {
     <div
       className={`${bgColor} relative overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
     >
-      <Seo
-        title="Search"    
-        description="Search page."
-        name="Eventurelly."
-        type="website"
-      />
+  <Seo
+  title="Search Events | Find What You're Looking For on Eventurelly"
+  description="Use Eventurelly’s powerful search to quickly find events, organizers, and venues that match your interests."
+  name="Eventurelly"
+  type="website"
+/>
+
       <div
         className={`w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ${bgColor}`}
       >
