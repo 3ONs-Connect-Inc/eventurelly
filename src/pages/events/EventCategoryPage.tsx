@@ -39,10 +39,10 @@ const EventCategoryPage: React.FC = () => {
     <div
       className={`${bgColor}  overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
     >
-  <Seo
-  title="Explore Events Near You | Find & Book with Eventurelly"
-  description="Discover trending events, local experiences, and exclusive gatherings with Eventurelly. Browse and book events effortlessly in your city or online."
-  name="Eventurelly"
+<Seo
+    title={`${eventDetail?.eventNamePrefix ? eventDetail.eventNamePrefix + ' ' : ''}${eventDetail?.eventName} | Eventurelly`}
+  description={eventDetail?.eventTagline || "Join this exciting event and explore unique experiences with Eventurelly."}
+  name={"Eventurelly"}
   type="event"
 />
 

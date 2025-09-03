@@ -1,22 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { useColor } from "../../hooks/ui/useColor";
 import Card from "../ui/Card";
-import { useFetchEvents } from "../../hooks/events/useFetchEvents";
-import Spinner from "../Spinner";
+import { Event } from "../../types";
 
-const TeamEvents: React.FC = () => {
+interface TeamEventsProps {
+  events: Event[];
+}
+
+
+const TeamEvents: React.FC<TeamEventsProps> = ({ events }) => {
   const { textColor,  bgColor } = useColor();
   const navigate = useNavigate();
-  const { events, loading, error } = useFetchEvents("events");
 
   const handleLearnMore = (id: string, slug: string) => {
     const formattedSlug = slug.replace(/\s+/g, "-");
     navigate(`/event-details/events/${id}/${formattedSlug}`);
   };  
 
-  if (loading) return <Spinner />;
-  if (error) return <p className="text-destructive">{error}</p>;
-  if (!events) return null;
+
 
   return (
     <div className={`w-full py-4 mt-10  max-xs:px-0 ${bgColor}`}>
@@ -38,7 +39,7 @@ const TeamEvents: React.FC = () => {
                 buttonAlignment="center"
                 textAlignment="left"
                 buttonFullWidth
-                buttonColor
+                buttonColor  
                 buttonTextColor
                 imageClassName="w-full h-full"
                 scale

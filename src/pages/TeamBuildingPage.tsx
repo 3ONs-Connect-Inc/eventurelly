@@ -2,23 +2,32 @@
 import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
 import Seo from "../components/Seo";
+import Spinner from "../components/Spinner";
 import TeamEvents from "../components/team-building/TeamEvents";
 import TeamHero from "../components/team-building/TeamHero";
+import { useFetchEvents } from "../hooks/events/useFetchEvents";
 import { useColor } from "../hooks/ui/useColor";
 
 const TeamBuildingPage = () => {
   const { bgGradient, bgColor } = useColor();
-
+    const { events, loading, error } = useFetchEvents("events");
+  if (loading) return <Spinner />;
+  if (error) return <p className="text-destructive">{error}</p>;
+  if (!events) return null;
+ const firstEvent = events?.[0];
   return (
     <div
       className={`${bgColor}  overflow-hidden  min-h-screen flex flex-col overflow-x-hidden  mt-0  max-w-full `}
     >
-     <Seo
-  title="Team Building Events | Strengthen Your Team with Eventurelly"
-  description="Discover and organize engaging team building events with Eventurelly. Boost collaboration, communication, and morale through fun and effective activities."
-  name="Eventurelly"
-  type="website"
-/>
+   <Seo
+        title={`${firstEvent?.eventName || "Team Building Events"} | Eventurelly`}
+        description={
+          firstEvent?.eventDescription?.slice(0, 160) ||
+          "Discover and organize engaging team building events with Eventurelly. Boost collaboration, communication, and morale through fun and effective activities."
+        }
+        name="Eventurelly"
+        type="website"
+      />
 
       <div
         className={`${bgGradient} min-h-auto flex flex-col items-center justify-center w-full  px-6 sm:px-8 lg:px-12 xl:px-16`}
@@ -28,7 +37,7 @@ const TeamBuildingPage = () => {
       </div>
       <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16 flex-grow  ">
         <div className="max-w-7xl  mx-auto px-6 max-xs:px-0">
-          <TeamEvents />
+          <TeamEvents events={events}/>
         </div>
       </div>  
 

@@ -29,8 +29,8 @@ const BookEventPage:React.FC<EventProps> = () => {
       className={`${bgColor}  overflow-hidden min-h-screen flex flex-col overflow-x-hidden mt-0 max-w-full`}
     >
      <Seo
-  title="Book Events Online | Discover & Reserve with Eventurelly"
-  description="Easily browse, discover, and book your favorite events with Eventurelly. From concerts to workshops, reserve your spot in just a few clicks."
+ title={`${eventDetail?.eventNamePrefix ? eventDetail.eventNamePrefix + ' ' : ''}${eventDetail?.eventName} | Eventurelly`}
+  description={eventDetail?.eventDescription }
   name="Eventurelly"
   type="event"
 />

@@ -49,6 +49,7 @@ export interface Event {
   eventName: string;
   eventTagline: string;
   eventNameLower?: string;
+  eventNamePrefix?: string;
   bookingId?: string;
   eventDescription: string;
   buttonText?: string;
