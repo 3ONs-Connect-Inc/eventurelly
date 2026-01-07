@@ -29,7 +29,7 @@ const Home: React.FC = () => {
 
       {isLoggedIn ? (
         <LoggedInUser />
-      ) : (
+      ) : (  
         <GuestUser handleNavigation={handleNavigation} />
       )}
       <BackToTop />
